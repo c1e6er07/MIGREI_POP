@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Bot, Send, Shield, Lock, Unlock, User, Sparkles, AlertTriangle, CheckCircle2, X, FileText, Zap } from 'lucide-react';
+import { Bot, Send, Shield, Lock, Unlock, User, Sparkles, AlertTriangle, X, FileText, Zap } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { sendMessageToGemini } from '../services/geminiService';
 import { AccessLevel } from '../types';

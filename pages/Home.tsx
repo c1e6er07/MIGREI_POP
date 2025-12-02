@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, BarChart3, Zap, DollarSign, Building2, Briefcase, TrendingUp, Cpu, Wallet, ChevronRight, Users, Globe, GraduationCap, BookOpen, Megaphone, Scale, Headphones, CheckCircle, Award, LineChart, Clock, Target, Percent, Crown, Rocket, MapPin, CheckCircle2 } from 'lucide-react';
+import { BarChart3, Zap, DollarSign, Building2, Briefcase, TrendingUp, Cpu, Wallet, ChevronRight, Users, Globe, GraduationCap, BookOpen, Megaphone, Scale, Headphones, CheckCircle, Award, LineChart, Clock, Target, Percent, Crown, Rocket, MapPin, CheckCircle2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { LOGO_URL } from '../constants';
 const Home: React.FC = () => {

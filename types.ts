@@ -1,3 +1,4 @@
+import type React from 'react';
 export interface Lead { name: string; email: string; phone: string; company?: string; cnpj?: string; message?: string; }
 export interface LeadInput { name: string; email: string; phone: string; company?: string; message?: string; }
 export interface AdminLead { id: number; created_at: string; name: string; email: string; phone: string; company?: string; message?: string; status: 'novo' | 'em_atendimento' | 'convertido' | 'perdido'; }
@@ -13,10 +14,10 @@ export interface Notification { id: number; title: string; message: string; type
 export interface DashboardStats { activeUnits: number; totalConsumption: number; totalSavings: number; lastInvoiceValue: number; }
 export interface ChatMessage { id: string; role: 'user' | 'model'; text: string; timestamp: Date; }
 export enum AccessLevel { BASIC = 'Básico', CLIENT = 'Cliente MLE', FRANCHISEE = 'Franqueado' }
-export interface NavLink { label: string; path: string; icon?: any; }
+export interface NavLink { label: string; path: string; icon?: React.ReactNode; }
 export type ConnectionStatus = 'disconnected' | 'connecting' | 'connected' | 'error';
 export interface DistributorIntegration { id: string; name: string; logo_url?: string; status: ConnectionStatus; last_sync?: string; }
 export interface OCRResult { text: string; extractedValue?: number; extractedDate?: string; confidence: number; }
-export interface BankOption { id: string; name: string; color: string; icon?: any; }
+export interface BankOption { id: string; name: string; color: string; icon?: React.ReactNode; }
 export interface PaymentTransaction { id: string; invoiceId: number; amount: number; splitMatriz: number; splitFranchisee: number; status: 'processing' | 'completed' | 'failed'; bankName: string; date: string; }
 export interface FranchiseNode { id: string; name: string; tier: FranchiseTier; location: string; activeClients: number; monthlyRevenue: number; status: 'active' | 'warning' | 'inactive'; }

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { User, Bell, Shield, Database, Trash2, Check, AlertTriangle, Loader2, Link as LinkIcon, Zap, Server, RefreshCw } from 'lucide-react';
+import { User, Bell, Shield, Database, Trash2, Check, AlertTriangle, Loader2, Link as LinkIcon, Zap, Server } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import { SaaSService } from '../../services/supabase';
 const Settings: React.FC = () => {

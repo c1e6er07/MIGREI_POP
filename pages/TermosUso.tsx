@@ -16,7 +16,7 @@ const TermosUso: React.FC = () => (
           <section>
              <h2 className="text-xl font-bold text-white mb-3">1. Aceitação dos Termos</h2>
              <p className="leading-relaxed">
-                Ao acessar e utilizar a plataforma MIGREI MLE CONSULT ("Plataforma"), você concorda em cumprir estes Termos de Uso e todas as leis aplicáveis. Se você não concordar, não utilize nossos serviços.
+                Ao acessar e utilizar a plataforma MIGREI MLE CONSULT (&quot;Plataforma&quot;), você concorda em cumprir estes Termos de Uso e todas as leis aplicáveis. Se você não concordar, não utilize nossos serviços.
              </p>
           </section>
 
@@ -37,7 +37,7 @@ const TermosUso: React.FC = () => (
           <section>
              <h2 className="text-xl font-bold text-white mb-3">4. Propriedade Intelectual</h2>
              <p className="leading-relaxed">
-                Todo o conteúdo, software, marcas e tecnologias (incluindo "Smart Split" e "Migrei IA") são propriedade exclusiva da MIGREI MLE CONSULT ou de seus licenciadores.
+                Todo o conteúdo, software, marcas e tecnologias (incluindo &quot;Smart Split&quot; e &quot;Migrei IA&quot;) são propriedade exclusiva da MIGREI MLE CONSULT ou de seus licenciadores.
              </p>
           </section>
 

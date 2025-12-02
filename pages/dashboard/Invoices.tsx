@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FileText, Download, CheckCircle2, AlertCircle, Filter, Search, CreditCard, Loader2, Upload, ScanLine, X, Calendar, DollarSign, Zap } from 'lucide-react';
+import { FileText, Download, CheckCircle2, AlertCircle, CreditCard, Loader2, Upload, ScanLine, X, Calendar, DollarSign, Zap } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import { SaaSService } from '../../services/supabase';
 import { OCRService } from '../../services/ocrService';
@@ -17,15 +17,15 @@ const Invoices: React.FC = () => {
   const [ocrResult, setOCRResult] = useState<OCRResult | null>(null);
   const [scanProgress, setScanProgress] = useState(0);
   const fileInputRef = useRef<HTMLInputElement>(null);
-  useEffect(() => { if (user) loadData(); }, [user]);
-  const loadData = async () => { if (!user) return; const data = await SaaSService.getAllInvoices(user.id); setInvoices(data); setLoading(false); };
+  const loadData = useCallback(async () => { if (!user) return; const data = await SaaSService.getAllInvoices(user.id); setInvoices(data); setLoading(false); }, [user]);
+  useEffect(() => { if (user) loadData(); }, [user, loadData]);
   const filteredInvoices = invoices.filter(inv => { if (filter === 'all') return true; return inv.status === filter; });
   const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (!file) return;
     setIsOCRModalOpen(true); setIsProcessingOCR(true); setOCRResult(null); setScanProgress(0);
     const progressInterval = setInterval(() => { setScanProgress(prev => { if (prev >= 90) return prev; return prev + Math.random() * 10; }); }, 500);
-    try { const result = await OCRService.processInvoice(file); clearInterval(progressInterval); setScanProgress(100); setTimeout(() => { setOCRResult(result); setIsProcessingOCR(false); }, 800); } catch (error) { clearInterval(progressInterval); setIsProcessingOCR(false); setIsOCRModalOpen(false); alert("Erro ao processar fatura. Tente novamente."); }
+    try { const result = await OCRService.processInvoice(file); clearInterval(progressInterval); setScanProgress(100); setTimeout(() => { setOCRResult(result); setIsProcessingOCR(false); }, 800); } catch (_error) { void _error; clearInterval(progressInterval); setIsProcessingOCR(false); setIsOCRModalOpen(false); alert("Erro ao processar fatura. Tente novamente."); }
     if (fileInputRef.current) fileInputRef.current.value = '';
   };
   const handleConfirmInvoice = async () => {

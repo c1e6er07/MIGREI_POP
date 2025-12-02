@@ -31,7 +31,8 @@ export const sendMessageToGemini = async (
       try {
         const stats = await SaaSService.getDashboardStats(userId);
         contextData = `[DADOS SIGILOSOS] Consumo: ${stats.totalConsumption} kWh, Economia: R$ ${stats.totalSavings.toFixed(2)}`;
-      } catch (e) {
+      } catch (_e) {
+        void _e;
         contextData = "[MODO PRIVADO]";
       }
     } else {
@@ -41,7 +42,7 @@ export const sendMessageToGemini = async (
     const chat = ai.chats.create({
       model: 'gemini-2.5-flash',
       config: {
-        systemInstruction: `${SYSTEM_INSTRUCTION_BASE}\n${contextData}`,
+        systemInstruction: `${SYSTEM_INSTRUCTION_BASE}\n[ACESSO: ${accessLevel}]\n${contextData}`,
         temperature: 0.7
       },
       history: history.map(h => ({

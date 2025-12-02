@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ShieldAlert, FileCheck, Lock, Eye, AlertTriangle, CheckCircle2, Siren, FileText } from 'lucide-react';
+import { ShieldAlert, FileCheck, Lock, AlertTriangle, CheckCircle2, Siren, FileText } from 'lucide-react';
 
 const Compliance: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'status' | 'report' | 'audit'>('status');

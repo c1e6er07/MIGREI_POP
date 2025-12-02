@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CreditCard, Shield, Lock, Landmark, CheckCircle2, FileText, X, Loader2, Wallet, ChevronDown, ArrowRight, Share2, History, Banknote } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
@@ -18,9 +18,18 @@ const Finance: React.FC = () => {
   const [selectedBank, setSelectedBank] = useState<BankOption | null>(null);
   const [transaction, setTransaction] = useState<PaymentTransaction | null>(null);
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
+  const loadInvoices = useCallback(async () => { 
+    if (!user) return; 
+    setLoading(true);
+    const data = await SaaSService.getAllInvoices(user.id); 
+    setInvoices(data.filter(i => i.status === 'pending')); 
+    setPaidInvoices(data.filter(i => i.status === 'paid'));
+    setLoading(false); 
+  }, [user]);
+
   useEffect(() => {
     if (user) loadInvoices();
-  }, [user]);
+  }, [user, loadInvoices]);
   useEffect(() => {
     if (location.state?.invoiceId && invoices.length > 0) {
       const targetInvoice = invoices.find(i => i.id === location.state.invoiceId);
@@ -30,14 +39,7 @@ const Finance: React.FC = () => {
       }
     }
   }, [invoices, location.state]);
-  const loadInvoices = async () => { 
-    if (!user) return; 
-    setLoading(true);
-    const data = await SaaSService.getAllInvoices(user.id); 
-    setInvoices(data.filter(i => i.status === 'pending')); 
-    setPaidInvoices(data.filter(i => i.status === 'paid'));
-    setLoading(false); 
-  };
+  
   const handleStartPayment = (invoice: Invoice) => {
     setSelectedInvoice(invoice);
     setPaymentStep('select-bank');

@@ -37,25 +37,27 @@ const Admin: React.FC = () => {
      setPasswordInput('');
   };
 
-  const loadLeads = async () => {
+   const loadLeads = async () => {
     setLoadingLeads(true);
     try {
       const data = await LeadService.getAll();
       setLeads(data);
-    } catch (error) {
+      } catch (_error) {
+         void _error;
       setLeads([]);
     } finally {
       setLoadingLeads(false);
     }
   };
 
-  const updateLeadStatus = async (id: number, status: string) => {
+   const updateLeadStatus = async (id: number, status: AdminLead['status']) => {
     try {
       const success = await LeadService.updateStatus(id, status);
       if (success) {
-        setLeads(prev => prev.map(l => l.id === id ? { ...l, status: status as any } : l));
+            setLeads(prev => prev.map(l => l.id === id ? { ...l, status } : l));
       }
-    } catch (error) {
+      } catch (_error) {
+         void _error;
       // Error handling
     }
   };

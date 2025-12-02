@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { TrendingUp, DollarSign, Users, MapPin, CheckCircle2, Briefcase, ArrowRight, Target, BarChart3, Rocket, Shield, Scale, FileCheck, Lock, Award, AlertCircle, Building, Check, ChevronRight, BookOpen } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { TrendingUp, Briefcase, Target, BarChart3, Rocket, Shield, Scale, FileCheck, Lock, Award, AlertCircle, Building, Check, ChevronRight, BookOpen } from 'lucide-react';
+// import { Link } from 'react-router-dom';
 const ViabilidadeFranquia: React.FC = () => {
   const [clientes, setClientes] = useState(10);
   const [consumoMedio, setConsumoMedio] = useState(15000); 

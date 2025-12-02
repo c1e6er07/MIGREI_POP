@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Sparkles, Calculator, CheckCircle, TrendingDown, Shield, Clock, Building2, ArrowRight, Loader2, AlertCircle, FileText, FileSignature, Settings } from 'lucide-react';
+import { Sparkles, Calculator, CheckCircle, TrendingDown, Clock, Loader2, FileText, FileSignature, Settings } from 'lucide-react';
 import { LOGO_URL } from '../constants';
 import { LeadService } from '../services/supabase';
 const ParaEmpresas: React.FC = () => {
@@ -17,10 +17,10 @@ const ParaEmpresas: React.FC = () => {
       const detailsMessage = `SOLICITAÇÃO PARA EMPRESAS\n-------------------------\nCNPJ: ${formData.cnpj}\nConsumo: ${formData.consumo_mensal_kwh} kWh\nValor Atual: R$ ${formData.valor_conta_atual}\nLocal: ${formData.cidade}/${formData.estado}\nEconomia Estimada: R$ ${economiaDados?.mensal.toFixed(2)}`;
       const result = await LeadService.create({ name: formData.nome_completo, email: formData.email, phone: formData.telefone, company: formData.empresa, message: detailsMessage });
       if (result.success) { setEconomia(economiaDados); setSubmitStatus('success'); setFormData({ nome_completo: "", email: "", telefone: "", empresa: "", cnpj: "", consumo_mensal_kwh: "", valor_conta_atual: "", cidade: "", estado: "" }); } else { setSubmitStatus('error'); setErrorMessage(result.error || 'Erro desconhecido.'); }
-    } catch (error: any) { setSubmitStatus('error'); setErrorMessage(error.message || 'Erro de conexão.'); } finally { setLoading(false); }
+    } catch (error: unknown) { const message = error instanceof Error ? error.message : 'Erro de conexão.'; setSubmitStatus('error'); setErrorMessage(message); } finally { setLoading(false); }
   };
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => { setFormData({ ...formData, [e.target.id]: e.target.value }); };
-  const scrollToForm = () => { document.getElementById('form-section')?.scrollIntoView({ behavior: 'smooth' }); };
+  // removed unused scrollToForm helper to satisfy lint
   const timelineSteps = [ { icon: FileText, title: "Diagnóstico Inicial", description: "Análise completa da conta", duration: "1-2 dias" }, { icon: Calculator, title: "Cálculo de Viabilidade", description: "Simulação precisa da economia", duration: "1 dia" }, { icon: CheckCircle, title: "Habilitação CCEE", description: "Registro na Câmara", duration: "15-30 dias" }, { icon: FileSignature, title: "Negociação", description: "Busca dos melhores preços", duration: "5-10 dias" }, { icon: TrendingDown, title: "Migração Completa", description: "Transição segura", duration: "1 dia" }, { icon: Settings, title: "Gestão Contínua", description: "Acompanhamento mensal", duration: "Permanente" } ];
   return (
     <div className="min-h-screen bg-slate-950">

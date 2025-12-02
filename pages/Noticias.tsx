@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Calendar, User, ArrowRight, Tag, Zap, TrendingUp, AlertCircle } from 'lucide-react';
+import { Calendar, ArrowRight, Zap } from 'lucide-react';
 import { NewsService } from '../services/supabase';
 import { NewsItem } from '../types';
 
 const Noticias: React.FC = () => {
   const [news, setNews] = useState<NewsItem[]>([]);
-  const [loading, setLoading] = useState(true);
+    // removed unused loading state
 
   useEffect(() => {
     loadNews();
@@ -56,7 +56,7 @@ const Noticias: React.FC = () => {
             }
         ]);
     }
-    setLoading(false);
+        // end of load
   };
 
   return (

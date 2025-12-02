@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, MessageSquare, Clock, Bot, ArrowRight } from 'lucide-react';
+import { Mail, Phone, MapPin, MessageSquare, Clock, Bot, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { COMPANY_INFO } from '../constants';
 const Contato: React.FC = () => {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Bot, User, Landmark, ChevronDown } from 'lucide-react';
+import { Menu, X, Bot, User, Landmark } from 'lucide-react';
 import { LOGO_URL } from '../constants';
 
 const Header: React.FC = () => {

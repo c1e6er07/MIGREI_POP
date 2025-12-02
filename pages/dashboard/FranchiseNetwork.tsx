@@ -7,7 +7,7 @@ import { FranchiseNode } from '../../types';
 const FranchiseNetwork: React.FC = () => {
   const currentUserTier = 'state'; 
   const currentRegion = 'São Paulo';
-  const [subFranchises, setSubFranchises] = useState<FranchiseNode[]>([
+  const [subFranchises] = useState<FranchiseNode[]>([
     { id: '1', name: 'MIGREI Campinas', tier: 'city', location: 'Campinas/SP', activeClients: 45, monthlyRevenue: 28500, status: 'active' },
     { id: '2', name: 'MIGREI Ribeirão', tier: 'city', location: 'Ribeirão Preto/SP', activeClients: 32, monthlyRevenue: 19200, status: 'active' },
     { id: '3', name: 'MIGREI Santos', tier: 'city', location: 'Santos/SP', activeClients: 15, monthlyRevenue: 8500, status: 'warning' },

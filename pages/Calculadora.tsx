@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Calculator, DollarSign, Zap, TrendingDown, ArrowRight, CheckCircle2, Building2, PiggyBank } from 'lucide-react';
+import { Calculator, Zap, TrendingDown, CheckCircle2, Building2, PiggyBank } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts';
 import { Link } from 'react-router-dom';
 const Calculadora: React.FC = () => {
@@ -8,7 +8,8 @@ const Calculadora: React.FC = () => {
   const [voltage, setVoltage] = useState<'A4' | 'A3'>('A4');
   const [distributor, setDistributor] = useState('Enel SP');
   const [savings, setSavings] = useState({ monthly: 0, yearly: 0, fiveYears: 0 });
-  const [chartData, setChartData] = useState<any[]>([]);
+  type ChartRow = { name: string; value: number; color: string };
+  const [chartData, setChartData] = useState<ChartRow[]>([]);
   const SAVINGS_PERCENTAGE = 0.30;
   useEffect(() => {
     const monthlySavings = billValue * SAVINGS_PERCENTAGE;
@@ -27,7 +28,7 @@ const Calculadora: React.FC = () => {
             <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} className="bg-slate-900 border border-slate-800 rounded-2xl p-8 shadow-xl">
                <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2"> <Building2 className="w-5 h-5 text-emerald-500" /> Dados da sua Conta </h3>
                <div className="mb-8"> <label className="flex justify-between text-sm font-bold text-slate-300 mb-4"> <span>Valor Médio Mensal (R$)</span> <span className="text-emerald-400 text-lg">{formatCurrency(billValue)}</span> </label> <input type="range" min="2000" max="500000" step="1000" value={billValue} onChange={(e) => setBillValue(Number(e.target.value))} className="w-full h-3 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500" /> <div className="flex justify-between text-xs text-slate-500 mt-2"> <span>R$ 2k</span> <span>R$ 500k+</span> </div> </div>
-               <div className="grid grid-cols-2 gap-4 mb-6"> <div> <label className="block text-xs font-bold text-slate-400 uppercase mb-2">Distribuidora</label> <select value={distributor} onChange={(e) => setDistributor(e.target.value)} className="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-3 text-white focus:border-emerald-500 outline-none"> <option value="Enel SP">Enel SP</option> <option value="CPFL">CPFL</option> <option value="Light">Light</option> <option value="Cemig">Cemig</option> <option value="Copel">Copel</option> </select> </div> <div> <label className="block text-xs font-bold text-slate-400 uppercase mb-2">Tensão</label> <select value={voltage} onChange={(e) => setVoltage(e.target.value as any)} className="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-3 text-white focus:border-emerald-500 outline-none"> <option value="A4">Alta Tensão (A4)</option> <option value="A3">Alta Tensão (A3)</option> </select> </div> </div>
+               <div className="grid grid-cols-2 gap-4 mb-6"> <div> <label className="block text-xs font-bold text-slate-400 uppercase mb-2">Distribuidora</label> <select value={distributor} onChange={(e) => setDistributor(e.target.value)} className="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-3 text-white focus:border-emerald-500 outline-none"> <option value="Enel SP">Enel SP</option> <option value="CPFL">CPFL</option> <option value="Light">Light</option> <option value="Cemig">Cemig</option> <option value="Copel">Copel</option> </select> </div> <div> <label className="block text-xs font-bold text-slate-400 uppercase mb-2">Tensão</label> <select value={voltage} onChange={(e) => setVoltage(e.target.value as 'A4' | 'A3')} className="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-3 text-white focus:border-emerald-500 outline-none"> <option value="A4">Alta Tensão (A4)</option> <option value="A3">Alta Tensão (A3)</option> </select> </div> </div>
                <div className="bg-emerald-900/10 border border-emerald-500/20 p-4 rounded-xl flex items-start gap-3"> <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" /> <p className="text-sm text-slate-300"> Simulação considerando migração para o Mercado Livre no modelo <strong>Varejista</strong> com desconto garantido. </p> </div>
             </motion.div>
           </div>

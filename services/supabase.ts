@@ -82,13 +82,15 @@ export const SaaSService = {
           type: 'info',
           read: false
         }]);
-      } catch (e) {
+      } catch (_e) {
+        void _e;
         // Notifications table missing
       }
 
       return { success: true, message: "Ambiente populado com sucesso!" };
-    } catch (err: any) {
-      return { success: false, message: "Erro ao gerar dados: " + err.message };
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : String(err);
+      return { success: false, message: "Erro ao gerar dados: " + message };
     }
   },
   async clearTestDatabase(userId: string) {
@@ -101,12 +103,13 @@ export const SaaSService = {
       }
       await supabase.from('notifications').delete().eq('user_id', userId);
       return { success: true, message: "Dados removidos com sucesso." };
-    } catch (err: any) {
-      return { success: false, message: "Erro ao limpar dados: " + err.message };
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : String(err);
+      return { success: false, message: "Erro ao limpar dados: " + message };
     }
   },
   async getTelemetryData(unitId: number) {
-    let { data: invoices } = await supabase
+    const { data: invoices } = await supabase
       .from('invoices')
       .select('*')
       .eq('unit_id', unitId)
@@ -138,7 +141,8 @@ export const SaaSService = {
 
     return dailyData;
   },
-  async getIntegrations(userId: string): Promise<DistributorIntegration[]> {
+  async getIntegrations(_userId: string): Promise<DistributorIntegration[]> {
+    void _userId;
     return [
       { id: 'enel', name: 'Enel', status: 'disconnected' },
       { id: 'cemig', name: 'Cemig', status: 'disconnected' },
@@ -146,11 +150,15 @@ export const SaaSService = {
       { id: 'light', name: 'Light', status: 'disconnected' }
     ];
   },
-  async connectIntegration(userId: string, distributorId: string, credentials: any): Promise<boolean> {
+  async connectIntegration(_userId: string, distributorId: string, _credentials: unknown): Promise<boolean> {
+    void _userId;
+    void _credentials;
     await new Promise(resolve => setTimeout(resolve, 2000));
     return true;
   },
-  async uploadInvoice(userId: string, file: File): Promise<{ success: boolean; message: string }> {
+  async uploadInvoice(_userId: string, _file: File): Promise<{ success: boolean; message: string }> {
+    void _userId;
+    void _file;
     await new Promise(resolve => setTimeout(resolve, 3000));
     return { success: true, message: "Fatura processada com sucesso!" };
   }
@@ -170,7 +178,8 @@ export const NotificationService = {
       }
       
       return data as Notification[] || [];
-    } catch (err) {
+    } catch (_err) {
+      void _err;
       return [];
     }
   },
@@ -181,7 +190,8 @@ export const NotificationService = {
         .update({ read: true })
         .eq('id', id);
       return !error;
-    } catch (err) {
+    } catch (_err) {
+      void _err;
       return false;
     }
   },
@@ -192,7 +202,8 @@ export const NotificationService = {
         .update({ read: true })
         .eq('user_id', userId);
       return !error;
-    } catch (err) {
+    } catch (_err) {
+      void _err;
       return false;
     }
   }
@@ -230,7 +241,7 @@ export const LeadService = {
         const { error } = await supabase.from('leads').insert([{ name: lead.name, email: lead.email, phone: lead.phone, company: lead.company, message: lead.message, status: 'novo' }]);
         if (error) return { success: false, error: error.message };
         return { success: true };
-    } catch (e: any) { return { success: false, error: e.message }; }
+    } catch (e: unknown) { const message = e instanceof Error ? e.message : String(e); return { success: false, error: message }; }
   },
   async getAll(): Promise<AdminLead[]> {
     const { data, error } = await supabase.from('leads').select('*').order('created_at', { ascending: false });

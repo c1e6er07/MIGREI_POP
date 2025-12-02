@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { GraduationCap, PlayCircle, BookOpen, Award, CheckCircle2, Lock, Clock } from 'lucide-react';
+import { GraduationCap, PlayCircle, BookOpen, Award, Lock, Clock } from 'lucide-react';
 
 const Instituto: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'courses' | 'certificates'>('courses');

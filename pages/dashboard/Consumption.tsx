@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
-import { Zap, TrendingDown, Clock, Calendar } from 'lucide-react';
+import { Zap, TrendingDown, Clock } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line } from 'recharts';
 import { useAuth } from '../../contexts/AuthContext';
 import { SaaSService } from '../../services/supabase';
@@ -10,24 +10,26 @@ const Consumption: React.FC = () => {
   const { user } = useAuth();
   const [units, setUnits] = useState<ConsumerUnit[]>([]);
   const [selectedUnit, setSelectedUnit] = useState<number | null>(null);
-  const [telemetryData, setTelemetryData] = useState<any[]>([]);
+  const [telemetryData, setTelemetryData] = useState<Array<{ day: number; date: string; ponta: number; foraPonta: number; demandMax: number }>>([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    if (user) loadUnits();
-  }, [user]);
-
-  useEffect(() => {
-    if (selectedUnit) loadTelemetry(selectedUnit);
-  }, [selectedUnit]);
-
-  const loadUnits = async () => {
+  const loadUnits = useCallback(async () => {
     if (!user) return;
     const myUnits = await SaaSService.getMyUnits(user.id);
     setUnits(myUnits);
     if (myUnits.length > 0) setSelectedUnit(myUnits[0].id);
     else setLoading(false);
-  };
+  }, [user]);
+
+  useEffect(() => {
+    if (user) loadUnits();
+  }, [user, loadUnits]);
+
+  useEffect(() => {
+    if (selectedUnit) loadTelemetry(selectedUnit);
+  }, [selectedUnit]);
+
+  
 
   const loadTelemetry = async (unitId: number) => {
     setLoading(true);

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom';
-import { LayoutDashboard, FileText, Zap, Settings, LogOut, Menu, X, User, Bell, LineChart, CreditCard, Network, GraduationCap, ShieldAlert } from 'lucide-react';
+import { LayoutDashboard, FileText, Zap, Settings, LogOut, Menu, User, Bell, LineChart, CreditCard, Network, GraduationCap, ShieldAlert } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { LOGO_URL } from '../constants';
 import { NotificationService } from '../services/supabase';

@@ -16,7 +16,7 @@ const PoliticaPrivacidade: React.FC = () => (
           <section>
              <h2 className="text-xl font-bold text-white mb-3">1. Introdução</h2>
              <p className="leading-relaxed">
-                A MIGREI MLE CONSULT ("Nós") está comprometida em proteger sua privacidade. Esta política descreve como coletamos, usamos e protegemos suas informações pessoais ao utilizar nosso sistema SaaS e serviços financeiros.
+                A MIGREI MLE CONSULT (&quot;Nós&quot;) está comprometida em proteger sua privacidade. Esta política descreve como coletamos, usamos e protegemos suas informações pessoais ao utilizar nosso sistema SaaS e serviços financeiros.
              </p>
           </section>
 
