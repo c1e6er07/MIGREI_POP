@@ -15,6 +15,7 @@ import MigreiBank from './pages/MigreiBank';
 import Contato from './pages/Contato';
 import Noticias from './pages/Noticias';
 import PoliticaPrivacidade from './pages/PoliticaPrivacidade';
+import Health from './pages/Health';
 import TermosUso from './pages/TermosUso';
 import Admin from './pages/Admin';
 import Login from './pages/auth/Login';
@@ -29,16 +30,14 @@ import FranchiseNetwork from './pages/dashboard/FranchiseNetwork';
 import Instituto from './pages/dashboard/Instituto';
 import Compliance from './pages/dashboard/Compliance';
 
-class ErrorBoundary extends React.Component<
-  { children: React.ReactNode },
-  { hasError: boolean; error?: Error }
-> {
-  constructor(props: { children: React.ReactNode }) {
-    super(props);
-    this.state = { hasError: false };
-  }
+type EBState = { hasError: boolean; error?: Error };
+type EBProps = { children: React.ReactNode };
 
-  static getDerivedStateFromError(error: Error) {
+class ErrorBoundary extends React.Component<EBProps, EBState> {
+  declare props: Readonly<EBProps>;
+  state: EBState = { hasError: false };
+
+  static getDerivedStateFromError(error: Error): EBState {
     return { hasError: true, error };
   }
 
@@ -46,7 +45,7 @@ class ErrorBoundary extends React.Component<
     console.error('ErrorBoundary caught an error:', error, errorInfo);
   }
 
-  render() {
+  render(): React.ReactNode {
     if (this.state.hasError) {
       return (
         <div className="min-h-screen bg-slate-950 flex items-center justify-center p-4">
@@ -143,6 +142,7 @@ const App: React.FC = () => {
           <Routes>
             <Route element={<PublicLayout />}>
               <Route path="/" element={<Home />} />
+              <Route path="/health" element={<Health />} />
               <Route path="/sobre" element={<Sobre />} />
               <Route path="/migrei-bank" element={<MigreiBank />} />
               <Route path="/franquia" element={<ViabilidadeFranquia />} />
