@@ -2,9 +2,11 @@
 <img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
 </div>
 
-# MIGREI Corporation - Plataforma de Gestão Energética
+# MIGREI_POP — Plataforma de Gestão Energética
 
 Sistema completo de gestão para o Mercado Livre de Energia com IA integrada, franquias multi-tenant e compliance automatizado.
+
+[![CI](https://github.com/c1e6er07/MIGREI_POP/actions/workflows/ci.yml/badge.svg)](https://github.com/c1e6er07/MIGREI_POP/actions/workflows/ci.yml)
 
 🌐 **URL Local**: http://127.0.0.1:3000 *(use este ao invés de localhost)*  
 📱 **Tech Stack**: React 19 + TypeScript + Vite + Supabase + Gemini AI
@@ -27,7 +29,7 @@ start.bat
 
 ### Método 2: Manual
 
-**Pré-requisitos:** Node.js 18+
+**Pré-requisitos:** Node.js 18+ (recomendado 20+)
 
 1. **Instalar dependências:**
    ```bash
