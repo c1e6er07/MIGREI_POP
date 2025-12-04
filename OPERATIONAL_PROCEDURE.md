@@ -16,6 +16,31 @@
 
 ---
 
+## PASSO 0: LIMPEZA DE CACHE (OBRIGATÓRIO) (10-15s)
+
+### ⚠️ SEMPRE executar primeiro para evitar tela branca
+
+```powershell
+# Matar processos Node anteriores
+Get-Process -Name node -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
+
+# Limpar todos os caches
+rm -r dist -Force -ErrorAction SilentlyContinue
+rm -r .vite -Force -ErrorAction SilentlyContinue
+rm -r node_modules/.vite -Force -ErrorAction SilentlyContinue
+
+# Aguardar
+Start-Sleep -Seconds 2
+```
+
+### Resultado Esperado:
+```
+[Comandos executados sem erros]
+Caches limpos com sucesso
+```
+
+---
+
 ## PASSO 1: VALIDAÇÃO DE LINT (60-90s)
 
 ### Executar:

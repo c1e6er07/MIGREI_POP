@@ -7,15 +7,18 @@ Garantir que toda implementação/ajuste seja validado, compilado e atualizado e
 
 ## ⚡ ROTINA EXECUTADA AO FINAL DE CADA ETAPA
 
-### **FASE 1: Diagnóstico Inicial** (30-45s)
+### **FASE 1: Diagnóstico Inicial + Limpeza de Cache** (30-45s)
 ```powershell
 # 1. Verificar se há erros no arquivo principal
 Get-Errors [arquivo_modificado]
 
-# 2. Limpar cache de build anterior (opcional - se houver tela branca)
+# 2. SEMPRE limpar cache de build (OBRIGATÓRIO para evitar tela branca)
 rm -r dist -Force -ErrorAction SilentlyContinue
 rm -r .vite -Force -ErrorAction SilentlyContinue
+rm -r node_modules/.vite -Force -ErrorAction SilentlyContinue
 ```
+
+**⚠️ IMPORTANTE:** A limpeza de cache agora é OBRIGATÓRIA em toda verificação para prevenir tela branca.
 
 ### **FASE 2: Validação de Código** (60-90s)
 ```powershell
@@ -37,15 +40,19 @@ npm run build
 # Aviso de chunk size é aceitável (otimizar depois)
 ```
 
-### **FASE 4: Dev Server** (5-10s)
+### **FASE 4: Dev Server com Limpeza** (5-10s)
 ```powershell
-# 6. Matar processos Node anteriores
+# 6. Matar processos Node anteriores + Limpar cache
 Get-Process -Name node -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
 
 # 7. Aguardar 2 segundos
 Start-Sleep -Seconds 2
 
-# 8. Iniciar novo servidor dev (BACKGROUND)
+# 8. Limpar cache novamente (garantir limpeza total)
+rm -r dist -Force -ErrorAction SilentlyContinue
+rm -r .vite -Force -ErrorAction SilentlyContinue
+
+# 9. Iniciar novo servidor dev (BACKGROUND)
 npm run dev
 
 # Esperado: "VITE v6.4.1 ready in XXX ms"

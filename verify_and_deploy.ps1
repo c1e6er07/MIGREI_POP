@@ -33,8 +33,18 @@ Write-Host "║         MIGREI_POP - VERIFICAÇÃO E DEPLOY v1.0             ║
 Write-Host "╚════════════════════════════════════════════════════════════╝" -ForegroundColor $info
 Write-Host ""
 
+# FASE 0: Limpeza de Cache (OBRIGATÓRIO)
+Write-Host "🧹 [FASE 0/7] Limpando Cache (Prevenir Tela Branca)..." -ForegroundColor $info
+Get-Process -Name node -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
+Start-Sleep -Seconds 2
+Remove-Item -Path "dist" -Recurse -Force -ErrorAction SilentlyContinue
+Remove-Item -Path ".vite" -Recurse -Force -ErrorAction SilentlyContinue
+Remove-Item -Path "node_modules/.vite" -Recurse -Force -ErrorAction SilentlyContinue
+Write-Host "✅ Cache limpo com sucesso" -ForegroundColor $success
+Write-Host ""
+
 # FASE 1: ESLint
-Write-Host "📋 [FASE 1/6] Executando ESLint..." -ForegroundColor $info
+Write-Host "📋 [FASE 1/7] Executando ESLint..." -ForegroundColor $info
 npm run lint
 if ($LASTEXITCODE -ne 0) {
     Write-Host "❌ ESLint encontrou erros!" -ForegroundColor $error_color
@@ -44,7 +54,7 @@ Write-Host "✅ ESLint: OK (0 erros)" -ForegroundColor $success
 Write-Host ""
 
 # FASE 2: TypeScript Check
-Write-Host "📋 [FASE 2/6] Executando TypeScript Check..." -ForegroundColor $info
+Write-Host "📋 [FASE 2/7] Executando TypeScript Check..." -ForegroundColor $info
 npm run check
 if ($LASTEXITCODE -ne 0) {
     Write-Host "❌ TypeScript encontrou erros!" -ForegroundColor $error_color
@@ -55,7 +65,7 @@ Write-Host ""
 
 # FASE 3: Build
 if (-not $SkipBuild) {
-    Write-Host "📋 [FASE 3/6] Compilando para Produção..." -ForegroundColor $info
+    Write-Host "📋 [FASE 3/7] Compilando para Produção..." -ForegroundColor $info
     npm run build
     if ($LASTEXITCODE -ne 0) {
         Write-Host "❌ Build falhou!" -ForegroundColor $error_color
@@ -63,13 +73,13 @@ if (-not $SkipBuild) {
     }
     Write-Host "✅ Build: OK" -ForegroundColor $success
 } else {
-    Write-Host "⏭️  [FASE 3/6] Build pulado (--SkipBuild)" -ForegroundColor $warning
+    Write-Host "⏭️  [FASE 3/7] Build pulado (--SkipBuild)" -ForegroundColor $warning
 }
 Write-Host ""
 
 # FASE 4: Reiniciar Dev Server
 if (-not $SkipServer) {
-    Write-Host "📋 [FASE 4/6] Reiniciando Dev Server..." -ForegroundColor $info
+    Write-Host "📋 [FASE 4/7] Reiniciando Dev Server..." -ForegroundColor $info
     
     # Matar processos Node anteriores
     $nodeProcesses = Get-Process -Name node -ErrorAction SilentlyContinue
@@ -78,6 +88,11 @@ if (-not $SkipServer) {
         $nodeProcesses | Stop-Process -Force -ErrorAction SilentlyContinue
         Start-Sleep -Seconds 2
     }
+    
+    # Limpar cache novamente antes de iniciar
+    Write-Host "  → Limpando cache final..." -ForegroundColor $info
+    Remove-Item -Path "dist" -Recurse -Force -ErrorAction SilentlyContinue
+    Remove-Item -Path ".vite" -Recurse -Force -ErrorAction SilentlyContinue
     
     # Iniciar novo servidor
     Write-Host "  → Iniciando novo servidor..." -ForegroundColor $info
@@ -89,24 +104,25 @@ if (-not $SkipServer) {
     
     Write-Host "✅ Dev Server: OK (localhost:3000)" -ForegroundColor $success
 } else {
-    Write-Host "⏭️  [FASE 4/6] Dev Server pulado (--SkipServer)" -ForegroundColor $warning
+    Write-Host "⏭️  [FASE 4/7] Dev Server pulado (--SkipServer)" -ForegroundColor $warning
 }
 Write-Host ""
 
 # FASE 5: Abrir Simple Browser
 if ($OpenBrowser) {
-    Write-Host "📋 [FASE 5/6] Abrindo Simple Browser..." -ForegroundColor $info
+    Write-Host "📋 [FASE 5/7] Abrindo Simple Browser..." -ForegroundColor $info
     # Aqui você chamaria a função do Copilot se estivesse integrado
     Write-Host "✅ Simple Browser: Abrir em http://localhost:3000" -ForegroundColor $success
 } else {
-    Write-Host "⏭️  [FASE 5/6] Browser pulado (--OpenBrowser = false)" -ForegroundColor $warning
+    Write-Host "⏭️  [FASE 5/7] Browser pulado (--OpenBrowser = false)" -ForegroundColor $warning
 }
 Write-Host ""
 
 # FASE 6: Informações finais
-Write-Host "📋 [FASE 6/6] Resumo Final" -ForegroundColor $info
+Write-Host "📋 [FASE 6/7] Resumo Final" -ForegroundColor $info
 Write-Host ""
-Write-Host "✅ ESLint ............ OK (0 erros)" -ForegroundColor $success
+Write-Host "✅ Cache Limpo ...... OK (Prevenção tela branca)" -ForegroundColor $success
+Write-Host "✅ ESLint ........... OK (0 erros)" -ForegroundColor $success
 Write-Host "✅ TypeScript ....... OK (0 erros)" -ForegroundColor $success
 Write-Host "✅ Build ............ OK" -ForegroundColor $success
 Write-Host "✅ Dev Server ....... OK (http://localhost:3000)" -ForegroundColor $success

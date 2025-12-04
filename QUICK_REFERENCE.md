@@ -3,9 +3,9 @@
 ## ⚡ Execução Rápida (1 Comando)
 
 ```powershell
-# Execute após cada implementação:
+# Execute após cada implementação (COM LIMPEZA DE CACHE):
 cd d:\MIGREI_POP
-npm run lint; npm run check; npm run build; Get-Process -Name node -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue; Start-Sleep -Seconds 2; npm run dev
+Get-Process -Name node -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue; Start-Sleep -Seconds 2; rm -r dist -Force -ErrorAction SilentlyContinue; rm -r .vite -Force -ErrorAction SilentlyContinue; npm run lint; npm run check; npm run build; npm run dev
 ```
 
 Depois abra: **http://localhost:3000**
@@ -13,6 +13,20 @@ Depois abra: **http://localhost:3000**
 ---
 
 ## 📋 Rotina Manual Passo-a-Passo
+
+### 0️⃣ **Limpar Cache (OBRIGATÓRIO)**
+```powershell
+# Matar processos
+Get-Process -Name node -ErrorAction SilentlyContinue | Stop-Process -Force
+
+# Limpar caches
+rm -r dist -Force -ErrorAction SilentlyContinue
+rm -r .vite -Force -ErrorAction SilentlyContinue
+rm -r node_modules/.vite -Force -ErrorAction SilentlyContinue
+
+# Esperar
+Start-Sleep -Seconds 2
+```
 
 ### 1️⃣ **Validar Código**
 ```powershell
