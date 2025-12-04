@@ -267,7 +267,12 @@ const Home: React.FC = () => {
 
           {/* Comparativo visual */}
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bg-slate-900/60 border border-slate-800 rounded-3xl p-8 mb-16 backdrop-blur-sm">
-            <h3 className="text-2xl font-bold text-white mb-8 text-center">Comparação: Com vs. Sem MIGREI</h3>
+            <div className="text-center mb-10">
+              <h3 className="text-3xl font-bold text-white mb-2">
+                Veja a Diferença Entre <span className="text-red-400">Fazer Sozinho</span> vs. <span className="text-emerald-400">Ter a MIGREI</span>
+              </h3>
+              <p className="text-slate-400">Compare os resultados e decida o melhor caminho para sua empresa</p>
+            </div>
 
             <div className="grid md:grid-cols-2 gap-8">
               <div>
@@ -287,10 +292,10 @@ const Home: React.FC = () => {
               </div>
 
               <div className="relative">
-                <div className="absolute -top-4 -left-4 z-10">
-                  <div className="bg-gradient-to-r from-emerald-500 to-cyan-500 px-4 py-1 rounded-full text-sm font-bold text-white">RECOMENDADO</div>
+                <div className="absolute -top-6 left-1/2 -translate-x-1/2 z-10">
+                  <div className="bg-gradient-to-r from-emerald-500 to-cyan-500 px-4 py-1.5 rounded-full text-sm font-bold text-white shadow-lg shadow-emerald-500/50">✨ RECOMENDADO</div>
                 </div>
-                <div className="flex items-center gap-3 mb-6">
+                <div className="flex items-center gap-3 mb-6 mt-2">
                   <div className="w-4 h-4 bg-emerald-500 rounded-full"></div>
                   <h4 className="font-bold text-white text-lg">Com MIGREI</h4>
                 </div>
