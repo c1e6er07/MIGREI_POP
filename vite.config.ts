@@ -9,7 +9,7 @@ export default defineConfig(({ mode }) => {
         port: 3000,
         strictPort: false,
         open: false,
-        host: 'localhost',
+        host: '127.0.0.1',
       },
       plugins: [react()],
       define: {
