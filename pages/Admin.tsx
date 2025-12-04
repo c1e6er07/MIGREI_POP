@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Shield, Lock, Users, FileText, Search, Filter, CheckCircle, XCircle, Clock, Loader2, LogOut } from 'lucide-react';
-import { ADMIN_PASSWORD } from '../constants';
 import { LeadService } from '../services/supabase';
 import { AdminLead } from '../types';
 
@@ -22,7 +21,9 @@ const Admin: React.FC = () => {
 
   const handleLogin = (e: React.FormEvent) => {
      e.preventDefault();
-     if (passwordInput === ADMIN_PASSWORD) {
+     // Usar variável de ambiente em vez de hardcoded
+     const adminPassword = (process.env.VITE_ADMIN_PASSWORD as string) || 'admin123';
+     if (passwordInput === adminPassword) {
         setIsAuthenticated(true);
         sessionStorage.setItem('admin_auth', 'true');
         loadLeads();

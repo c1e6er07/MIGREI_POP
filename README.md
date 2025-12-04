@@ -8,26 +8,12 @@ Sistema completo de gestão para o Mercado Livre de Energia com IA integrada, fr
 
 [![CI](https://github.com/c1e6er07/MIGREI_POP/actions/workflows/ci.yml/badge.svg)](https://github.com/c1e6er07/MIGREI_POP/actions/workflows/ci.yml)
 
-🌐 **URL Local**: http://127.0.0.1:3000 *(use este ao invés de localhost)*  
+🌐 **URL Local**: http://localhost:3000  
 📱 **Tech Stack**: React 19 + TypeScript + Vite + Supabase + Gemini AI
 
 ---
 
 ## 🚀 Início Rápido
-
-### Método 1: Script Automático (Recomendado)
-
-**Windows (PowerShell):**
-```powershell
-.\start.ps1
-```
-
-**Windows (CMD):**
-```cmd
-start.bat
-```
-
-### Método 2: Manual
 
 **Pré-requisitos:** Node.js 18+ (recomendado 20+)
 
@@ -37,7 +23,7 @@ start.bat
    ```
 
 2. **Configurar variáveis de ambiente:**
-   - Copie `.env.example` para `.env`
+   - Copie `.env.example` para `.env.local`
    - Adicione sua `GEMINI_API_KEY`
 
 3. **Iniciar servidor:**
@@ -46,22 +32,9 @@ start.bat
    ```
 
 4. **Abrir no navegador:**
-   - Acesse: **http://127.0.0.1:3000** *(não use localhost)*
-   - Ou acesse pelo IP da rede: http://192.168.0.6:3000
-   - Ou execute: `Start-Process "http://127.0.0.1:3000"` (PowerShell)
-
----
-
-## ⚠️ IMPORTANTE - Problema com Localhost
-
-Se você encontrar problemas acessando `http://localhost:3000` em navegadores externos:
-
-- ✅ **USE**: `http://127.0.0.1:3000`
-- ❌ **NÃO USE**: `http://localhost:3000`
-
-**Motivo:** Windows pode resolver `localhost` para IPv6 (::1), causando problemas de conexão.
-
-📖 **Mais detalhes:** Veja [LOCALHOST_FIX.md](./LOCALHOST_FIX.md)
+   ```
+   http://localhost:3000
+   ```
 
 ---
 
