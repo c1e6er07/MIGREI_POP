@@ -53,6 +53,7 @@ const Consumption: React.FC = () => {
         <div className="flex items-center gap-3">
           <span className="text-sm text-slate-400">Unidade:</span>
           <select 
+            aria-label="Consumption period"
             className="bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-white outline-none focus:border-emerald-500"
             value={selectedUnit || ''}
             onChange={(e) => setSelectedUnit(Number(e.target.value))}

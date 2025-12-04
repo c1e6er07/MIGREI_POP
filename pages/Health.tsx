@@ -2,7 +2,7 @@ import React from 'react';
 
 const Health: React.FC = () => {
   return (
-    <div style={{ padding: 16, color: '#10B981', fontFamily: 'Inter, sans-serif' }}>ok</div>
+    <div className="p-4 text-emerald-400 font-sans">ok</div>
   );
 };
 

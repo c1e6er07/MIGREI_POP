@@ -118,7 +118,7 @@ const Compliance: React.FC = () => {
                       
                       <div className="bg-slate-950 p-4 rounded-xl border border-slate-800">
                           <label className="text-xs font-bold text-slate-500 uppercase mb-2 block">Tipo de Ocorrência</label>
-                          <select className="w-full bg-slate-900 border border-slate-700 text-white rounded-lg px-4 py-3 outline-none focus:border-red-500">
+                          <select aria-label="Compliance filter" className="w-full bg-slate-900 border border-slate-700 text-white rounded-lg px-4 py-3 outline-none focus:border-red-500">
                               <option>Fraude Financeira / Desvio</option>
                               <option>Assédio Moral ou Sexual</option>
                               <option>Violação de Dados (LGPD)</option>

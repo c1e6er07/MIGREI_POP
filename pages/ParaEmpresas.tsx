@@ -239,7 +239,7 @@ const ParaEmpresas: React.FC = () => {
                     </div>
                   </div>
                 </div>
-                <button onClick={() => setSelectedStep(null)} className="text-slate-400 hover:text-white transition-colors">
+                <button onClick={() => setSelectedStep(null)} className="text-slate-400 hover:text-white transition-colors" title="Close">
                   <X className="w-6 h-6" />
                 </button>
               </div>
@@ -356,6 +356,8 @@ const ParaEmpresas: React.FC = () => {
                         <input
                           id="nome_completo"
                           required
+                          placeholder="Seu nome"
+                          aria-label="Nome completo"
                           value={formData.nome_completo}
                           onChange={handleChange}
                           className="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-3 text-white focus:border-emerald-500 focus:outline-none transition-colors"
@@ -367,6 +369,8 @@ const ParaEmpresas: React.FC = () => {
                           id="email"
                           type="email"
                           required
+                          placeholder="seu@email.com"
+                          aria-label="Email"
                           value={formData.email}
                           onChange={handleChange}
                           className="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-3 text-white focus:border-emerald-500 focus:outline-none transition-colors"
@@ -377,6 +381,8 @@ const ParaEmpresas: React.FC = () => {
                         <input
                           id="telefone"
                           required
+                          placeholder="(11) 99999-9999"
+                          aria-label="Telefone"
                           value={formData.telefone}
                           onChange={handleChange}
                           className="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-3 text-white focus:border-emerald-500 focus:outline-none transition-colors"
@@ -387,6 +393,8 @@ const ParaEmpresas: React.FC = () => {
                         <input
                           id="cnpj"
                           required
+                          placeholder="XX.XXX.XXX/0001-XX"
+                          aria-label="CNPJ"
                           value={formData.cnpj}
                           onChange={handleChange}
                           className="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-3 text-white focus:border-emerald-500 focus:outline-none transition-colors"
@@ -397,6 +405,8 @@ const ParaEmpresas: React.FC = () => {
                         <input
                           id="empresa"
                           required
+                          placeholder="Nome da empresa"
+                          aria-label="Empresa"
                           value={formData.empresa}
                           onChange={handleChange}
                           className="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-3 text-white focus:border-emerald-500 focus:outline-none transition-colors"

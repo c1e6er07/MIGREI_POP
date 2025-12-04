@@ -303,7 +303,7 @@ const MigreiBank: React.FC = () => {
                   className="bg-slate-900 border border-slate-700 rounded-2xl w-full max-w-2xl shadow-2xl relative overflow-hidden"
                >
                   <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-500 to-cyan-500"></div>
-                  <button onClick={() => setShowSecurityModal(false)} className="absolute top-4 right-4 text-slate-400 hover:text-white p-2 z-10">
+                  <button onClick={() => setShowSecurityModal(false)} className="absolute top-4 right-4 text-slate-400 hover:text-white p-2 z-10" title="Close security modal">
                      <X className="w-5 h-5" />
                   </button>
 
