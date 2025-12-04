@@ -1,61 +1,94 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Cpu, Globe, Network, ShieldCheck, Database, Layers, ArrowRight, Map, Building2, Share2, GraduationCap, Scale, Landmark, TrendingUp, DollarSign, ChevronDown, CheckCircle2, Sparkles } from 'lucide-react';
+import { Cpu, Globe, Network, ShieldCheck, Database, Layers, ArrowRight, Map, Building2, Share2, GraduationCap, Landmark, TrendingUp, DollarSign, ChevronDown, CheckCircle2, Sparkles, Zap, Users, FileText, Clock, Award } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { LOGO_URL } from '../constants';
+
 const Sobre: React.FC = () => {
   const [expandedOrg, setExpandedOrg] = useState<string | null>(null);
 
+  // Pilares da Lei 15.269/2025 relacionados à Comercializadora Varejista
+  const legalHighlights = [
+    {
+      icon: FileText,
+      title: 'Lei 15.269/2025',
+      subtitle: 'Marco Regulatório',
+      description: 'Modernização do setor elétrico com foco na comercialização varejista para consumidores de baixa tensão.',
+      color: 'emerald'
+    },
+    {
+      icon: Users,
+      title: 'Abertura do Mercado',
+      subtitle: 'Democratização Energética',
+      description: 'Cronograma: 24 meses para Grupo A (industrial/comercial) e 36 meses para Grupo B (consumidores residenciais).',
+      color: 'orange'
+    },
+    {
+      icon: ShieldCheck,
+      title: 'Supridor de Última Instância',
+      subtitle: 'Segurança e Continuidade',
+      description: 'Mecanismo de proteção para consumidores, garantindo fornecimento mesmo em caso de falência de comercializadoras.',
+      color: 'indigo'
+    },
+    {
+      icon: Award,
+      title: 'Produto Padrão',
+      subtitle: 'Transparência Total',
+      description: 'Preço de referência padronizado para facilitar comparação entre ofertas e promover competitividade.',
+      color: 'cyan'
+    }
+  ];
+
   const organizationalApps = [
+    {
+      id: 'varejo',
+      name: 'Comercialização Varejista',
+      subtitle: 'Pioneirismo no Mercado Livre',
+      icon: Zap,
+      color: 'from-emerald-500 to-cyan-500',
+      description: 'Primeira comercializadora varejista do Brasil, habilitada para atender Grupos A e B.',
+      features: ['Onboarding Digital 100%', 'Produto Padrão Lei 15.269', 'Preço de Referência', 'Portal do Cliente'],
+      access: 'Consumidores Industriais, Comerciais e Residenciais'
+    },
     {
       id: 'core',
       name: 'MIGREI Core',
-      subtitle: 'Núcleo de Consultoria',
+      subtitle: 'Tecnologia e IA',
       icon: Cpu,
       color: 'from-indigo-500 to-purple-500',
-      description: 'Núcleo central de governança, AI, compliance e liquidação financeira.',
-      features: ['Governance Engine', 'AI Central (Gemini 2.5)', 'Financial Hub', 'Compliance Core'],
-      access: 'C-Level, Board, Legal, Finance'
+      description: 'Núcleo central de inteligência artificial, compliance e liquidação financeira CCEE.',
+      features: ['AI Central (Gemini 2.5)', 'Integração CCEE', 'Compliance ANEEL', 'Open Finance'],
+      access: 'Backoffice + Operações'
     },
     {
       id: 'platform',
       name: 'MIGREI Platform',
       subtitle: 'SaaS para Empresas',
       icon: Network,
-      color: 'from-emerald-500 to-cyan-500',
-      description: 'Plataforma SaaS personalizada para gestão de energia e consultoria.',
-      features: ['CRM Avançado', 'Portal do Cliente', 'Analytics BI', 'Integração APIs'],
+      color: 'from-orange-500 to-yellow-500',
+      description: 'Plataforma SaaS para gestão de contratos, medição e faturamento de energia.',
+      features: ['CRM Avançado', 'Portal do Cliente', 'Analytics BI', 'Integração Distribuidoras'],
       access: 'Clientes Enterprise'
     },
     {
       id: 'instituto',
       name: 'Instituto MIGREI',
-      subtitle: 'Learning & Certification',
+      subtitle: 'Educação Energética',
       icon: GraduationCap,
-      color: 'from-orange-500 to-yellow-500',
-      description: 'LMS completo com gamificação, certificações e reciclagens contínuas.',
-      features: ['Onboarding 40-120h', 'Cursos Técnicos', 'Certificações', 'Gamificação'],
-      access: 'Franqueados + Colaboradores'
+      color: 'from-yellow-500 to-orange-500',
+      description: 'Capacitação contínua sobre Mercado Livre de Energia e comercialização varejista.',
+      features: ['Curso MLE Completo', 'Certificação CCEE', 'Workshops', 'Gamificação'],
+      access: 'Clientes + Parceiros + Público'
     },
     {
       id: 'compliance',
       name: 'MIGREI Compliance',
-      subtitle: 'GRC Platform',
+      subtitle: 'Regulatório e Riscos',
       icon: ShieldCheck,
       color: 'from-red-500 to-pink-500',
-      description: 'Plataforma de gestão de riscos e conformidade regulatória (ANEEL, BACEN, LGPD).',
-      features: ['Regulatory Monitoring', 'Risk Matrix', 'Audit Trail Blockchain', 'Whistleblower'],
-      access: 'Compliance Officer, Legal, Auditors'
-    },
-    {
-      id: 'juridico',
-      name: 'MIGREI Jurídico',
-      subtitle: 'Legal Tech',
-      icon: Scale,
-      color: 'from-blue-500 to-indigo-500',
-      description: 'Gestão de contratos, litígios, propriedade intelectual e consultoria jurídica.',
-      features: ['50+ Templates', 'E-Signature', 'Case Management', 'Advisory On-Demand'],
-      access: 'Legal Team + Network de Escritórios'
+      description: 'Gestão de conformidade regulatória (ANEEL, CCEE, BACEN, LGPD).',
+      features: ['Monitoramento ANEEL', 'Gestão Riscos', 'Audit Trail', 'Whistleblower'],
+      access: 'Compliance + Legal + Auditoria'
     },
     {
       id: 'bank',
@@ -180,21 +213,192 @@ const Sobre: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-slate-950 font-sans text-slate-100 overflow-hidden">
+      {/* HERO SECTION - COMERCIALIZADORA VAREJISTA */}
       <section className="relative py-32 lg:py-48 overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none"> <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div> <motion.div animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }} transition={{ duration: 8, repeat: Infinity }} className="absolute top-1/4 left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-[100px]" /> <motion.div animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }} transition={{ duration: 10, repeat: Infinity, delay: 1 }} className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-indigo-500/10 rounded-full blur-[120px]" /> <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div> </div>
+        <div className="absolute inset-0 pointer-events-none"> 
+          <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div> 
+          <motion.div 
+            animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }} 
+            transition={{ duration: 8, repeat: Infinity }} 
+            className="absolute top-1/4 left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-[100px]" 
+          /> 
+          <motion.div 
+            animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }} 
+            transition={{ duration: 10, repeat: Infinity, delay: 1 }} 
+            className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-orange-500/10 rounded-full blur-[120px]" 
+          /> 
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div> 
+        </div>
+        
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
-            <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-                <motion.div animate={{ y: [0, -15, 0] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="mb-8 inline-block"> <div className="relative"> <div className="absolute inset-0 bg-orange-500/30 blur-3xl rounded-full opacity-50"></div> <img src={LOGO_URL} alt="MIGREI" className="h-24 md:h-32 w-auto relative z-10 drop-shadow-2xl" /> </div> </motion.div> <br />
-                <span className="inline-block py-1 px-3 rounded-full bg-slate-900 border border-slate-700 text-xs font-bold text-emerald-400 mb-6 uppercase tracking-widest shadow-lg shadow-emerald-500/10"> Energy Tech Ecosystem </span>
-                <h1 className="text-5xl md:text-8xl font-display font-black text-white mb-8 tracking-tight leading-none"> <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-400">MIGREI</span> <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-cyan-400 to-indigo-400">CORPORATION</span> </h1>
-                <p className="text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto leading-relaxed"> Não somos apenas uma consultoria. Somos um <span className="text-white font-bold">Ecossistema Tecnológico</span> vivo que conecta inteligência artificial, segurança bancária e uma rede de franquias capilarizada para democratizar a energia no Brasil. </p>
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            transition={{ duration: 0.8 }}
+          >
+            <motion.div 
+              animate={{ y: [0, -15, 0] }} 
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} 
+              className="mb-8 inline-block"
+            > 
+              <div className="relative"> 
+                <div className="absolute inset-0 bg-emerald-500/30 blur-3xl rounded-full opacity-50"></div> 
+                <img src={LOGO_URL} alt="MIGREI" className="h-24 md:h-32 w-auto relative z-10 drop-shadow-2xl" /> 
+              </div> 
             </motion.div>
+            
+            <span className="inline-block py-1 px-3 rounded-full bg-emerald-900/30 border border-emerald-500/50 text-xs font-bold text-emerald-400 mb-6 uppercase tracking-widest shadow-lg shadow-emerald-500/20"> 
+              Lei 15.269/2025 • Pioneira no Mercado Livre 
+            </span>
+            
+            <h1 className="text-4xl md:text-7xl font-display font-black text-white mb-8 tracking-tight leading-tight"> 
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">
+                A Primeira
+              </span> 
+              <br /> 
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-yellow-400 to-orange-500">
+                COMERCIALIZADORA VAREJISTA
+              </span>
+              <br />
+              <span className="text-white text-2xl md:text-4xl font-normal">
+                do Mercado Livre de Energia
+              </span>
+            </h1>
+            
+            <p className="text-lg md:text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed mb-6"> 
+              Pioneira na <span className="text-emerald-400 font-bold">democratização do acesso ao Mercado Livre de Energia</span>, 
+              a MIGREI é a primeira comercializadora varejista habilitada para atender <span className="text-orange-400 font-bold">consumidores do Grupo A</span> (industrial/comercial) 
+              e, em breve, <span className="text-cyan-400 font-bold">consumidores do Grupo B</span> (residencial).
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-10">
+              <Link to="/empresas">
+                <button className="px-8 py-4 bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-500 hover:to-cyan-500 text-white font-bold rounded-xl shadow-lg shadow-emerald-500/30 transition-all transform hover:scale-105 flex items-center justify-center gap-2">
+                  <Zap className="w-5 h-5" />
+                  Migrar para o Mercado Livre
+                </button>
+              </Link>
+              
+              <a href="#lei-15269" className="px-8 py-4 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-xl border border-slate-600 hover:border-emerald-500/50 transition-all flex items-center justify-center gap-2">
+                <FileText className="w-5 h-5 text-emerald-400" />
+                Entenda a Lei 15.269/2025
+              </a>
+            </div>
+          </motion.div>
         </div>
       </section>
-      <section className="py-24 bg-slate-900 border-y border-slate-800 relative overflow-hidden">
+
+      {/* SEÇÃO LEI 15.269/2025 */}
+      <section id="lei-15269" className="py-24 bg-slate-900 border-y border-slate-800 relative overflow-hidden">
          <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10"></div>
          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center mb-20">
+              <span className="text-emerald-500 font-bold tracking-widest uppercase text-xs mb-2 block">Marco Regulatório</span>
+              <h2 className="text-3xl md:text-5xl font-display font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400">
+                LEI 15.269 de 24/11/2025
+                <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">COMERCIALIZAÇÃO VAREJISTA</span>
+              </h2>
+              <p className="text-slate-400 max-w-3xl mx-auto text-lg">
+                A Lei 15.269/2025 moderniza o marco regulatório do setor elétrico e cria o conceito de 
+                <span className="text-emerald-400 font-bold"> Comercialização Varejista</span>, permitindo que 
+                <span className="text-orange-400 font-bold"> qualquer consumidor</span> possa escolher seu fornecedor de energia.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+              {legalHighlights.map((item, idx) => {
+                const IconComponent = item.icon;
+                const colorClasses = getColorClasses(item.color);
+                
+                return (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.1 }}
+                    className={`bg-slate-950 border ${colorClasses.border} rounded-2xl p-6 hover:scale-105 transition-all group`}
+                  >
+                    <div className={`w-14 h-14 ${colorClasses.bg} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
+                      <IconComponent className={`w-7 h-7 ${colorClasses.icon}`} />
+                    </div>
+                    <h3 className={`text-xl font-bold ${colorClasses.text} mb-2`}>{item.title}</h3>
+                    <p className="text-sm text-slate-500 font-semibold mb-3">{item.subtitle}</p>
+                    <p className="text-slate-400 text-sm leading-relaxed">{item.description}</p>
+                  </motion.div>
+                );
+              })}
+            </div>
+
+            {/* Cronograma de Abertura */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-gradient-to-r from-slate-900 to-slate-950 border border-emerald-500/20 rounded-2xl p-8"
+            >
+              <div className="flex items-center gap-3 mb-6">
+                <Clock className="w-8 h-8 text-emerald-500" />
+                <div>
+                  <h3 className="text-xl font-bold text-white">Cronograma de Abertura do Mercado</h3>
+                  <p className="text-sm text-slate-400">Redução progressiva dos limites de acesso ao ACL</p>
+                </div>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="bg-slate-950 border border-orange-500/30 rounded-xl p-6">
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-sm font-bold text-slate-300">GRUPO A</span>
+                    <span className="text-2xl font-black text-orange-400">24 meses</span>
+                  </div>
+                  <div className="h-3 bg-slate-800 rounded-full overflow-hidden mb-3">
+                    <div className="h-full bg-gradient-to-r from-orange-500 to-yellow-500 w-full"></div>
+                  </div>
+                  <p className="text-xs text-slate-400">Consumidores industriais e comerciais atendidos em tensão ≥ 2,3 kV</p>
+                </div>
+
+                <div className="bg-slate-950 border border-cyan-500/30 rounded-xl p-6">
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-sm font-bold text-slate-300">GRUPO B</span>
+                    <span className="text-2xl font-black text-cyan-400">36 meses</span>
+                  </div>
+                  <div className="h-3 bg-slate-800 rounded-full overflow-hidden mb-3">
+                    <div className="h-full bg-gradient-to-r from-cyan-500 to-indigo-500 w-full"></div>
+                  </div>
+                  <p className="text-xs text-slate-400">Consumidores residenciais e pequenos comércios (baixa tensão)</p>
+                </div>
+              </div>
+
+              <div className="mt-6 p-4 bg-emerald-500/5 border border-emerald-500/20 rounded-xl">
+                <p className="text-sm text-slate-300 leading-relaxed">
+                  <strong className="text-emerald-400">Exemplo prático:</strong> Um consumidor residencial (Grupo B) poderá escolher entre diferentes comercializadoras 
+                  e comparar ofertas através de um <span className="text-white font-bold">produto padrão com preço de referência</span>, 
+                  garantindo transparência total e facilitando a tomada de decisão.
+                </p>
+              </div>
+            </motion.div>
+         </div>
+      </section>
+
+      {/* SEÇÃO ECOSSISTEMA TECNOLÓGICO */}
+      <section className="py-24 relative overflow-hidden">
+         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10"></div>
+         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="text-center mb-20">
+              <span className="text-orange-500 font-bold tracking-widest uppercase text-xs mb-2 block">Plataforma Integrada</span>
+              <h2 className="text-3xl md:text-5xl font-display font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400">
+                ECOSSISTEMA TECNOLÓGICO
+                <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-400">MIGREI</span>
+              </h2>
+              <p className="text-slate-400 max-w-3xl mx-auto text-lg">
+                Não somos apenas uma comercializadora. Somos um <span className="text-white font-bold">ecossistema tecnológico completo</span> 
+                que conecta inteligência artificial, compliance regulatório e educação para democratizar o acesso ao Mercado Livre de Energia.
+              </p>
+            </div>
+            
+            <div className="space-y-8">
               <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="inline-flex items-center gap-2 px-4 py-2 bg-orange-500/10 border border-orange-500/20 rounded-full mb-6">
                 <Sparkles className="w-4 h-4 text-orange-400" />
                 <span className="text-orange-400 font-bold tracking-widest uppercase text-xs">Ecossistema Integrado</span>

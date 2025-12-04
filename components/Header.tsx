@@ -18,7 +18,7 @@ const Header: React.FC = () => {
         <div className="flex items-center justify-between h-20">
           <Link to="/" className="flex items-center gap-3 group shrink-0"> 
             <div className="relative"> <div className="absolute inset-0 bg-emerald-500/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div> <img src={LOGO_URL} alt="MIGREI Logo" className="h-10 w-auto object-contain relative z-10" /> </div>
-            <div className="flex flex-col"> <span className="text-lg font-display font-bold text-white tracking-wide group-hover:text-emerald-400 transition-colors">MIGREI</span> <span className="text-[9px] text-slate-500 font-bold uppercase tracking-[0.2em] leading-none group-hover:text-emerald-500 transition-colors">Corporation</span> </div> 
+            <div className="flex flex-col"> <span className="text-lg font-display font-bold text-white tracking-wide group-hover:text-emerald-400 transition-colors">MIGREI</span> <span className="text-[9px] text-slate-500 font-bold uppercase tracking-[0.2em] leading-none group-hover:text-emerald-500 transition-colors">Comercializadora Varejista</span> </div> 
           </Link>
           <nav className="hidden lg:flex items-center space-x-8"> <NavLink to="/" label="Início" /> <NavLink to="/sobre" label="Quem Somos" /> <NavLink to="/empresas" label="Para Empresas" /> <div className="h-4 w-px bg-slate-800 mx-2"></div> <NavLink to="/calculadora" label="Calculadora" /> <NavLink to="/noticias" label="News" /> <NavLink to="/contato" label="Contato" /> </nav>
           <div className="hidden lg:flex items-center gap-4"> 

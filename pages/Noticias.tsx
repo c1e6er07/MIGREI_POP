@@ -20,38 +20,56 @@ const Noticias: React.FC = () => {
         setNews([
             {
                 id: 1,
-                title: "Mercado Livre de Energia cresce 20% em 2024",
-                summary: "Abertura para o Grupo A impulsionou migrações em todo o país. Especialistas preveem continuidade do movimento para 2025.",
-                category: "Mercado",
+                title: "MIGREI se torna a primeira Comercializadora Varejista do Brasil",
+                summary: "Com a regulamentação da Lei 15.269/2025, a MIGREI é oficialmente a primeira comercializadora varejista habilitada pela ANEEL para atender consumidores dos Grupos A e B no Mercado Livre de Energia.",
+                category: "MIGREI",
                 image_url: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-                date: "2024-03-15",
+                date: "2025-11-25",
                 featured: true
             },
             {
                 id: 2,
-                title: "PLD atinge menor valor histórico com chuvas",
-                summary: "Preço de Liquidação das Diferenças cai drasticamente devido aos reservatórios cheios, beneficiando consumidores do ACL.",
+                title: "Lei 15.269/2025: A Revolução do Mercado Livre de Energia",
+                summary: "Sancionada em 24/11/2025, a nova lei moderniza o setor elétrico e cria o conceito de comercialização varejista, permitindo que consumidores residenciais escolham seu fornecedor de energia em até 36 meses.",
                 category: "Regulatório",
                 image_url: "https://images.unsplash.com/photo-1466611653911-95081537e5b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-                date: "2024-03-10",
+                date: "2025-11-24",
                 featured: false
             },
             {
                 id: 3,
-                title: "MIGREI lança tecnologia de Repartição Automática para Empresas",
-                summary: "Nova funcionalidade da Plataforma MIGREI permite repartição automática de receitas, aumentando a transparência e segurança para clientes e parceiros.",
-                category: "Tecnologia",
+                title: "Grupo A terá acesso ao Mercado Livre em 24 meses",
+                summary: "Consumidores industriais e comerciais atendidos em tensão ≥ 2,3 kV poderão migrar para o Ambiente de Contratação Livre a partir de novembro de 2027, com produto padrão e preço de referência.",
+                category: "Regulatório",
                 image_url: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-                date: "2024-03-05",
+                date: "2025-11-26",
                 featured: false
             },
             {
                 id: 4,
-                title: "Entenda a Tarifa Verde e Amarela",
-                summary: "Como as bandeiras tarifárias afetam sua conta e como o Mercado Livre te protege dessas oscilações.",
+                title: "Produto Padrão: Transparência Total na Comercialização",
+                summary: "ANEEL regulamentará produto padrão com preço de referência para facilitar comparação entre ofertas de diferentes comercializadoras varejistas, promovendo competitividade e modicidade tarifária.",
                 category: "Educativo",
                 image_url: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-                date: "2024-02-28",
+                date: "2025-11-27",
+                featured: false
+            },
+            {
+                id: 5,
+                title: "Supridor de Última Instância garante segurança aos consumidores",
+                summary: "A Lei 15.269/2025 cria o mecanismo de Suprimento de Última Instância (SUI), garantindo fornecimento contínuo de energia mesmo em caso de encerramento de representação por comercializadora varejista.",
+                category: "Regulatório",
+                image_url: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                date: "2025-11-28",
+                featured: false
+            },
+            {
+                id: 6,
+                title: "Grupo B: Consumidores residenciais no Mercado Livre em 2028",
+                summary: "A partir de 2028, consumidores residenciais (Grupo B) poderão escolher livremente seu fornecedor de energia, democratizando o acesso ao Mercado Livre e promovendo competitividade no setor.",
+                category: "Mercado",
+                image_url: "https://images.unsplash.com/photo-1466611653911-95081537e5b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                date: "2025-11-29",
                 featured: false
             }
         ]);
