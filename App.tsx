@@ -10,7 +10,6 @@ import Sobre from './pages/Sobre';
 import ParaEmpresas from './pages/ParaEmpresas';
 import Calculadora from './pages/Calculadora';
 import MigreiIA from './pages/MigreiIA';
-import MigreiBank from './pages/MigreiBank';
 import Contato from './pages/Contato';
 import Noticias from './pages/Noticias';
 import PoliticaPrivacidade from './pages/PoliticaPrivacidade';
@@ -141,7 +140,6 @@ const App: React.FC = () => {
               <Route path="/" element={<Home />} />
               <Route path="/health" element={<Health />} />
               <Route path="/sobre" element={<Sobre />} />
-              <Route path="/migrei-bank" element={<MigreiBank />} />
               <Route path="/empresas" element={<ParaEmpresas />} />
               <Route path="/calculadora" element={<Calculadora />} />
               <Route path="/migrei-ia" element={<MigreiIA />} />

@@ -81,16 +81,6 @@ const Sobre: React.FC = () => {
       access: 'Compliance + Legal + Auditoria'
     },
     {
-      id: 'bank',
-      name: 'MIGREI Bank',
-      subtitle: 'Fintech Completa',
-      icon: Landmark,
-      color: 'from-emerald-500 to-teal-500',
-      description: 'Instituição de Pagamento com Open Finance, crédito, investimentos e cartões.',
-      features: ['Open Finance', 'Linha de Crédito', 'CDB/LCI', 'Cartão Corporativo'],
-      access: 'Todos os stakeholders'
-    },
-    {
       id: 'marketing',
       name: 'MIGREI Marketing',
       subtitle: 'Growth Engine',
@@ -117,7 +107,7 @@ const Sobre: React.FC = () => {
         'CRM + Portal do Cliente',
         'Treinamento 40h',
         'Suporte State/Region',
-        'MIGREI Bank integrado'
+        'Pagamentos PIX e Cartão'
       ],
       projection: {
         clients: '15 empresas (M12)',
@@ -661,7 +651,7 @@ const Sobre: React.FC = () => {
               <p className="text-sm text-slate-300 leading-relaxed">
                 <strong className="text-emerald-400">Exemplo prático:</strong> Cliente paga R$ 127.500 → Serviço MIGREI 8% = R$ 10.200 → 
                 MIGREI recebe <span className="text-white font-bold">R$ 5.100</span>, Consultores <span className="text-white font-bold">R$ 3.060</span>, 
-                Partners <span className="text-white font-bold">R$ 2.040</span>. Tudo automático via MIGREI Bank.
+                Partners <span className="text-white font-bold">R$ 2.040</span>. Tudo automático via PIX e Cartão.
               </p>
             </div>
           </motion.div>
