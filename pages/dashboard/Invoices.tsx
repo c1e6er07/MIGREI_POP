@@ -19,12 +19,12 @@ const Invoices: React.FC = () => {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const loadData = useCallback(async () => { if (!user) return; const data = await SaaSService.getAllInvoices(user.id); setInvoices(data); setLoading(false); }, [user]);
   useEffect(() => { if (user) loadData(); }, [user, loadData]);
-  const filteredInvoices = invoices.filter(inv => { if (filter === 'all') return true; return inv.status === filter; });
+  const filteredInvoices = invoices.filter((inv: Invoice) => { if (filter === 'all') return true; return inv.status === filter; });
   const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (!file) return;
     setIsOCRModalOpen(true); setIsProcessingOCR(true); setOCRResult(null); setScanProgress(0);
-    const progressInterval = setInterval(() => { setScanProgress(prev => { if (prev >= 90) return prev; return prev + Math.random() * 10; }); }, 500);
+    const progressInterval = setInterval(() => { setScanProgress((prev: number) => { if (prev >= 90) return prev; return prev + Math.random() * 10; }); }, 500);
     try { const result = await OCRService.processInvoice(file); clearInterval(progressInterval); setScanProgress(100); setTimeout(() => { setOCRResult(result); setIsProcessingOCR(false); }, 800); } catch (_error) { void _error; clearInterval(progressInterval); setIsProcessingOCR(false); setIsOCRModalOpen(false); alert("Erro ao processar fatura. Tente novamente."); }
     if (fileInputRef.current) fileInputRef.current.value = '';
   };
