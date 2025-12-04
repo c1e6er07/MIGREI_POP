@@ -227,6 +227,8 @@ const Finance: React.FC = () => {
                           type="text"
                           value={pixCode.copyPaste}
                           readOnly
+                          aria-label="Código PIX"
+                          title="Código PIX para copiar"
                           className="flex-1 px-4 py-2 bg-slate-950 border border-slate-800 rounded-lg text-white text-sm"
                         />
                         <button
@@ -317,7 +319,11 @@ const Finance: React.FC = () => {
                         <label className="text-sm text-slate-400 mb-2 block">
                           Parcelas
                         </label>
-                        <select className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-lg text-white">
+                        <select 
+                          aria-label="Selecionar número de parcelas"
+                          title="Número de parcelas"
+                          className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-lg text-white"
+                        >
                           <option value="1">1x de {formatMoney(selectedInvoice.amount)}</option>
                           <option value="2">2x de {formatMoney(selectedInvoice.amount / 2)}</option>
                           <option value="3">3x de {formatMoney(selectedInvoice.amount / 3)}</option>
