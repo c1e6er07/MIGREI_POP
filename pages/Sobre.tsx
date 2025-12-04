@@ -8,9 +8,9 @@ const Sobre: React.FC = () => {
 
   const organizationalApps = [
     {
-      id: 'franqueadora',
-      name: 'MIGREI Franqueadora',
-      subtitle: 'O Cérebro da Operação',
+      id: 'core',
+      name: 'MIGREI Core',
+      subtitle: 'Núcleo de Consultoria',
       icon: Cpu,
       color: 'from-indigo-500 to-purple-500',
       description: 'Núcleo central de governança, AI, compliance e liquidação financeira.',
@@ -18,14 +18,14 @@ const Sobre: React.FC = () => {
       access: 'C-Level, Board, Legal, Finance'
     },
     {
-      id: 'franquias',
-      name: 'MIGREI Franquias',
-      subtitle: 'Rede Multi-Tenant',
+      id: 'platform',
+      name: 'MIGREI Platform',
+      subtitle: 'SaaS para Empresas',
       icon: Network,
       color: 'from-emerald-500 to-cyan-500',
-      description: 'Plataforma SaaS personalizada por hierarquia (Region, State, City).',
-      features: ['CRM Avançado', 'Portal do Cliente', 'Analytics BI', 'Smart Split Integration'],
-      access: 'Todos os franqueados (RLS by tier)'
+      description: 'Plataforma SaaS personalizada para gestão de energia e consultoria.',
+      features: ['CRM Avançado', 'Portal do Cliente', 'Analytics BI', 'Integração APIs'],
+      access: 'Clientes Enterprise'
     },
     {
       id: 'instituto',
@@ -419,7 +419,7 @@ const Sobre: React.FC = () => {
             ))}
           </div>
 
-          {/* Smart Split Visualization */}
+          {/* Open Finance Integration */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -429,8 +429,8 @@ const Sobre: React.FC = () => {
             <div className="flex items-center gap-3 mb-6">
               <Share2 className="w-8 h-8 text-emerald-500" />
               <div>
-                <h3 className="text-xl font-bold text-white">Smart Split Automático</h3>
-                <p className="text-sm text-slate-400">Divisão transparente e instantânea de royalties</p>
+                <h3 className="text-xl font-bold text-white">Open Finance Integration</h3>
+                <p className="text-sm text-slate-400">Repartição transparente e automática de receitas</p>
               </div>
             </div>
 
@@ -448,32 +448,32 @@ const Sobre: React.FC = () => {
 
               <div className="bg-slate-950 border border-slate-800 rounded-xl p-6">
                 <div className="flex items-center justify-between mb-3">
-                  <span className="text-sm font-bold text-slate-300">State</span>
+                  <span className="text-sm font-bold text-slate-300">Consultores</span>
                   <span className="text-2xl font-black text-white">30%</span>
                 </div>
                 <div className="h-3 bg-slate-800 rounded-full overflow-hidden">
                   <div className="h-full bg-gradient-to-r from-orange-500 to-yellow-500 w-[30%]"></div>
                 </div>
-                <p className="text-xs text-slate-500 mt-2">Gestão, Auditoria, Treinamento</p>
+                <p className="text-xs text-slate-500 mt-2">Gestão, Implementação, Suporte Regional</p>
               </div>
 
               <div className="bg-slate-950 border border-slate-800 rounded-xl p-6">
                 <div className="flex items-center justify-between mb-3">
-                  <span className="text-sm font-bold text-slate-300">Region</span>
+                  <span className="text-sm font-bold text-slate-300">Partners</span>
                   <span className="text-2xl font-black text-white">20%</span>
                 </div>
                 <div className="h-3 bg-slate-800 rounded-full overflow-hidden">
                   <div className="h-full bg-gradient-to-r from-purple-500 to-pink-500 w-[20%]"></div>
                 </div>
-                <p className="text-xs text-slate-500 mt-2">Estratégia, Expansão, Governança</p>
+                <p className="text-xs text-slate-500 mt-2">Estratégia, Alianças, Desenvolvimento</p>
               </div>
             </div>
 
             <div className="mt-6 p-4 bg-emerald-500/5 border border-emerald-500/20 rounded-xl">
               <p className="text-sm text-slate-300 leading-relaxed">
-                <strong className="text-emerald-400">Exemplo prático:</strong> Cliente paga R$ 127.500 → Royalty 8% = R$ 10.200 → 
-                Core recebe <span className="text-white font-bold">R$ 5.100</span>, State <span className="text-white font-bold">R$ 3.060</span>, 
-                Region <span className="text-white font-bold">R$ 2.040</span>. Tudo automático via MIGREI Bank.
+                <strong className="text-emerald-400">Exemplo prático:</strong> Cliente paga R$ 127.500 → Serviço MIGREI 8% = R$ 10.200 → 
+                MIGREI recebe <span className="text-white font-bold">R$ 5.100</span>, Consultores <span className="text-white font-bold">R$ 3.060</span>, 
+                Partners <span className="text-white font-bold">R$ 2.040</span>. Tudo automático via MIGREI Bank.
               </p>
             </div>
           </motion.div>
@@ -496,9 +496,9 @@ const Sobre: React.FC = () => {
             <div className="relative"> <div className="hidden lg:block absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-transparent via-indigo-500/30 to-transparent -translate-y-1/2 z-0"></div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
                     <motion.div whileHover={{ y: -10 }} className="bg-slate-950 border border-indigo-500/50 p-8 rounded-2xl shadow-xl shadow-indigo-500/10 relative overflow-hidden group"> <div className="absolute inset-0 bg-indigo-500/5 group-hover:bg-indigo-500/10 transition-colors"></div> <div className="w-16 h-16 bg-indigo-500/20 rounded-2xl flex items-center justify-center mb-6 text-indigo-400 mx-auto border border-indigo-500/30"> <Cpu className="w-8 h-8" /> </div> <h3 className="text-xl font-bold text-white text-center mb-2">MIGREI Core</h3> <p className="text-slate-400 text-sm text-center"> A Sede (Headquarters). Onde residem a Inteligência Artificial, o Compliance, o Jurídico e a Tecnologia central. </p> </motion.div>
-                    <motion.div whileHover={{ y: -10 }} className="bg-slate-950 border border-slate-800 hover:border-purple-500/50 p-8 rounded-2xl shadow-lg transition-all group"> <div className="w-16 h-16 bg-slate-900 rounded-2xl flex items-center justify-center mb-6 text-purple-400 mx-auto border border-slate-800 group-hover:border-purple-500/30"> <Globe className="w-8 h-8" /> </div> <div className="text-center"> <span className="text-[10px] font-bold uppercase tracking-widest text-purple-500 mb-1 block">Master Franchise</span> <h3 className="text-xl font-bold text-white mb-2">MIGREI Region</h3> <p className="text-slate-400 text-sm"> Gestão macro estratégica por regiões (Sul, Sudeste, etc). Garante a adaptação às realidades locais. </p> </div> </motion.div>
-                    <motion.div whileHover={{ y: -10 }} className="bg-slate-950 border border-slate-800 hover:border-orange-500/50 p-8 rounded-2xl shadow-lg transition-all group"> <div className="w-16 h-16 bg-slate-900 rounded-2xl flex items-center justify-center mb-6 text-orange-400 mx-auto border border-slate-800 group-hover:border-orange-500/30"> <Map className="w-8 h-8" /> </div> <div className="text-center"> <span className="text-[10px] font-bold uppercase tracking-widest text-orange-500 mb-1 block">Master Estadual</span> <h3 className="text-xl font-bold text-white mb-2">MIGREI State</h3> <p className="text-slate-400 text-sm"> Auditoria e suporte operacional para as franquias da ponta. O elo de controle de qualidade. </p> </div> </motion.div>
-                    <motion.div whileHover={{ y: -10 }} className="bg-slate-950 border border-slate-800 hover:border-emerald-500/50 p-8 rounded-2xl shadow-lg transition-all group"> <div className="w-16 h-16 bg-slate-900 rounded-2xl flex items-center justify-center mb-6 text-emerald-400 mx-auto border border-slate-800 group-hover:border-emerald-500/30"> <Building2 className="w-8 h-8" /> </div> <div className="text-center"> <span className="text-[10px] font-bold uppercase tracking-widest text-emerald-500 mb-1 block">Unidade Operacional</span> <h3 className="text-xl font-bold text-white mb-2">MIGREI City</h3> <p className="text-slate-400 text-sm"> O franqueado local. Atendimento exclusivo, relacionamento próximo e captação de clientes. </p> </div> </motion.div>
+                    <motion.div whileHover={{ y: -10 }} className="bg-slate-950 border border-slate-800 hover:border-purple-500/50 p-8 rounded-2xl shadow-lg transition-all group"> <div className="w-16 h-16 bg-slate-900 rounded-2xl flex items-center justify-center mb-6 text-purple-400 mx-auto border border-slate-800 group-hover:border-purple-500/30"> <Globe className="w-8 h-8" /> </div> <div className="text-center"> <span className="text-[10px] font-bold uppercase tracking-widest text-purple-500 mb-1 block">Parceiros Estratégicos</span> <h3 className="text-xl font-bold text-white mb-2">Partners</h3> <p className="text-slate-400 text-sm"> Gestão estratégica e desenvolvimento de alianças. Garante crescimento sustentável. </p> </div> </motion.div>
+                    <motion.div whileHover={{ y: -10 }} className="bg-slate-950 border border-slate-800 hover:border-orange-500/50 p-8 rounded-2xl shadow-lg transition-all group"> <div className="w-16 h-16 bg-slate-900 rounded-2xl flex items-center justify-center mb-6 text-orange-400 mx-auto border border-slate-800 group-hover:border-orange-500/30"> <Map className="w-8 h-8" /> </div> <div className="text-center"> <span className="text-[10px] font-bold uppercase tracking-widest text-orange-500 mb-1 block">Consultores</span> <h3 className="text-xl font-bold text-white mb-2">Consultores</h3> <p className="text-slate-400 text-sm"> Implementação e suporte operacional. Garante qualidade e sucesso do cliente. </p> </div> </motion.div>
+                    <motion.div whileHover={{ y: -10 }} className="bg-slate-950 border border-slate-800 hover:border-emerald-500/50 p-8 rounded-2xl shadow-lg transition-all group"> <div className="w-16 h-16 bg-slate-900 rounded-2xl flex items-center justify-center mb-6 text-emerald-400 mx-auto border border-slate-800 group-hover:border-emerald-500/30"> <Building2 className="w-8 h-8" /> </div> <div className="text-center"> <span className="text-[10px] font-bold uppercase tracking-widest text-emerald-500 mb-1 block">Empresas</span> <h3 className="text-xl font-bold text-white mb-2">Clientes Enterprise</h3> <p className="text-slate-400 text-sm"> Empresas de energia que utilizam a plataforma. Transformação digital e otimização. </p> </div> </motion.div>
                 </div>
             </div>
          </div>
@@ -506,7 +506,7 @@ const Sobre: React.FC = () => {
       <section className="py-24 relative">
          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
-                <div> <h2 className="text-4xl font-display font-bold text-white mb-6"> Tecnologia <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">Multi-Tenant</span> e Segurança Militar </h2> <p className="text-slate-400 text-lg mb-8 leading-relaxed"> Nossa plataforma opera como um &quot;Edifício Digital&quot;. Cada cliente e franqueado possui sua sala segura (Tenant), isolada por criptografia RLS (Row Level Security), mas todos se beneficiam da infraestrutura compartilhada de alta performance. </p> <ul className="space-y-6"> <li className="flex gap-4 group"> <div className="p-2 bg-slate-900 border border-slate-700 group-hover:border-emerald-500/50 rounded-lg h-fit transition-colors"><Database className="w-6 h-6 text-emerald-500"/></div> <div> <h4 className="text-white font-bold text-lg group-hover:text-emerald-400 transition-colors">Banco de Dados Unificado</h4> <p className="text-slate-400 text-sm">Dados fluem em tempo real entre City, State e Core, permitindo auditoria instantânea.</p> </div> </li> <li className="flex gap-4 group"> <div className="p-2 bg-slate-900 border border-slate-700 group-hover:border-yellow-500/50 rounded-lg h-fit transition-colors"><Share2 className="w-6 h-6 text-yellow-500"/></div> <div> <h4 className="text-white font-bold text-lg group-hover:text-yellow-400 transition-colors">Smart Split Automático</h4> <p className="text-slate-400 text-sm">O sistema MIGREI Bank reconhece a hierarquia da franquia e divide os royalties na fonte do pagamento.</p> </div> </li> <li className="flex gap-4 group"> <div className="p-2 bg-slate-900 border border-slate-700 group-hover:border-indigo-500/50 rounded-lg h-fit transition-colors"><Layers className="w-6 h-6 text-indigo-500"/></div> <div> <h4 className="text-white font-bold text-lg group-hover:text-indigo-400 transition-colors">Inteligência Artificial Nativa</h4> <p className="text-slate-400 text-sm">A Migrei IA não é um plugin. Ela é o núcleo que analisa contratos e faturas 24/7.</p> </div> </li> </ul> </div>
+                <div> <h2 className="text-4xl font-display font-bold text-white mb-6"> Tecnologia <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">Multi-Tenant</span> e Segurança Militar </h2> <p className="text-slate-400 text-lg mb-8 leading-relaxed"> Nossa plataforma opera como um &quot;Edifício Digital&quot;. Cada cliente possui sua sala segura (Tenant), isolada por criptografia RLS (Row Level Security), mas todos se beneficiam da infraestrutura compartilhada de alta performance. </p> <ul className="space-y-6"> <li className="flex gap-4 group"> <div className="p-2 bg-slate-900 border border-slate-700 group-hover:border-emerald-500/50 rounded-lg h-fit transition-colors"><Database className="w-6 h-6 text-emerald-500"/></div> <div> <h4 className="text-white font-bold text-lg group-hover:text-emerald-400 transition-colors">Banco de Dados Unificado</h4> <p className="text-slate-400 text-sm">Dados fluem em tempo real entre Consultores, Partners e Core, permitindo auditoria instantânea.</p> </div> </li> <li className="flex gap-4 group"> <div className="p-2 bg-slate-900 border border-slate-700 group-hover:border-yellow-500/50 rounded-lg h-fit transition-colors"><Share2 className="w-6 h-6 text-yellow-500"/></div> <div> <h4 className="text-white font-bold text-lg group-hover:text-yellow-400 transition-colors">Repartição Automática</h4> <p className="text-slate-400 text-sm">O sistema MIGREI Bank reconhece a estrutura de parceiros e divide as receitas na fonte do pagamento.</p> </div> </li> <li className="flex gap-4 group"> <div className="p-2 bg-slate-900 border border-slate-700 group-hover:border-indigo-500/50 rounded-lg h-fit transition-colors"><Layers className="w-6 h-6 text-indigo-500"/></div> <div> <h4 className="text-white font-bold text-lg group-hover:text-indigo-400 transition-colors">Inteligência Artificial Nativa</h4> <p className="text-slate-400 text-sm">A Migrei IA não é um plugin. Ela é o núcleo que analisa contratos e faturas 24/7.</p> </div> </li> </ul> </div>
                 <div className="relative"> <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/20 to-indigo-500/20 rounded-full blur-[100px]"></div> <div className="relative bg-slate-900/50 backdrop-blur-xl border border-slate-700 p-8 rounded-3xl shadow-2xl"> <div className="flex justify-between items-center mb-8 border-b border-slate-700 pb-4"> <div className="flex items-center gap-3"> <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div> <div className="w-3 h-3 bg-yellow-500 rounded-full animate-pulse delay-75"></div> <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse delay-150"></div> </div> <div className="text-xs font-mono text-slate-500">SYSTEM_STATUS: ONLINE</div> </div> <div className="space-y-4 font-mono text-sm"> <div className="flex justify-between"> <span className="text-slate-400">Core.AI.Model</span> <span className="text-emerald-400">Gemini 2.5 Flash</span> </div> <div className="flex justify-between"> <span className="text-slate-400">Bank.Gateway</span> <span className="text-emerald-400">Open Finance Brasil</span> </div> <div className="flex justify-between"> <span className="text-slate-400">Security.Protocol</span> <span className="text-emerald-400">TLS 1.3 / OAuth2</span> </div> <div className="flex justify-between"> <span className="text-slate-400">Database.RLS</span> <span className="text-emerald-400">Active (Multi-Tenant)</span> </div> <div className="mt-6 p-4 bg-slate-950 rounded-xl border border-slate-800 text-xs text-slate-500 leading-relaxed">{`> Initializing Neural Network... OK`}<br/>{`> Connecting to Energy Distributors... OK`}<br/>{`> Smart Split Engine... READY`}<br/> <span className="text-emerald-500 animate-pulse">_ System Fully Operational</span> </div> </div> </div> </div>
             </div>
          </div>
@@ -516,7 +516,7 @@ const Sobre: React.FC = () => {
          <div className="max-w-4xl mx-auto px-4 relative z-10">
             <h2 className="text-3xl md:text-6xl font-display font-black mb-8 text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-yellow-400 to-orange-400"> Energia Livre para Todos. </h2>
             <p className="text-xl text-slate-400 mb-12 max-w-2xl mx-auto leading-relaxed"> Nossa missão é usar tecnologia de ponta para libertar empresas brasileiras dos custos abusivos de energia, criando riqueza compartilhada através da nossa rede de parceiros. </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center"> <Link to="/franquia"> <button className="px-10 py-4 bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-500 hover:to-cyan-500 text-white font-bold rounded-xl shadow-lg shadow-emerald-500/30 transition-all transform hover:scale-105 flex items-center justify-center gap-2"> <Network className="w-5 h-5 text-white" /> Fazer Parte da Rede </button> </Link> <Link to="/contato"> <button className="px-10 py-4 bg-transparent border border-slate-600 text-white font-bold rounded-xl hover:bg-slate-800 hover:border-white transition-all flex items-center justify-center gap-2"> Falar com a Corporation <ArrowRight className="w-4 h-4" /> </button> </Link> </div>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center"> <Link to="/empresas"> <button className="px-10 py-4 bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-500 hover:to-cyan-500 text-white font-bold rounded-xl shadow-lg shadow-emerald-500/30 transition-all transform hover:scale-105 flex items-center justify-center gap-2"> <Network className="w-5 h-5 text-white" /> Transformar Sua Empresa </button> </Link> <Link to="/contato"> <button className="px-10 py-4 bg-transparent border border-slate-600 text-white font-bold rounded-xl hover:bg-slate-800 hover:border-white transition-all flex items-center justify-center gap-2"> Falar com a Corporation <ArrowRight className="w-4 h-4" /> </button> </Link> </div>
          </div>
       </section>
     </div>

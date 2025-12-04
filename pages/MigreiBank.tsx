@@ -52,7 +52,7 @@ const MigreiBank: React.FC = () => {
               <p className="text-slate-300 mb-10 text-xl leading-relaxed">
                 A primeira solução financeira integrada ao Mercado Livre de Energia. 
                 Pagamentos via <strong>Open Finance</strong>, segurança bancária de nível global e 
-                o exclusivo sistema <strong>Smart Split</strong> de royalties.
+                integração com a plataforma MIGREI de repartição automática de receitas.
               </p>
 
               {/* SECURE ACCESS CARD */}
@@ -137,8 +137,8 @@ const MigreiBank: React.FC = () => {
                         <div className="flex items-center gap-3">
                            <div className="p-2 bg-orange-900/20 rounded-lg"><Split className="w-5 h-5 text-orange-500"/></div>
                            <div>
-                              <div className="text-sm font-bold text-white">Smart Split Executado</div>
-                              <div className="text-xs text-slate-500">Repasse Franqueado Automático</div>
+                              <div className="text-sm font-bold text-white">Repartição Automática</div>
+                              <div className="text-xs text-slate-500">Pagamento aos Consultores</div>
                            </div>
                         </div>
                         <div className="text-orange-500 font-bold text-xs">PROCESSADO</div>
@@ -169,7 +169,7 @@ const MigreiBank: React.FC = () => {
               <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 bg-gradient-to-r from-orange-400 to-yellow-400 bg-clip-text text-transparent">
                   Inovação Financeira
               </h2>
-              <p className="text-slate-400 max-w-2xl mx-auto">Tecnologia desenvolvida para eliminar burocracia, aumentar a segurança e garantir a transparência entre Franqueadora, Franqueado e Cliente Final.</p>
+              <p className="text-slate-400 max-w-2xl mx-auto">Tecnologia desenvolvida para eliminar burocracia, aumentar a segurança e garantir a transparência entre MIGREI Core, Consultores, Partners e Clientes.</p>
            </div>
 
            <div className="grid md:grid-cols-3 gap-8">
@@ -189,9 +189,9 @@ const MigreiBank: React.FC = () => {
                  <div className="w-14 h-14 bg-orange-500/10 rounded-xl flex items-center justify-center mb-6 text-orange-500 group-hover:scale-110 transition-transform">
                     <Split className="w-7 h-7" />
                  </div>
-                 <h3 className="text-xl font-bold text-white mb-3">Smart Split de Royalties</h3>
+                 <h3 className="text-xl font-bold text-white mb-3">Repartição Automática</h3>
                  <p className="text-slate-400 text-sm leading-relaxed">
-                    Exclusividade MIGREI. No momento que o cliente paga a fatura, nossa tecnologia separa e envia automaticamente a parte do Franqueado. Sem planilhas, sem atrasos.
+                    Exclusividade MIGREI. No momento que o cliente paga a fatura, nossa tecnologia separa e envia automaticamente a parte aos consultores e parceiros. Sem planilhas, sem atrasos.
                  </p>
               </div>
 

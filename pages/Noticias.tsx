@@ -38,8 +38,8 @@ const Noticias: React.FC = () => {
             },
             {
                 id: 3,
-                title: "MIGREI lança tecnologia de Smart Split para Franquias",
-                summary: "Nova funcionalidade da Fintech permite divisão automática de royalties, aumentando a segurança para franqueados.",
+                title: "MIGREI lança tecnologia de Repartição Automática para Empresas",
+                summary: "Nova funcionalidade da Plataforma MIGREI permite repartição automática de receitas, aumentando a transparência e segurança para clientes e parceiros.",
                 category: "Tecnologia",
                 image_url: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
                 date: "2024-03-05",
