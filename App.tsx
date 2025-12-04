@@ -25,7 +25,6 @@ import Settings from './pages/dashboard/Settings';
 import Consumption from './pages/dashboard/Consumption';
 import Reports from './pages/dashboard/Reports';
 import Finance from './pages/dashboard/Finance';
-import Instituto from './pages/dashboard/Instituto';
 import Compliance from './pages/dashboard/Compliance';
 
 type EBState = { hasError: boolean; error?: Error };
@@ -159,7 +158,6 @@ const App: React.FC = () => {
                <Route path="financeiro" element={<Finance />} />
                <Route path="consumo" element={<Consumption />} />
                <Route path="relatorios" element={<Reports />} />
-               <Route path="instituto" element={<Instituto />} />
                <Route path="compliance" element={<Compliance />} />
                <Route path="config" element={<Settings />} />
             </Route>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom';
-import { LayoutDashboard, FileText, Zap, Settings, LogOut, Menu, User, Bell, LineChart, CreditCard, GraduationCap, ShieldAlert } from 'lucide-react';
+import { LayoutDashboard, FileText, Zap, Settings, LogOut, Menu, User, Bell, LineChart, CreditCard, ShieldAlert } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { LOGO_URL } from '../constants';
 import { NotificationService } from '../services/supabase';
@@ -28,7 +28,6 @@ const DashboardLayout: React.FC = () => {
     { label: 'Financeiro & Pagamentos', path: '/app/financeiro', icon: CreditCard }, 
     { label: 'Consumo', path: '/app/consumo', icon: Zap }, 
     { label: 'Relatórios', path: '/app/relatorios', icon: LineChart },
-    { label: 'Instituto Migrei', path: '/app/instituto', icon: GraduationCap },
     { label: 'Compliance & Riscos', path: '/app/compliance', icon: ShieldAlert },
     { label: 'Configurações', path: '/app/config', icon: Settings } 
   ];

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Cpu, Globe, Network, ShieldCheck, Database, Layers, ArrowRight, Map, Building2, Share2, GraduationCap, Landmark, TrendingUp, DollarSign, ChevronDown, CheckCircle2, Sparkles, Zap, Users, FileText, Clock, Award } from 'lucide-react';
+import { Cpu, Globe, Network, ShieldCheck, Database, Layers, ArrowRight, Map, Building2, Share2, Landmark, TrendingUp, DollarSign, ChevronDown, CheckCircle2, Sparkles, Zap, Users, FileText, Clock, Award } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { LOGO_URL } from '../constants';
 
@@ -69,16 +69,6 @@ const Sobre: React.FC = () => {
       description: 'Plataforma SaaS para gestão de contratos, medição e faturamento de energia.',
       features: ['CRM Avançado', 'Portal do Cliente', 'Analytics BI', 'Integração Distribuidoras'],
       access: 'Clientes Enterprise'
-    },
-    {
-      id: 'instituto',
-      name: 'Instituto MIGREI',
-      subtitle: 'Educação Energética',
-      icon: GraduationCap,
-      color: 'from-yellow-500 to-orange-500',
-      description: 'Capacitação contínua sobre Mercado Livre de Energia e comercialização varejista.',
-      features: ['Curso MLE Completo', 'Certificação CCEE', 'Workshops', 'Gamificação'],
-      access: 'Clientes + Parceiros + Público'
     },
     {
       id: 'compliance',
