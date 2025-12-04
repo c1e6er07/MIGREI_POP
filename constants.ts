@@ -5,4 +5,3 @@ export const FRANCHISE_IMAGE_URL = "https://kbcziosidwyvlornbaxo.supabase.co/sto
 export const COMPANY_INFO = {
   name: "MIGREI", slogan: "Franqueadora Pioneira Oficial", whatsapp: "(11) 99999-9999", email: "contato@migreimle.com.br"
 };
-export const ADMIN_PASSWORD = "admin_migrei_master";

@@ -4,69 +4,35 @@ Sistema completo de gestão para o Mercado Livre de Energia com IA integrada, fr
 
 [![CI](https://github.com/c1e6er07/MIGREI_POP/actions/workflows/ci.yml/badge.svg)](https://github.com/c1e6er07/MIGREI_POP/actions/workflows/ci.yml)
 
-🌐 **URL**: http://localhost:3000  
-📱 **Stack**: React 19 + TypeScript + Vite + Supabase + Gemini AI
+🌐 **URL Local**: http://127.0.0.1:5173  
+📱 **Tech Stack**: React 19 + TypeScript + Vite + Supabase + Gemini AI
 
 ---
 
 ## 🚀 Quick Start
 
-### Pré-requisitos
-- Node.js 18+ (recomendado 20+)
+**Pré-requisitos:** Node.js 18+ (recomendado 20+)
 
-### Setup
+1. **Instalar dependências:**
+   ```bash
+   npm install
+   ```
 
-```bash
-# 1. Instalar dependências
-npm install
+2. **Configurar variáveis de ambiente:**
+   - Crie arquivo `.env` na raiz do projeto
+   - Adicione: `VITE_GEMINI_API_KEY=sua_chave_api`
+   - Obtenha sua chave em: https://aistudio.google.com/app/apikey
 
-# 2. Criar .env.local com:
-cp .env.example .env.local
-# Adicionar: VITE_GEMINI_API_KEY=sua_chave
-# Opcional: VITE_ADMIN_PASSWORD=sua_senha
+3. **Iniciar servidor:**
+   ```bash
+   npm run dev
+   ```
+   Note: O servidor abre uma janela PowerShell separada para manter o processo ativo
 
-# 3. Iniciar servidor
-npm run dev
-
-# 4. Abrir navegador
-# http://localhost:3000
-```
-
----
-
-## 📋 Comandos
-
-```bash
-npm run dev          # Iniciar dev server
-npm run build        # Build para produção
-npm run lint         # Verificar código
-npm run check        # Type checking
-npm run format       # Formatar código
-```
-
----
-
-## 📁 Estrutura
-
-```
-├── pages/            # Páginas React
-├── components/       # Componentes reutilizáveis
-├── layouts/          # Layouts (Dashboard, Auth)
-├── contexts/         # Context API
-├── services/         # Serviços (API, Auth, Supabase)
-├── types.ts          # Types TypeScript
-├── constants.ts      # Constantes globais
-└── index.tsx         # Entry point
-```
-
----
-
-## 🔑 Variáveis de Ambiente
-
-```env
-VITE_GEMINI_API_KEY=sk-xxx          # Google Gemini API
-VITE_ADMIN_PASSWORD=senha123        # Password para admin
-```
+4. **Abrir no navegador:**
+   ```
+   http://127.0.0.1:5173
+   ```
 
 ---
 
