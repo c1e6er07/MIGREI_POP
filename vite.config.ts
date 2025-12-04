@@ -7,7 +7,7 @@ export default defineConfig(({ mode }) => {
     return {
       server: {
         port: 3000,
-        host: '0.0.0.0', // Escutar em todas as interfaces (IPv4 e IPv6)
+        host: true,
         strictPort: false,
         open: false,
       },
