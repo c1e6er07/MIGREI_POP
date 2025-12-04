@@ -203,7 +203,6 @@ const Sobre: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-slate-950 font-sans text-slate-100 overflow-hidden">
-      {/* HERO SECTION - COMERCIALIZADORA VAREJISTA */}
       <section className="relative py-32 lg:py-48 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none"> 
           <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div> 
@@ -278,7 +277,6 @@ const Sobre: React.FC = () => {
         </div>
       </section>
 
-      {/* SEÇÃO LEI 15.269/2025 */}
       <section id="lei-15269" className="py-24 bg-slate-900 border-y border-slate-800 relative overflow-hidden">
          <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10"></div>
          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -321,7 +319,6 @@ const Sobre: React.FC = () => {
               })}
             </div>
 
-            {/* Cronograma de Abertura */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -371,7 +368,6 @@ const Sobre: React.FC = () => {
          </div>
       </section>
 
-      {/* SEÇÃO ECOSSISTEMA TECNOLÓGICO */}
       <section className="py-24 relative overflow-hidden">
          <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10"></div>
          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -507,7 +503,6 @@ const Sobre: React.FC = () => {
          </div>
       </section>
 
-      {/* Pricing & Investment Section */}
       <section id="pricing" className="py-24 bg-slate-950 relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
@@ -613,7 +608,6 @@ const Sobre: React.FC = () => {
             ))}
           </div>
 
-          {/* Open Finance Integration */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}

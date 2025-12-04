@@ -84,7 +84,6 @@ export const SaaSService = {
         }]);
       } catch (_e) {
         void _e;
-        // Notifications table missing
       }
 
       return { success: true, message: "Ambiente populado com sucesso!" };

@@ -6,7 +6,6 @@ import { NewsItem } from '../types';
 
 const Noticias: React.FC = () => {
   const [news, setNews] = useState<NewsItem[]>([]);
-    // removed unused loading state
 
   useEffect(() => {
     loadNews();
@@ -74,7 +73,6 @@ const Noticias: React.FC = () => {
             }
         ]);
     }
-        // end of load
   };
 
   return (
@@ -97,7 +95,6 @@ const Noticias: React.FC = () => {
 
       <section className="py-12">
          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            {/* Featured Post */}
             {news.filter(n => n.featured).map(item => (
                 <div key={item.id} className="mb-12 relative group cursor-pointer">
                     <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 rounded-3xl blur-xl group-hover:blur-2xl transition-all opacity-50"></div>
@@ -120,7 +117,6 @@ const Noticias: React.FC = () => {
                 </div>
             ))}
 
-            {/* Grid */}
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {news.filter(n => !n.featured).map((item, idx) => (
                     <motion.div 
