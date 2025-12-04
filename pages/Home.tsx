@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Zap, DollarSign, Building2, Briefcase, TrendingUp, Cpu, Wallet, ChevronRight, Globe, GraduationCap, BookOpen, Megaphone, Scale, Headphones, CheckCircle, Award, LineChart, Clock, Target, Percent, Rocket, CheckCircle2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { LOGO_URL } from '../constants';
+import NovaLeiCTA from '../components/NovaLeiCTA';
 const Home: React.FC = () => {
   const b2bServices = [ { icon: GraduationCap, title: "Diagnóstico Energético", description: "Análise completa de oportunidades de economia", items: ["Auditoria de contas", "Identificação de saídas regulatórias", "Projeção de economias", "Roadmap estratégico"] }, { icon: BookOpen, title: "Consultoria Regulatória", description: "Especialistas em mercado livre de energia", items: ["Orientação em migrações", "Análise de fornecedores", "Gestão de contratos", "Compliance regulatório"] }, { icon: Megaphone, title: "Implementação", description: "Execução de estratégias energéticas", items: ["Setup de operação", "Integração com fornecedores", "Treinamento de equipes", "Monitoramento contínuo"] }, { icon: Scale, title: "Suporte Jurídico", description: "Apoio legal especializado", items: ["Revisão de contratos", "Parecer legal", "Documentação", "Compliance"] }, { icon: Cpu, title: "Plataforma Tecnológica", description: "Sistema integrado de gestão", items: ["Migrei IA", "Dashboard analytics", "Integração APIs", "Mobile app"] }, { icon: Headphones, title: "Suporte Dedicado", description: "Time exclusivo para sua empresa", items: ["Account manager", "Suporte 24/7", "Reuniões estratégicas", "Otimização contínua"] } ];
   const solutionMetrics = [ { icon: DollarSign, title: "Economia Média", value: "30% - 40%", description: "Redução de custos de energia", color: "yellow" }, { icon: LineChart, title: "Tempo de Implementação", value: "30 - 60 dias", description: "Desde análise até operação", color: "orange" }, { icon: TrendingUp, title: "ROI", value: "8 - 12 meses", description: "Retorno do investimento em consultoria", color: "amber" }, { icon: Clock, title: "Suporte Contínuo", value: "24/7", description: "Acompanhamento permanente", color: "yellow" }, { icon: Target, title: "Empresas Atendidas", value: "500+", description: "Clientes satisfeitos no Brasil", color: "orange" }, { icon: Percent, title: "Taxa de Sucesso", value: "100%", description: "Migrações bem-sucedidas", color: "amber" } ];
@@ -33,6 +34,10 @@ const Home: React.FC = () => {
             </div>
         </div>
       </section>
+      
+      {/* Nova Lei CTA - Hero variant - Posicionamento estratégico #1 */}
+      <NovaLeiCTA variant="hero" className="bg-slate-950 border-t border-slate-800" />
+      
       <section className="relative py-24 bg-slate-950 overflow-hidden border-y border-slate-800">
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
         <div className="absolute inset-0 bg-emerald-500/5 rounded-full blur-3xl"></div>

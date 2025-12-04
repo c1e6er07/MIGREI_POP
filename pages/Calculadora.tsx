@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Calculator, Zap, TrendingDown, CheckCircle2, Building2, PiggyBank } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts';
 import { Link } from 'react-router-dom';
+import NovaLeiCTA from '../components/NovaLeiCTA';
 const Calculadora: React.FC = () => {
   const [billValue, setBillValue] = useState<number>(10000);
   const [voltage, setVoltage] = useState<'A4' | 'A3'>('A4');
@@ -42,6 +43,9 @@ const Calculadora: React.FC = () => {
           </div>
         </div>
       </div>
+      
+      {/* Nova Lei CTA - Full variant - Posicionamento estratégico #3 */}
+      <NovaLeiCTA variant="full" className="mt-16" />
     </div>
   );
 };

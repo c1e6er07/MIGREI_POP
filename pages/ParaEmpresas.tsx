@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, CheckCircle, TrendingDown, Clock, Loader2, FileText, FileSignature, Settings, X, ArrowRight, Zap, Shield, Users, Award, Rocket, DollarSign } from 'lucide-react';
 import { LOGO_URL } from '../constants';
 import { LeadService } from '../services/supabase';
+import NovaLeiCTA from '../components/NovaLeiCTA';
 
 interface MigrationStep {
   icon: React.ElementType;
@@ -277,6 +278,13 @@ const ParaEmpresas: React.FC = () => {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Nova Lei CTA - Compact variant - Posicionamento estratégico #2 */}
+      <section className="py-16 bg-gradient-to-b from-slate-950 to-slate-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <NovaLeiCTA variant="compact" />
+        </div>
+      </section>
 
       {/* CONTRATO DE CONSOLIDAÇÃO */}
       <section id="form-section" className="py-24 bg-slate-950 border-t border-slate-800">
