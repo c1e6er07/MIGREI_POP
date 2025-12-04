@@ -23,7 +23,7 @@ const TermosUso: React.FC = () => (
           <section>
              <h2 className="text-xl font-bold text-white mb-3">2. Descrição do Serviço</h2>
              <p className="leading-relaxed">
-                A MIGREI fornece uma plataforma SaaS para gestão de energia, telemetria e intermediação de pagamentos (MIGREI Bank). A Plataforma atua como facilitadora e consultora, não sendo uma distribuidora de energia.
+                A MIGREI fornece uma plataforma SaaS para gestão de energia, telemetria e processamento de pagamentos via PIX e Cartão. A Plataforma atua como facilitadora e consultora, não sendo uma distribuidora de energia.
              </p>
           </section>
 
