@@ -1,79 +1,78 @@
 # 🚀 MIGREI_POP - Quick Reference
 
-## ⚡ Execução Rápida (1 Comando)
+## ⚡ Desenvolvimento Rápido
 
+### Iniciar Servidor
 ```powershell
-# Execute após cada implementação (COM LIMPEZA DE CACHE):
-cd d:\MIGREI_POP
-Get-Process -Name node -ErrorAction SilentlyContinue | Stop-Process -Force; Start-Sleep -Seconds 3; rm -r dist -Force -ErrorAction SilentlyContinue; rm -r .vite -Force -ErrorAction SilentlyContinue; rm -r node_modules/.vite -Force -ErrorAction SilentlyContinue; npm run lint; npm run check; npm run build; npm run dev
+npm run dev
 ```
+Acesse: **http://localhost:3000**
 
-Depois execute separadamente (após servidor iniciar):
-```powershell
-Start-Sleep -Seconds 2; Start-Process "http://localhost:3000"
-```
-
-**E abra Simple Browser via Copilot:** `open_simple_browser http://localhost:3000`
-
----
-
-## 📋 Rotina Manual Passo-a-Passo
-
-### 0️⃣ **Limpar Cache (OBRIGATÓRIO)**
-```powershell
-# Matar processos
-Get-Process -Name node -ErrorAction SilentlyContinue | Stop-Process -Force
-
-# Limpar caches
-rm -r dist -Force -ErrorAction SilentlyContinue
-rm -r .vite -Force -ErrorAction SilentlyContinue
-rm -r node_modules/.vite -Force -ErrorAction SilentlyContinue
-
-# Esperar
-Start-Sleep -Seconds 2
-```
-
-### 1️⃣ **Validar Código**
+### Validar Código
 ```powershell
 npm run lint
 npm run check
-```
-
-### 2️⃣ **Compilar**
-```powershell
 npm run build
 ```
 
-### 3️⃣ **Reiniciar Servidor**
+### Deploy
 ```powershell
-# Matar processos anteriores
-Get-Process -Name node -ErrorAction SilentlyContinue | Stop-Process -Force
-
-# Esperar 3 segundos
-Start-Sleep -Seconds 3
-
-# Iniciar novo
-npm run dev
+git add .
+git commit -m "mensagem"
+git push origin main
 ```
 
-### 4️⃣ **Abrir Navegadores**
+---
+
+## 🛠️ Comandos Úteis
+
+### Limpar Cache (se tela branca)
 ```powershell
-# Aguardar servidor ficar pronto
-Start-Sleep -Seconds 2
-
-# Abrir navegador externo
-Start-Process "http://localhost:3000"
-
-# Abrir Simple Browser via Copilot
-# (use tool: open_simple_browser http://localhost:3000)
+Remove-Item dist,".vite","node_modules\.vite" -Recurse -Force -ErrorAction SilentlyContinue
 ```
 
-- URL Local: **http://localhost:3000**
-- URL Rede: **http://192.168.0.6:3000**
-
-### 5️⃣ **Fazer Commit**
+### Instalar Dependências
 ```powershell
-git add -A
+npm install
+```
+
+### Formatar Código
+```powershell
+npm run format
+```
+
+---
+
+## 📁 Estrutura do Projeto
+
+```
+├── pages/          # Páginas React
+├── components/     # Componentes reutilizáveis
+├── layouts/        # Layouts (Navbar, Footer, etc)
+├── services/       # APIs e serviços externos
+├── contexts/       # React Context (Auth, etc)
+├── constants.ts    # Constantes globais
+└── types.ts        # TypeScript types
+```
+
+---
+
+## 🔧 Stack
+
+- **React 19** + **TypeScript 5.8**
+- **Vite 6.2** (dev server + build)
+- **Tailwind CSS** (styling)
+- **Framer Motion** (animations)
+- **Lucide React** (icons)
+- **React Router 7** (routing)
+
+---
+
+## 📝 Notas
+
+- Porta padrão: **3000**
+- Build output: `dist/`
+- Node version: **18+**
 git commit -m "feat: descrição do que foi feito"
 git push origin main
 ```

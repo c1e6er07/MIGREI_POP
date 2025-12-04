@@ -7,13 +7,11 @@ export default defineConfig(({ mode }) => {
     return {
       server: {
         port: 3000,
-        host: true,
         strictPort: false,
         open: false,
       },
       plugins: [react()],
       define: {
-        'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY || ''),
         'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY || '')
       },
       resolve: {
@@ -23,7 +21,6 @@ export default defineConfig(({ mode }) => {
       },
       preview: {
         port: 3000,
-        host: '0.0.0.0',
       }
     };
 });
