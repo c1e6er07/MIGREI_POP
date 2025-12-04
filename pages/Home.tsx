@@ -102,35 +102,17 @@ const Home: React.FC = () => {
             ))}
           </div>
 
-          {/* Nova seção de valor e CTA */}
+          {/* CTA após serviços */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="bg-gradient-to-r from-emerald-600/10 to-cyan-600/10 border-2 border-emerald-500/30 rounded-3xl p-12 text-center backdrop-blur-sm"
           >
-            <h3 className="text-3xl font-bold text-white mb-4">Transformar Esses Serviços em Economia Real</h3>
+            <h3 className="text-3xl font-bold text-white mb-4">Transforme Esses Serviços em Economia Real</h3>
             <p className="text-lg text-slate-300 mb-8 max-w-2xl mx-auto">
-              Não é só consultoria. É um <span className="text-emerald-400 font-bold">sistema completo</span> que gera economia de <span className="text-emerald-400 font-bold">30-40%</span> desde o primeiro mês. Sem risco. Sem investimento inicial.
+              Não é só consultoria. É um <span className="text-emerald-400 font-bold">sistema completo</span> que gera economia de <span className="text-emerald-400 font-bold">30-40%</span> desde o primeiro mês.
             </p>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-              <div className="bg-slate-950/50 rounded-xl p-4 border border-emerald-500/20">
-                <div className="text-3xl font-black text-emerald-400 mb-1">500+</div>
-                <div className="text-sm text-slate-400">Empresas Transformadas</div>
-                <div className="text-xs text-slate-500 mt-2">Desde 2022</div>
-              </div>
-              <div className="bg-slate-950/50 rounded-xl p-4 border border-cyan-500/20">
-                <div className="text-3xl font-black text-cyan-400 mb-1">100%</div>
-                <div className="text-sm text-slate-400">Taxa de Sucesso</div>
-                <div className="text-xs text-slate-500 mt-2">Migrações bem-sucedidas</div>
-              </div>
-              <div className="bg-slate-950/50 rounded-xl p-4 border border-blue-500/20">
-                <div className="text-3xl font-black text-blue-400 mb-1">R$ 10M+</div>
-                <div className="text-sm text-slate-400">Economia Gerada</div>
-                <div className="text-xs text-slate-500 mt-2">Para nossos clientes</div>
-              </div>
-            </div>
 
             <Link to="/empresas" className="inline-flex items-center justify-center px-12 py-4 bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-slate-950 rounded-xl font-bold text-lg shadow-[0_0_30px_rgba(16,185,129,0.4)] transition-all hover:scale-[1.05] gap-2">
               <Rocket className="w-6 h-6" />
@@ -160,52 +142,9 @@ const Home: React.FC = () => {
             </p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-12 mb-16 items-center">
-            {/* Coluna esquerda - Métricas */}
-            <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {solutionMetrics.map((item, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className={`bg-slate-900/60 backdrop-blur-sm p-6 rounded-2xl border-2 ${
-                    item.color === 'yellow'
-                      ? 'border-emerald-500/30 hover:border-emerald-500/60'
-                      : item.color === 'orange'
-                      ? 'border-cyan-500/30 hover:border-cyan-500/60'
-                      : 'border-blue-500/30 hover:border-blue-500/60'
-                  } hover:bg-slate-900/80 transition-all group`}
-                >
-                  <item.icon
-                    className={`w-12 h-12 mb-4 group-hover:scale-110 transition-transform ${
-                      item.color === 'yellow'
-                        ? 'text-emerald-400'
-                        : item.color === 'orange'
-                        ? 'text-cyan-400'
-                        : 'text-blue-400'
-                    }`}
-                  />
-                  <h3 className="text-lg font-semibold text-slate-300 mb-2">{item.title}</h3>
-                  <p
-                    className={`text-4xl font-black mb-2 ${
-                      item.color === 'yellow'
-                        ? 'text-emerald-400'
-                        : item.color === 'orange'
-                        ? 'text-cyan-400'
-                        : 'text-blue-400'
-                    }`}
-                  >
-                    {item.value}
-                  </p>
-                  <p className="text-sm text-slate-500">{item.description}</p>
-                </motion.div>
-              ))}
-            </motion.div>
-
-            {/* Coluna direita - Proposta de Valor */}
-            <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="space-y-6">
+          <div className="grid lg:grid-cols-1 gap-12 mb-16">
+            {/* Proposta de Valor Centralizada */}
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-4xl mx-auto space-y-6">
               <div className="bg-gradient-to-br from-emerald-600/10 to-cyan-600/10 border-2 border-emerald-500/30 rounded-2xl p-8 backdrop-blur-sm">
                 <h3 className="text-2xl font-bold text-white mb-4">O Seu Retorno Será:</h3>
                 <ul className="space-y-3">
