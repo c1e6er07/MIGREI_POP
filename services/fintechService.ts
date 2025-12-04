@@ -20,15 +20,10 @@ export const FintechService = {
     await new Promise(resolve => setTimeout(resolve, 2000));
     await SaaSService.updateInvoiceStatus(invoiceId, 'paid');
 
-    const splitFranchisee = amount * 0.08;
-    const splitMatriz = amount - splitFranchisee;
-
     return {
       id: `TX-${Math.floor(Math.random() * 1000000)}`,
       invoiceId,
       amount,
-      splitMatriz,
-      splitFranchisee,
       status: 'completed',
       bankName: bankId.charAt(0).toUpperCase() + bankId.slice(1),
       date: new Date().toISOString()

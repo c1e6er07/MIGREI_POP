@@ -1,6 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
 import { SUPABASE_URL, SUPABASE_ANON_KEY } from '../constants';
-import { AdminLead, FranchiseCode, NewsItem, NewsInput, LeadInput, ConsumerUnit, Invoice, Notification, DashboardStats, DistributorIntegration, UserProfile } from '../types';
+import { AdminLead, NewsItem, NewsInput, LeadInput, ConsumerUnit, Invoice, Notification, DashboardStats, DistributorIntegration, UserProfile } from '../types';
 
 export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
@@ -251,24 +251,5 @@ export const LeadService = {
   async updateStatus(id: number, status: string): Promise<boolean> {
     const { error } = await supabase.from('leads').update({ status }).eq('id', id);
     return !error;
-  }
-};
-
-export const FranchiseService = {
-  async validateCode(code: string): Promise<{ valid: boolean; name?: string }> {
-    const { data, error } = await supabase.from('franchise_codes').select('franchisee_name').eq('code', code).eq('is_active', true).single();
-    if (error || !data) return { valid: false };
-    return { valid: true, name: data.franchisee_name };
-  },
-  async getAllCodes(): Promise<FranchiseCode[]> {
-    const { data, error } = await supabase.from('franchise_codes').select('*').order('created_at', { ascending: false });
-    if (error) return [];
-    return data as FranchiseCode[] || [];
-  },
-  async createCode(name: string, email: string): Promise<{ success: boolean; code?: string; error?: string }> {
-    const code = Math.random().toString(36).substring(2, 8).toUpperCase();
-    const { error } = await supabase.from('franchise_codes').insert([{ code, franchisee_name: name, email, is_active: true }]);
-    if (error) return { success: false, error: error.message };
-    return { success: true, code };
   }
 };

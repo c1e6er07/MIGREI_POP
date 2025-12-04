@@ -7,7 +7,6 @@ import { AuthProvider, useAuth } from './contexts/AuthContext';
 import { Loader2 } from 'lucide-react';
 import Home from './pages/Home';
 import Sobre from './pages/Sobre';
-import ViabilidadeFranquia from './pages/ViabilidadeFranquia';
 import ParaEmpresas from './pages/ParaEmpresas';
 import Calculadora from './pages/Calculadora';
 import MigreiIA from './pages/MigreiIA';
@@ -26,7 +25,6 @@ import Settings from './pages/dashboard/Settings';
 import Consumption from './pages/dashboard/Consumption';
 import Reports from './pages/dashboard/Reports';
 import Finance from './pages/dashboard/Finance';
-import FranchiseNetwork from './pages/dashboard/FranchiseNetwork';
 import Instituto from './pages/dashboard/Instituto';
 import Compliance from './pages/dashboard/Compliance';
 
@@ -145,7 +143,6 @@ const App: React.FC = () => {
               <Route path="/health" element={<Health />} />
               <Route path="/sobre" element={<Sobre />} />
               <Route path="/migrei-bank" element={<MigreiBank />} />
-              <Route path="/franquia" element={<ViabilidadeFranquia />} />
               <Route path="/empresas" element={<ParaEmpresas />} />
               <Route path="/calculadora" element={<Calculadora />} />
               <Route path="/migrei-ia" element={<MigreiIA />} />
@@ -153,7 +150,6 @@ const App: React.FC = () => {
               <Route path="/noticias" element={<Noticias />} />
               <Route path="/privacidade" element={<PoliticaPrivacidade />} />
               <Route path="/termos" element={<TermosUso />} />
-              <Route path="/area-franqueado" element={<Navigate to="/login" replace />} />
               <Route path="/admin" element={<Admin />} />
             </Route>
             <Route path="/login" element={<Login />} />
@@ -161,7 +157,6 @@ const App: React.FC = () => {
                <Route index element={<Overview />} />
                <Route path="faturas" element={<Invoices />} />
                <Route path="financeiro" element={<Finance />} />
-               <Route path="rede" element={<FranchiseNetwork />} />
                <Route path="consumo" element={<Consumption />} />
                <Route path="relatorios" element={<Reports />} />
                <Route path="instituto" element={<Instituto />} />

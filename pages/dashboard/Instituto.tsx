@@ -8,7 +8,7 @@ const Instituto: React.FC = () => {
   const courses = [
     {
       id: 1,
-      title: 'Onboarding Franqueado City',
+      title: 'Onboarding - Mercado Livre de Energia',
       module: 'Fundamentos',
       duration: '4h 30m',
       progress: 100,
@@ -17,7 +17,7 @@ const Instituto: React.FC = () => {
     },
     {
       id: 2,
-      title: 'Técnicas de Venda B2B - Energia',
+      title: 'Estratégias Comerciais B2B - Energia',
       module: 'Comercial',
       duration: '6h 15m',
       progress: 45,
@@ -35,7 +35,7 @@ const Instituto: React.FC = () => {
     },
     {
         id: 4,
-        title: 'Gestão Financeira da Franquia',
+        title: 'Análise Financeira em Energia',
         module: 'Gestão',
         duration: '3h 45m',
         progress: 0,
