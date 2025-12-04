@@ -96,7 +96,7 @@ const ParaEmpresas: React.FC = () => {
 
   const pricingPlans: PricingPlan[] = [
     {
-      name: "Professional",
+      name: "Básico",
       price: "R$ 2.990",
       description: "/mês",
       features: [
@@ -106,23 +106,25 @@ const ParaEmpresas: React.FC = () => {
         "✓ Negociação de contratos",
         "✓ Dashboard de acompanhamento",
         "✓ Relatório mensal",
-        "✓ Suporte via email"
+        "✓ Suporte via email",
+        "✓ Taxa de adesão: R$ 1.495 (50% da 1ª mensalidade)"
       ],
       cta: "Começar Agora"
     },
     {
-      name: "Enterprise",
+      name: "Avançado",
       price: "R$ 5.990",
       description: "/mês",
       highlight: true,
       features: [
         "✓ Economia ILIMITADA",
-        "✓ Tudo do plano Professional",
+        "✓ Tudo do plano Básico",
         "✓ Gerente dedicado 24/7",
         "✓ Renegociação trimestral automática",
         "✓ Análise de cenários ilimitada",
         "✓ Integração com ERP",
-        "✓ Consultoria estratégica"
+        "✓ Consultoria estratégica",
+        "✓ Taxa de adesão: R$ 2.995 (50% da 1ª mensalidade)"
       ],
       cta: "Solicitar Demo"
     },
@@ -131,7 +133,7 @@ const ParaEmpresas: React.FC = () => {
       price: "10% dos savings",
       description: "modelo alternativo",
       features: [
-        "✓ Sem custo fixo inicial",
+        "✓ Taxa de adesão: GRÁTIS",
         "✓ Você paga apenas pela economia gerada",
         "✓ Diagnóstico gratuito",
         "✓ Ideal para pequenas-médias empresas",
@@ -469,16 +471,24 @@ const ParaEmpresas: React.FC = () => {
                 key={idx}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                className={`rounded-2xl border transition-all ${
+                className={`rounded-2xl border transition-all relative ${
                   plan.highlight
                     ? 'bg-gradient-to-br from-emerald-600/10 to-cyan-600/10 border-emerald-500/50 shadow-[0_0_40px_rgba(16,185,129,0.2)] scale-105'
+                    : plan.name === 'Performance'
+                    ? 'bg-gradient-to-br from-yellow-600/10 to-orange-600/10 border-yellow-500/50 shadow-[0_0_40px_rgba(234,179,8,0.2)]'
                     : 'bg-slate-900 border-slate-800 hover:border-slate-700'
                 } p-8`}
               >
                 {plan.highlight && (
                   <div className="mb-4 inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/20 border border-emerald-500/50 rounded-full">
                     <Zap className="w-4 h-4 text-emerald-400" />
-                    <span className="text-emerald-400 font-bold text-sm">MAIS POPULAR</span>
+                    <span className="text-emerald-400 font-bold text-sm">MELHOR CUSTO×BENEFÍCIO</span>
+                  </div>
+                )}
+
+                {plan.name === 'Performance' && (
+                  <div className="absolute -top-4 -right-4 bg-gradient-to-r from-yellow-400 to-orange-400 px-4 py-1.5 rounded-full">
+                    <span className="text-slate-950 font-bold text-sm">🎉 TAXA GRÁTIS</span>
                   </div>
                 )}
 
