@@ -16,5 +16,6 @@ export interface NavLink { label: string; path: string; icon?: React.ReactNode; 
 export type ConnectionStatus = 'disconnected' | 'connecting' | 'connected' | 'error';
 export interface DistributorIntegration { id: string; name: string; logo_url?: string; status: ConnectionStatus; last_sync?: string; }
 export interface OCRResult { text: string; extractedValue?: number; extractedDate?: string; confidence: number; }
-export interface BankOption { id: string; name: string; color: string; icon?: React.ReactNode; }
-export interface PaymentTransaction { id: string; invoiceId: number; amount: number; status: 'processing' | 'completed' | 'failed'; bankName: string; date: string; }
+export interface PaymentMethod { id: string; name: string; description: string; icon: string; }
+export interface PIXPayment { qrCode: string; qrCodeUrl: string; expiresIn: number; copyPaste: string; }
+export interface PaymentResult { success: boolean; transactionId?: string; method: string; amount: number; timestamp: Date; status: 'pending' | 'processing' | 'completed' | 'failed'; }

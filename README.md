@@ -75,7 +75,7 @@ VITE_ADMIN_PASSWORD=senha123        # Password para admin
 ✅ Dashboard de consumo energético  
 ✅ Calculadora de economia  
 ✅ MIGREI IA (Assistente com Gemini)  
-✅ MIGREI Bank (Pagamentos Open Finance)  
+✅ Sistema de Pagamentos (PIX e Cartão)  
 ✅ Para Empresas (Propostas)  
 ✅ Compliance & Riscos  
 ✅ Relatórios & Análises  
@@ -88,7 +88,7 @@ VITE_ADMIN_PASSWORD=senha123        # Password para admin
 - **Frontend**: React 19, TypeScript, Vite
 - **UI**: Tailwind CSS, Lucide Icons, Framer Motion
 - **State**: React Context, Supabase
-- **API**: Gemini AI, Open Finance
+- **API**: Gemini AI, Payment Gateway (PIX/Card)
 - **Auth**: Supabase Auth
 - **Database**: Supabase PostgreSQL
 
