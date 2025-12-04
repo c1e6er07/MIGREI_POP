@@ -14,7 +14,7 @@ const Home: React.FC = () => {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div initial={{ opacity: 0, x: -40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7 }} className="relative z-10">
-            <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-emerald-500/10 to-cyan-500/10 border-2 border-emerald-500/40 rounded-full mb-8 backdrop-blur-sm"> <Building2 className="w-5 h-5 text-emerald-400" /> <span className="text-emerald-400 text-sm md:text-base font-bold uppercase tracking-wide">Para Empresas</span> </div>
+            <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-orange-500/20 to-yellow-500/20 border-2 border-orange-400/50 rounded-full mb-8 backdrop-blur-sm shadow-[0_0_20px_rgba(234,88,12,0.4)]"> <Building2 className="w-5 h-5 text-orange-300" /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-300 to-yellow-300 text-sm md:text-base font-bold uppercase tracking-wide">Pioneira em Comercialização Varejista</span> </div>
                 <h1 className="text-5xl lg:text-7xl font-display font-black mb-6 text-white leading-tight"> <span className="bg-gradient-to-r from-emerald-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent">Economize em Energia</span> </h1>
                 <p className="text-slate-300 mb-8 text-xl lg:text-2xl leading-relaxed"> Sua empresa pode reduzir custos de energia em <span className="text-emerald-400 font-bold">30-40%</span> no Mercado Livre de Energia. MIGREI faz isso acontecer. </p>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
