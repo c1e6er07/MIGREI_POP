@@ -82,21 +82,13 @@ const ScrollToTop: React.FC = () => {
   const location = useLocation();
   
   React.useEffect(() => {
-    const scrollTarget = location.state && typeof location.state === 'object' && 'scrollTo' in location.state 
-      ? (location.state as { scrollTo: string }).scrollTo 
-      : null;
-    
-    if (scrollTarget) {
-      setTimeout(() => {
-        const element = document.getElementById(scrollTarget);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }, 100);
-    } else {
+    try {
       window.scrollTo(0, 0);
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (_e) {
+      // Ignore scroll errors
     }
-  }, [location]);
+  }, [location.pathname]);
   
   return null;
 };
