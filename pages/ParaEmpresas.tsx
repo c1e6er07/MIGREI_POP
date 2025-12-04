@@ -295,7 +295,7 @@ const ParaEmpresas: React.FC = () => {
                 <h2 className="text-2xl font-bold flex items-center gap-3 mb-2">
                   <FileSignature className="w-8 h-8" /> Consolide Seu Contrato Agora
                 </h2>
-                <p className="text-emerald-50 text-lg">Formalize sua parceria com a MIGREI Comercializadora Varejista - Investimento Simbólico</p>
+                <p className="text-emerald-50 text-lg">Formalize sua parceria com a MIGREI Comercializadora Varejista</p>
               </div>
 
               <div className="p-8">
@@ -345,14 +345,14 @@ const ParaEmpresas: React.FC = () => {
                       </div>
                     )}
                     
-                    {/* INFO BOX */}
-                    <div className="bg-gradient-to-r from-yellow-500/10 to-orange-500/10 rounded-xl border border-yellow-500/20 p-6 mb-8">
+                    {/* INFO BOX - Benefícios da Consultoria */}
+                    <div className="bg-gradient-to-r from-emerald-500/10 to-cyan-500/10 rounded-xl border border-emerald-500/20 p-6 mb-8">
                       <div className="flex items-start gap-4">
-                        <DollarSign className="w-6 h-6 text-yellow-400 flex-shrink-0 mt-1" />
+                        <CheckCircle className="w-6 h-6 text-emerald-400 flex-shrink-0 mt-1" />
                         <div>
-                          <h4 className="font-bold text-white mb-2">Investimento Simbólico para Consolidação</h4>
+                          <h4 className="font-bold text-white mb-2">Benefícios da Consultoria MIGREI</h4>
                           <p className="text-slate-300 text-sm leading-relaxed">
-                            Taxa única de <span className="text-yellow-400 font-bold">R$ 99</span> para consolidar o contrato de consultoria com a MIGREI Comercializadora Varejista. Após a consolidação, você aproveitará de todas as vantagens do programa de redução de custos energéticos.
+                            Ao consolidar o contrato de consultoria, você terá acesso completo ao programa de redução de custos energéticos, incluindo diagnóstico gratuito, análise de viabilidade, habilitação CCEE e negociação com fornecedores.
                           </p>
                         </div>
                       </div>
@@ -461,7 +461,7 @@ const ParaEmpresas: React.FC = () => {
                       ) : (
                         <>
                           <FileSignature className="w-5 h-5" />
-                          Consolidar Contrato (R$ 99)
+                          Consolidar Contrato
                         </>
                       )}
                     </button>
