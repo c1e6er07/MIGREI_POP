@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Zap, DollarSign, Building2, Briefcase, TrendingUp, Cpu, Wallet, ChevronRight, Globe, GraduationCap, BookOpen, Megaphone, Scale, Headphones, CheckCircle, Award, LineChart, Clock, Target, Percent, Rocket, MapPin, CheckCircle2 } from 'lucide-react';
+import { Zap, DollarSign, Building2, Briefcase, TrendingUp, Cpu, Wallet, ChevronRight, Globe, GraduationCap, BookOpen, Megaphone, Scale, Headphones, CheckCircle, Award, LineChart, Clock, Target, Percent, Rocket, CheckCircle2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { LOGO_URL } from '../constants';
 const Home: React.FC = () => {
@@ -29,7 +29,6 @@ const Home: React.FC = () => {
                 <motion.div animate={{ rotate: 360 }} transition={{ duration: 30, repeat: Infinity, ease: "linear" }} className="absolute inset-0 flex items-center justify-center"> <div className="w-[500px] h-[500px] border-2 border-dashed border-yellow-500/20 rounded-full" /> <div className="absolute w-[400px] h-[400px] border border-dotted border-orange-500/20 rounded-full" /> </motion.div>
                 <motion.div animate={{ y: [0, -20, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="relative z-10"> <div className="absolute inset-0 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full blur-3xl opacity-40" /> <img src={LOGO_URL} alt="MIGREI MLE CONSULT" className="relative w-96 h-96 object-contain drop-shadow-2xl" /> </motion.div>
                 <motion.div animate={{ y: [0, -10, 0], x: [0, 5, 0] }} transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.5 }} className="absolute top-20 right-0 z-20 bg-slate-900/90 backdrop-blur-sm p-4 rounded-xl border border-yellow-500/30 shadow-xl"> <div className="flex items-center gap-3"> <TrendingUp className="w-8 h-8 text-yellow-400" /> <div> <div className="text-white font-bold">Mercado em Alta</div> <div className="text-xs text-slate-400">Crescimento exponencial</div> </div> </div> </motion.div>
-                <motion.div animate={{ y: [0, 10, 0], x: [0, -5, 0] }} transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 1 }} className="absolute bottom-20 left-0 z-20 bg-slate-900/90 backdrop-blur-sm p-4 rounded-xl border border-orange-500/30 shadow-xl"> <div className="flex items-center gap-3"> <MapPin className="w-8 h-8 text-orange-400" /> <div> <div className="text-white font-bold">Todo Brasil</div> <div className="text-xs text-slate-400">Territórios disponíveis</div> </div> </div> </motion.div>
             </motion.div>
             </div>
         </div>
