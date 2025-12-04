@@ -59,7 +59,7 @@ const ParaEmpresas: React.FC = () => {
       description: "Simulação precisa da economia", 
       duration: "1 dia",
       details: "Com dados em mãos, simulamos diversos cenários de migração para o Mercado Livre, sempre buscando a melhor relação custo-benefício.",
-      benefits: ["Múltiplos cenários analisados", "Projeção de 36 meses", "ROI detalhado"]
+      benefits: ["Múltiplos cenários analisados", "Projeção de 36 meses", "ROI (Retorno sobre Investimento) detalhado"]
     },
     { 
       icon: CheckCircle, 
@@ -140,7 +140,7 @@ const ParaEmpresas: React.FC = () => {
         "✓ Ideal para pequenas-médias empresas",
         "✓ Sem compromisso mínimo",
         "✓ Flexibilidade total",
-        "✓ ROI garantido"
+        "✓ ROI (Retorno sobre Investimento) garantido"
       ],
       cta: "Conhecer Detalhes"
     }
@@ -548,7 +548,7 @@ const ParaEmpresas: React.FC = () => {
             <div className="grid md:grid-cols-3 gap-8 text-center">
               <div>
                 <Award className="w-8 h-8 text-emerald-400 mx-auto mb-3" />
-                <h4 className="font-bold text-white mb-2">ROI Garantido</h4>
+                <h4 className="font-bold text-white mb-2">ROI (Retorno sobre Investimento) Garantido</h4>
                 <p className="text-slate-400 text-sm">Economia real desde o 1º mês com garantia de resultados</p>
               </div>
               <div>
