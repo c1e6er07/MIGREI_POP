@@ -5,10 +5,15 @@
 ```powershell
 # Execute após cada implementação (COM LIMPEZA DE CACHE):
 cd d:\MIGREI_POP
-Get-Process -Name node -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue; Start-Sleep -Seconds 2; rm -r dist -Force -ErrorAction SilentlyContinue; rm -r .vite -Force -ErrorAction SilentlyContinue; npm run lint; npm run check; npm run build; npm run dev
+Get-Process -Name node -ErrorAction SilentlyContinue | Stop-Process -Force; Start-Sleep -Seconds 3; rm -r dist -Force -ErrorAction SilentlyContinue; rm -r .vite -Force -ErrorAction SilentlyContinue; rm -r node_modules/.vite -Force -ErrorAction SilentlyContinue; npm run lint; npm run check; npm run build; npm run dev
 ```
 
-Depois abra: **http://localhost:3000**
+Depois execute separadamente (após servidor iniciar):
+```powershell
+Start-Sleep -Seconds 2; Start-Process "http://localhost:3000"
+```
+
+**E abra Simple Browser via Copilot:** `open_simple_browser http://localhost:3000`
 
 ---
 
@@ -44,16 +49,27 @@ npm run build
 # Matar processos anteriores
 Get-Process -Name node -ErrorAction SilentlyContinue | Stop-Process -Force
 
-# Esperar 2 segundos
-Start-Sleep -Seconds 2
+# Esperar 3 segundos
+Start-Sleep -Seconds 3
 
 # Iniciar novo
 npm run dev
 ```
 
-### 4️⃣ **Abrir Browser**
-- Vá para: **http://localhost:3000**
-- Ou **http://192.168.0.6:3000** (rede local)
+### 4️⃣ **Abrir Navegadores**
+```powershell
+# Aguardar servidor ficar pronto
+Start-Sleep -Seconds 2
+
+# Abrir navegador externo
+Start-Process "http://localhost:3000"
+
+# Abrir Simple Browser via Copilot
+# (use tool: open_simple_browser http://localhost:3000)
+```
+
+- URL Local: **http://localhost:3000**
+- URL Rede: **http://192.168.0.6:3000**
 
 ### 5️⃣ **Fazer Commit**
 ```powershell

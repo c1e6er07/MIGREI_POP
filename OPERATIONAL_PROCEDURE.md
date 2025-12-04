@@ -22,15 +22,15 @@
 
 ```powershell
 # Matar processos Node anteriores
-Get-Process -Name node -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
+Get-Process -Name node -ErrorAction SilentlyContinue | Stop-Process -Force
 
 # Limpar todos os caches
 rm -r dist -Force -ErrorAction SilentlyContinue
 rm -r .vite -Force -ErrorAction SilentlyContinue
 rm -r node_modules/.vite -Force -ErrorAction SilentlyContinue
 
-# Aguardar
-Start-Sleep -Seconds 2
+# Aguardar limpeza completa
+Start-Sleep -Seconds 3
 ```
 
 ### Resultado Esperado:
@@ -178,12 +178,23 @@ npm run dev
 
 ## PASSO 5: VALIDAÇÃO NO BROWSER (5-10s)
 
-### Via Simple Browser (integrado no VS Code):
-```
-Abrir: http://localhost:3000
+### 5.1 - Aguardar servidor ficar pronto:
+```powershell
+Start-Sleep -Seconds 2
 ```
 
-### Verificar:
+### 5.2 - Abrir Simple Browser (integrado no VS Code):
+```powershell
+# Usar tool do Copilot
+open_simple_browser http://localhost:3000
+```
+
+### 5.3 - Abrir navegador externo:
+```powershell
+Start-Process "http://localhost:3000"
+```
+
+### 5.4 - Verificar em AMBOS navegadores:
 - ✅ Página carrega SEM ERRO
 - ✅ Sem tela branca
 - ✅ Sem mensagens de erro no console (F12)
@@ -191,6 +202,7 @@ Abrir: http://localhost:3000
 - ✅ Animações funcionam suave
 - ✅ Botões respondem ao hover
 - ✅ Links funcionam (redirect correto)
+- ✅ Alterações implementadas estão visíveis
 
 ### Se houver tela branca:
 

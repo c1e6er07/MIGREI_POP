@@ -100,7 +100,7 @@ if (-not $SkipServer) {
     
     # Aguardar server estar pronto
     Write-Host "  → Aguardando server ficar pronto..." -ForegroundColor $info
-    Start-Sleep -Seconds 3
+    Start-Sleep -Seconds 5
     
     Write-Host "✅ Dev Server: OK (localhost:3000)" -ForegroundColor $success
 } else {
@@ -108,11 +108,20 @@ if (-not $SkipServer) {
 }
 Write-Host ""
 
-# FASE 5: Abrir Simple Browser
+# FASE 5: Abrir Navegadores
 if ($OpenBrowser) {
-    Write-Host "📋 [FASE 5/7] Abrindo Simple Browser..." -ForegroundColor $info
-    # Aqui você chamaria a função do Copilot se estivesse integrado
-    Write-Host "✅ Simple Browser: Abrir em http://localhost:3000" -ForegroundColor $success
+    Write-Host "📋 [FASE 5/7] Abrindo Navegadores..." -ForegroundColor $info
+    
+    # Aguardar mais um pouco para garantir que o servidor está pronto
+    Start-Sleep -Seconds 2
+    
+    # Abrir navegador externo
+    Write-Host "  → Abrindo navegador externo..." -ForegroundColor $info
+    Start-Process "http://localhost:3000"
+    
+    Write-Host "✅ Navegadores: Abertos em http://localhost:3000" -ForegroundColor $success
+    Write-Host "   • Simple Browser: Abrir manualmente via Copilot" -ForegroundColor $info
+    Write-Host "   • Navegador externo: Aberto automaticamente" -ForegroundColor $success
 } else {
     Write-Host "⏭️  [FASE 5/7] Browser pulado (--OpenBrowser = false)" -ForegroundColor $warning
 }

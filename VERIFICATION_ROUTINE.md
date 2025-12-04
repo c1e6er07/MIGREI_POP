@@ -42,11 +42,16 @@ npm run build
 
 ### **FASE 4: Dev Server com Limpeza** (5-10s)
 ```powershell
-# 6. Matar processos Node anteriores + Limpar cache
-Get-Process -Name node -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
+# 6. Matar processos Node anteriores
+Get-Process -Name node -ErrorAction SilentlyContinue | Stop-Process -Force
 
-# 7. Aguardar 2 segundos
-Start-Sleep -Seconds 2
+# 7. Limpar cache novamente
+rm -r dist -Force -ErrorAction SilentlyContinue
+rm -r .vite -Force -ErrorAction SilentlyContinue
+rm -r node_modules/.vite -Force -ErrorAction SilentlyContinue
+
+# 8. Aguardar 3 segundos para garantir limpeza completa
+Start-Sleep -Seconds 3
 
 # 8. Limpar cache novamente (garantir limpeza total)
 rm -r dist -Force -ErrorAction SilentlyContinue
@@ -61,14 +66,21 @@ npm run dev
 
 ### **FASE 5: Validação no Browser** (5-10s)
 ```powershell
-# 9. Abrir Simple Browser em localhost
+# 9. Aguardar servidor ficar pronto
+Start-Sleep -Seconds 2
+
+# 10. Abrir Simple Browser (dentro do VS Code)
 open_simple_browser http://localhost:3000
 
-# 10. Verificar visualmente:
+# 11. Abrir navegador externo (padrão do sistema)
+Start-Process "http://localhost:3000"
+
+# 12. Verificar visualmente em AMBOS:
 #     - Página carrega sem erros
 #     - Sem tela branca
 #     - Elementos visíveis
 #     - Animações funcionam
+#     - Alterações aplicadas corretamente
 ```
 
 ### **FASE 6: Git Commit & Push** (10-20s)
