@@ -21,6 +21,18 @@ export default defineConfig(({ mode }) => {
           '@': path.resolve(__dirname, '.'),
         }
       },
+      build: {
+        chunkSizeWarningLimit: 2000,
+        rollupOptions: {
+          output: {
+            manualChunks: {
+              'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+              'ui-vendor': ['framer-motion', 'lucide-react', 'recharts'],
+              'supabase-vendor': ['@supabase/supabase-js', '@google/genai']
+            }
+          }
+        }
+      },
       preview: {
         port: 3000,
       }
