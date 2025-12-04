@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sparkles, Calculator, CheckCircle, TrendingDown, Clock, Loader2, FileText, FileSignature, Settings, X, ArrowRight, Zap, Shield, Users, Award, Rocket } from 'lucide-react';
+import { Sparkles, CheckCircle, TrendingDown, Clock, Loader2, FileText, FileSignature, Settings, X, ArrowRight, Zap, Shield, Users, Award, Rocket, DollarSign } from 'lucide-react';
 import { LOGO_URL } from '../constants';
 import { LeadService } from '../services/supabase';
 
@@ -23,22 +23,21 @@ interface PricingPlan {
 }
 
 const ParaEmpresas: React.FC = () => {
-  const [formData, setFormData] = useState({ nome_completo: "", email: "", telefone: "", empresa: "", cnpj: "", consumo_mensal_kwh: "", valor_conta_atual: "", cidade: "", estado: "" });
+  const [formData, setFormData] = useState({ nome_completo: "", email: "", telefone: "", empresa: "", cnpj: "" });
   const [loading, setLoading] = useState(false);
-  const [economia, setEconomia] = useState<{ mensal: number; anual: number; percentual: number } | null>(null);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
   const [selectedStep, setSelectedStep] = useState<number | null>(null);
-
-  const calcularEconomia = () => { const valor = parseFloat(formData.valor_conta_atual); if (!valor) return null; const economiaMedia = (valor * 0.25 + valor * 0.30) / 2; return { mensal: economiaMedia, anual: economiaMedia * 12, percentual: 27.5 }; };
   
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault(); setLoading(true); setErrorMessage(''); setSubmitStatus('idle');
+    e.preventDefault(); 
+    setLoading(true); 
+    setErrorMessage(''); 
+    setSubmitStatus('idle');
     try {
-      const economiaDados = calcularEconomia();
-      const detailsMessage = `SOLICITAÇÃO PARA EMPRESAS\n-------------------------\nCNPJ: ${formData.cnpj}\nConsumo: ${formData.consumo_mensal_kwh} kWh\nValor Atual: R$ ${formData.valor_conta_atual}\nLocal: ${formData.cidade}/${formData.estado}\nEconomia Estimada: R$ ${economiaDados?.mensal.toFixed(2)}`;
+      const detailsMessage = `CONTRATO DE CONSULTORIA - CONSOLIDAÇÃO\n---------------------------------------\nEmpresa: ${formData.empresa}\nCNPJ: ${formData.cnpj}\nContato: ${formData.nome_completo}\nTelefone: ${formData.telefone}\n\nSolicitação de Consolidação do Contrato de Consultoria com MIGREI Comercializadora Varejista`;
       const result = await LeadService.create({ name: formData.nome_completo, email: formData.email, phone: formData.telefone, company: formData.empresa, message: detailsMessage });
-      if (result.success) { setEconomia(economiaDados); setSubmitStatus('success'); setFormData({ nome_completo: "", email: "", telefone: "", empresa: "", cnpj: "", consumo_mensal_kwh: "", valor_conta_atual: "", cidade: "", estado: "" }); } else { setSubmitStatus('error'); setErrorMessage(result.error || 'Erro desconhecido.'); }
+      if (result.success) { setSubmitStatus('success'); setFormData({ nome_completo: "", email: "", telefone: "", empresa: "", cnpj: "" }); } else { setSubmitStatus('error'); setErrorMessage(result.error || 'Erro desconhecido.'); }
     } catch (error: unknown) { const message = error instanceof Error ? error.message : 'Erro de conexão.'; setSubmitStatus('error'); setErrorMessage(message); } finally { setLoading(false); }
   };
   
@@ -54,7 +53,7 @@ const ParaEmpresas: React.FC = () => {
       benefits: ["Análise de 24 meses de histórico", "Identificação de ineficiências", "Potencial de economia calculado"]
     },
     { 
-      icon: Calculator, 
+      icon: TrendingDown, 
       title: "Cálculo de Viabilidade", 
       description: "Simulação precisa da economia", 
       duration: "1 dia",
@@ -277,62 +276,55 @@ const ParaEmpresas: React.FC = () => {
         )}
       </AnimatePresence>
 
-      {/* CALCULADORA ENRIQUECIDA */}
+      {/* CONTRATO DE CONSOLIDAÇÃO */}
       <section id="form-section" className="py-24 bg-slate-950 border-t border-slate-800">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}>
             <div className="bg-slate-900 border border-emerald-500/20 rounded-3xl shadow-2xl overflow-hidden relative">
               <div className="bg-gradient-to-r from-emerald-600 to-cyan-600 text-white p-6 md:p-8">
                 <h2 className="text-2xl font-bold flex items-center gap-3 mb-2">
-                  <Calculator className="w-8 h-8" /> Calcule Sua Economia Agora
+                  <FileSignature className="w-8 h-8" /> Consolide Seu Contrato Agora
                 </h2>
-                <p className="text-emerald-50 text-lg">Descubra quanto sua empresa pode economizar - Diagnóstico Gratuito</p>
+                <p className="text-emerald-50 text-lg">Formalize sua parceria com a MIGREI Comercializadora Varejista - Investimento Simbólico</p>
               </div>
 
               <div className="p-8">
-                {submitStatus === 'success' && economia ? (
-                  <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="space-y-8">
+                {submitStatus === 'success' ? (
+                  <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="space-y-8 text-center">
                     <div className="bg-gradient-to-br from-emerald-500/10 to-cyan-500/10 rounded-2xl border border-emerald-500/30 p-8">
-                      <h3 className="text-xl font-bold text-white mb-6">Sua Economia Potencial:</h3>
-                      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div className="text-center p-6 bg-slate-950 rounded-xl border border-emerald-500/20">
-                          <div className="text-4xl font-black text-emerald-400">R$ {economia.mensal.toLocaleString('pt-BR', { maximumFractionDigits: 0 })}</div>
-                          <div className="text-sm font-bold text-slate-500 uppercase tracking-wide mt-2">Por Mês</div>
-                        </div>
-                        <div className="text-center p-6 bg-slate-950 rounded-xl border border-cyan-500/20">
-                          <div className="text-4xl font-black text-cyan-400">R$ {economia.anual.toLocaleString('pt-BR', { maximumFractionDigits: 0 })}</div>
-                          <div className="text-sm font-bold text-slate-500 uppercase tracking-wide mt-2">Por Ano</div>
-                        </div>
-                        <div className="text-center p-6 bg-slate-950 rounded-xl border border-yellow-500/20">
-                          <div className="text-4xl font-black text-yellow-400">{economia.percentual}%</div>
-                          <div className="text-sm font-bold text-slate-500 uppercase tracking-wide mt-2">De Desconto</div>
-                        </div>
+                      <CheckCircle className="w-20 h-20 text-emerald-400 mx-auto mb-4" />
+                      <h3 className="text-2xl font-bold text-white mb-4">Contrato Formalizado com Sucesso!</h3>
+                      <p className="text-slate-300 text-lg mb-6">
+                        Sua solicitação foi recebida. Nossa equipe entrará em contato em até 24 horas para confirmar e enviar todos os documentos.
+                      </p>
+                      <div className="bg-slate-950 rounded-xl p-6 border border-emerald-500/20 mb-6">
+                        <h4 className="text-lg font-bold text-emerald-400 mb-4">Próximos Passos:</h4>
+                        <ul className="space-y-3 text-left">
+                          <li className="flex items-center gap-3 text-slate-300">
+                            <CheckCircle className="w-5 h-5 text-emerald-400 flex-shrink-0" />
+                            Confirmação via email em 24h
+                          </li>
+                          <li className="flex items-center gap-3 text-slate-300">
+                            <CheckCircle className="w-5 h-5 text-emerald-400 flex-shrink-0" />
+                            Envio do contrato assinado
+                          </li>
+                          <li className="flex items-center gap-3 text-slate-300">
+                            <CheckCircle className="w-5 h-5 text-emerald-400 flex-shrink-0" />
+                            Início imediato do processo de migração
+                          </li>
+                          <li className="flex items-center gap-3 text-slate-300">
+                            <CheckCircle className="w-5 h-5 text-emerald-400 flex-shrink-0" />
+                            Acompanhamento dedicado do seu gerente
+                          </li>
+                        </ul>
                       </div>
-                    </div>
-
-                    <div className="bg-slate-900/50 rounded-xl p-6 border border-slate-800">
-                      <h4 className="text-lg font-bold text-white mb-4">Próximos Passos:</h4>
-                      <ul className="space-y-2 text-slate-300">
-                        <li className="flex items-center gap-3">
-                          <CheckCircle className="w-5 h-5 text-emerald-400 flex-shrink-0" />
-                          <span>✓ Diagnóstico completo realizado</span>
-                        </li>
-                        <li className="flex items-center gap-3">
-                          <CheckCircle className="w-5 h-5 text-emerald-400 flex-shrink-0" />
-                          <span>✓ Entraremos em contato em 24 horas</span>
-                        </li>
-                        <li className="flex items-center gap-3">
-                          <CheckCircle className="w-5 h-5 text-emerald-400 flex-shrink-0" />
-                          <span>✓ Apresentaremos o plano customizado</span>
-                        </li>
-                      </ul>
                     </div>
 
                     <button
                       onClick={() => setSubmitStatus('idle')}
                       className="w-full text-emerald-400 hover:text-emerald-300 font-bold py-3 border border-emerald-500/30 rounded-xl transition-all hover:border-emerald-500/60"
                     >
-                      Fazer Nova Simulação
+                      Fazer Outra Solicitação
                     </button>
                   </motion.div>
                 ) : (
@@ -342,6 +334,20 @@ const ParaEmpresas: React.FC = () => {
                         {errorMessage}
                       </div>
                     )}
+                    
+                    {/* INFO BOX */}
+                    <div className="bg-gradient-to-r from-yellow-500/10 to-orange-500/10 rounded-xl border border-yellow-500/20 p-6 mb-8">
+                      <div className="flex items-start gap-4">
+                        <DollarSign className="w-6 h-6 text-yellow-400 flex-shrink-0 mt-1" />
+                        <div>
+                          <h4 className="font-bold text-white mb-2">Investimento Simbólico para Consolidação</h4>
+                          <p className="text-slate-300 text-sm leading-relaxed">
+                            Taxa única de <span className="text-yellow-400 font-bold">R$ 99</span> para consolidar o contrato de consultoria com a MIGREI Comercializadora Varejista. Após a consolidação, você aproveitará de todas as vantagens do programa de redução de custos energéticos.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-2">
                         <label className="text-slate-400 text-xs font-bold uppercase">Nome Completo *</label>
@@ -375,33 +381,69 @@ const ParaEmpresas: React.FC = () => {
                         />
                       </div>
                       <div className="space-y-2">
-                        <label className="text-slate-400 text-xs font-bold uppercase">CNPJ</label>
+                        <label className="text-slate-400 text-xs font-bold uppercase">CNPJ *</label>
                         <input
                           id="cnpj"
+                          required
                           value={formData.cnpj}
                           onChange={handleChange}
                           className="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-3 text-white focus:border-emerald-500 focus:outline-none transition-colors"
                         />
                       </div>
                       <div className="col-span-1 md:col-span-2 space-y-2">
-                        <label className="text-slate-400 text-xs font-bold uppercase">Valor Médio da Conta (R$) *</label>
+                        <label className="text-slate-400 text-xs font-bold uppercase">Empresa/Razão Social *</label>
                         <input
-                          id="valor_conta_atual"
-                          type="number"
+                          id="empresa"
                           required
-                          value={formData.valor_conta_atual}
+                          value={formData.empresa}
                           onChange={handleChange}
-                          className="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-4 text-lg text-white focus:border-emerald-500 focus:outline-none transition-colors"
-                          placeholder="Ex: 5000"
+                          className="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-3 text-white focus:border-emerald-500 focus:outline-none transition-colors"
                         />
                       </div>
                     </div>
+
+                    {/* CONTRATO INFO */}
+                    <div className="bg-slate-900/50 rounded-xl p-6 border border-slate-800">
+                      <h4 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                        <FileText className="w-5 h-5 text-emerald-400" />
+                        O que está incluído:
+                      </h4>
+                      <ul className="space-y-2 text-slate-300">
+                        <li className="flex items-center gap-2">
+                          <CheckCircle className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+                          Contrato padrão de consultoria
+                        </li>
+                        <li className="flex items-center gap-2">
+                          <CheckCircle className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+                          Acesso à plataforma MIGREI
+                        </li>
+                        <li className="flex items-center gap-2">
+                          <CheckCircle className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+                          Diagnóstico energético completo
+                        </li>
+                        <li className="flex items-center gap-2">
+                          <CheckCircle className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+                          Gerente dedicado 24/7
+                        </li>
+                      </ul>
+                    </div>
+
                     <button
                       type="submit"
                       disabled={loading}
-                      className="w-full bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-500 hover:to-cyan-500 text-white font-bold text-lg py-4 rounded-xl shadow-lg mt-8 transition-all disabled:opacity-50"
+                      className="w-full bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-500 hover:to-cyan-500 text-white font-bold text-lg py-4 rounded-xl shadow-lg mt-8 transition-all disabled:opacity-50 flex items-center justify-center gap-2"
                     >
-                      {loading ? <Loader2 className="w-5 h-5 animate-spin mx-auto" /> : "Calcular Minha Economia"}
+                      {loading ? (
+                        <>
+                          <Loader2 className="w-5 h-5 animate-spin" />
+                          Processando...
+                        </>
+                      ) : (
+                        <>
+                          <FileSignature className="w-5 h-5" />
+                          Consolidar Contrato (R$ 99)
+                        </>
+                      )}
                     </button>
                   </form>
                 )}
