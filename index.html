@@ -28,23 +28,20 @@
       ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
       ::-webkit-scrollbar-thumb:hover { background: #10B981; }
     </style>
-    <script type="importmap">
-    {
-      "imports": {
-        "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.9.6",
-        "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
-        "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0",
-        "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
-        "react/": "https://aistudiocdn.com/react@^19.2.0/",
-        "react": "https://aistudiocdn.com/react@^19.2.0",
-        "framer-motion": "https://aistudiocdn.com/framer-motion@^12.23.24",
-        "recharts": "https://aistudiocdn.com/recharts@^3.5.0",
-        "@supabase/supabase-js": "https://aistudiocdn.com/@supabase/supabase-js@^2.39.0",
-        "tesseract.js": "https://aistudiocdn.com/tesseract.js@^5.0.5"
-      }
-    }
-    </script>
   </head>
-  <body><div id="root"></div><script type="module" src="/index.tsx"></script>
+  <body>
+    <noscript>Você precisa habilitar JavaScript para executar este aplicativo.</noscript>
+    <div id="root"></div>
+    <script>
+      console.log('🔍 DEBUG: HTML carregado');
+      console.log('🔍 DEBUG: Elemento root existe?', !!document.getElementById('root'));
+    </script>
+    <script type="module" src="/index.tsx"></script>
+    <script>
+      window.addEventListener('error', (e) => {
+        console.error('❌ ERRO GLOBAL:', e.error);
+        document.body.innerHTML = '<div style="position:fixed;top:0;left:0;right:0;bottom:0;background:#ef4444;color:white;display:flex;align-items:center;justify-content:center;font-family:Arial;padding:20px;text-align:center;"><div><h1 style="font-size:48px;margin-bottom:20px;">❌ ERRO</h1><p style="font-size:20px;">' + e.error + '</p></div></div>';
+      });
+    </script>
 </body>
 </html>

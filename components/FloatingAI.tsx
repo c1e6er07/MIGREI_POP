@@ -2,13 +2,32 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Bot } from 'lucide-react';
 import { motion } from 'framer-motion';
+
 const FloatingAI: React.FC = () => {
   const location = useLocation();
   if (location.pathname === '/migrei-ia' || location.pathname.startsWith('/admin')) return null;
+  
   return (
-    <Link to="/migrei-ia" className="fixed bottom-6 right-6 z-40 group">
-      <div className="relative"> <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} className="relative inline-flex items-center justify-center h-14 w-14 rounded-full bg-gradient-to-r from-emerald-500 to-cyan-500 shadow-xl shadow-emerald-500/30 text-white"> <Bot className="w-8 h-8" strokeWidth={1.5} /> </motion.div> </div>
+    <Link to="/migrei-ia" className="fixed bottom-8 right-8 z-50 group">
+      <motion.div 
+        whileHover={{ scale: 1.1 }} 
+        whileTap={{ scale: 0.9 }}
+        className="relative inline-flex items-center justify-center h-16 w-16 rounded-full bg-gradient-to-r from-emerald-500 to-cyan-500 shadow-2xl shadow-emerald-500/50 text-white hover:shadow-emerald-500/70 transition-shadow duration-300"
+      >
+        <Bot className="w-8 h-8" strokeWidth={2} />
+        <span className="absolute -top-1 -right-1 flex h-4 w-4">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+          <span className="relative inline-flex rounded-full h-4 w-4 bg-emerald-500 border-2 border-white"></span>
+        </span>
+      </motion.div>
+      <div className="absolute bottom-full right-0 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+        <div className="bg-slate-900 text-white px-4 py-2 rounded-lg text-sm whitespace-nowrap shadow-xl border border-emerald-500/20">
+          Conversar com Migrei IA
+          <div className="absolute top-full right-6 w-0 h-0 border-l-8 border-r-8 border-t-8 border-transparent border-t-slate-900"></div>
+        </div>
+      </div>
     </Link>
   );
 };
+
 export default FloatingAI;
