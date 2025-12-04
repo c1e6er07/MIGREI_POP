@@ -10,7 +10,7 @@ const Home: React.FC = () => {
     <div className="overflow-hidden bg-slate-950">
       <section className="relative py-24 overflow-hidden">
         <div className="absolute inset-0"> <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-yellow-500/15 rounded-full blur-[100px] animate-pulse" /> <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-orange-500/15 rounded-full blur-[100px]" /> <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-amber-500/5 rounded-full blur-3xl" /> </div>
-        <div className="absolute inset-0 opacity-10"> <div className="absolute inset-0" style={{ backgroundImage: `linear-gradient(to right, rgb(234, 179, 8, 0.3) 1px, transparent 1px), linear-gradient(to bottom, rgb(234, 179, 8, 0.3) 1px, transparent 1px)`, backgroundSize: '50px 50px' }} /> </div>
+        <div className="absolute inset-0 opacity-10"> <div className="absolute inset-0 bg-gradient-to-br from-yellow-500 to-transparent opacity-20" /> </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div initial={{ opacity: 0, x: -40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7 }} className="relative z-10">
@@ -35,7 +35,7 @@ const Home: React.FC = () => {
       </section>
       <section className="relative py-24 bg-slate-950 overflow-hidden border-y border-slate-800">
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
-        <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.05) 0%, transparent 50%)' }}></div>
+        <div className="absolute inset-0 bg-emerald-500/5 rounded-full blur-3xl"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16"> <span className="text-emerald-500 font-bold tracking-widest uppercase text-xs mb-2 block">Por Que MIGREI</span> <h2 className="text-3xl md:text-5xl font-display font-bold text-white mb-6"> Consultoria que <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">gera resultados comprovados</span> </h2> <div className="w-24 h-1 bg-gradient-to-r from-emerald-500 to-cyan-500 mx-auto rounded-full"></div> </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
