@@ -16,7 +16,6 @@ import Home from './pages/Home';
 import Sobre from './pages/Sobre';
 import ParaEmpresas from './pages/ParaEmpresas';
 import Calculadora from './pages/Calculadora';
-import MigreiIA from './pages/MigreiIA';
 import Contato from './pages/Contato';
 import Noticias from './pages/Noticias';
 import PoliticaPrivacidade from './pages/PoliticaPrivacidade';
@@ -142,7 +141,6 @@ const App: React.FC = () => {
               <Route path="/sobre" element={<Sobre />} />
               <Route path="/empresas" element={<ParaEmpresas />} />
               <Route path="/calculadora" element={<Calculadora />} />
-              <Route path="/migrei-ia" element={<MigreiIA />} />
               <Route path="/contato" element={<Contato />} />
               <Route path="/noticias" element={<Noticias />} />
               <Route path="/privacidade" element={<PoliticaPrivacidade />} />

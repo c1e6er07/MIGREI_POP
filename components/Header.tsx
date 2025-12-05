@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Bot, User } from 'lucide-react';
+import { Menu, X, User } from 'lucide-react';
 import { LOGO_URL } from '../constants';
 
 const Header: React.FC = () => {
@@ -51,19 +51,6 @@ const Header: React.FC = () => {
             <NavLink to="/noticias" label="News" /> <NavLink to="/contato" label="Contato" />{' '}
           </nav>
           <div className="hidden lg:flex items-center gap-4">
-            <div className="flex items-center gap-2 p-1.5 bg-slate-900 border border-slate-800 rounded-xl mr-2">
-              <Link
-                to="/migrei-ia"
-                className="group relative p-2 rounded-lg hover:bg-slate-800 transition-colors"
-              >
-                {' '}
-                <Bot className="w-5 h-5 text-slate-400 group-hover:text-indigo-400 transition-colors" />{' '}
-                <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-slate-800 text-white text-[10px] font-bold rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none border border-slate-700">
-                  {' '}
-                  Migrei IA{' '}
-                </span>{' '}
-              </Link>
-            </div>
             <Link
               to="/login"
               className="group relative inline-flex items-center justify-center px-5 py-2.5 bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-400 hover:to-yellow-400 text-slate-950 text-sm font-bold rounded-lg transition-all shadow-lg shadow-orange-500/20 hover:shadow-orange-500/40 overflow-hidden"
@@ -112,14 +99,6 @@ const Header: React.FC = () => {
               className="block px-4 py-3 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-white font-medium"
             >
               Para Empresas
-            </Link>{' '}
-            <Link
-              to="/migrei-ia"
-              onClick={() => setIsOpen(false)}
-              className="flex items-center px-4 py-3 rounded-lg text-indigo-400 bg-indigo-900/10 border border-indigo-500/20 font-bold mb-4"
-            >
-              {' '}
-              <Bot className="w-4 h-4 mr-3" /> Migrei IA{' '}
             </Link>{' '}
             <Link
               to="/login"
