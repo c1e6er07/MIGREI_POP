@@ -15,6 +15,10 @@ export default defineConfig({
       '@': path.resolve(__dirname, '.'),
     },
   },
+  build: {
+    // Silencia o warning de chunk grande; app está dentro do esperado
+    chunkSizeWarningLimit: 1800,
+  },
   preview: {
     port: 5173,
   },

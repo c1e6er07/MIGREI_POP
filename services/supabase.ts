@@ -182,10 +182,11 @@ export const SaaSService = {
   },
   async connectIntegration(
     _userId: string,
-    distributorId: string,
+    _distributorId: string,
     _credentials: unknown,
   ): Promise<boolean> {
     void _userId;
+    void _distributorId;
     void _credentials;
     await new Promise((resolve) => setTimeout(resolve, 2000));
     return true;
