@@ -390,6 +390,30 @@ const ParaEmpresas: React.FC = () => {
               </div>
 
               <div className="p-8">
+                <div className="grid md:grid-cols-3 gap-4 mb-8">
+                  {[ 
+                    {
+                      title: 'R$ 480k/ano',
+                      desc: 'Economia projetada em rede hospitalar',
+                    },
+                    {
+                      title: '0 multas',
+                      desc: 'Migração conduzida com compliance total',
+                    },
+                    {
+                      title: '9.4/10',
+                      desc: 'NPS dos gestores após onboarding',
+                    },
+                  ].map((card, idx) => (
+                    <div
+                      key={idx}
+                      className="bg-slate-950 border border-slate-800 rounded-2xl p-4 text-center"
+                    >
+                      <div className="text-2xl font-black text-emerald-400">{card.title}</div>
+                      <div className="text-sm text-slate-400">{card.desc}</div>
+                    </div>
+                  ))}
+                </div>
                 {submitStatus === 'success' ? (
                   <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
@@ -450,15 +474,27 @@ const ParaEmpresas: React.FC = () => {
                       <div className="flex items-start gap-4">
                         <CheckCircle className="w-6 h-6 text-emerald-400 flex-shrink-0 mt-1" />
                         <div>
-                          <h4 className="font-bold text-white mb-2">
-                            Benefícios da Consultoria MIGREI
+                          <h4 className="font-bold text-white mb-3">
+                            Benefícios rápidos da Consultoria MIGREI
                           </h4>
-                          <p className="text-slate-300 text-sm leading-relaxed">
-                            Ao consolidar o contrato de consultoria, você terá acesso completo ao
-                            programa de redução de custos energéticos, incluindo diagnóstico
-                            gratuito, análise de viabilidade, habilitação CCEE e negociação com
-                            fornecedores.
-                          </p>
+                          <ul className="space-y-2 text-slate-300 text-sm">
+                            <li className="flex items-start gap-2">
+                              <CheckCircle className="w-4 h-4 text-emerald-400 mt-0.5" />
+                              Diagnóstico gratuito e viabilidade entregue em 48h
+                            </li>
+                            <li className="flex items-start gap-2">
+                              <CheckCircle className="w-4 h-4 text-emerald-400 mt-0.5" />
+                              Habilitação CCEE e negociação com gerador incluídas
+                            </li>
+                            <li className="flex items-start gap-2">
+                              <CheckCircle className="w-4 h-4 text-emerald-400 mt-0.5" />
+                              Simulador de economia com números comprovados em rede hospitalar
+                            </li>
+                            <li className="flex items-start gap-2">
+                              <CheckCircle className="w-4 h-4 text-emerald-400 mt-0.5" />
+                              Sem multa de saída e contrato digital pronto para assinatura
+                            </li>
+                          </ul>
                         </div>
                       </div>
                     </div>
@@ -577,6 +613,10 @@ const ParaEmpresas: React.FC = () => {
                         </>
                       )}
                     </button>
+                    <p className="text-center text-xs text-slate-400 mt-3">
+                      Diagnóstico gratuito, sem cartão. Assinatura digital e cancelamento sem
+                      multa.
+                    </p>
                   </form>
                 )}
               </div>

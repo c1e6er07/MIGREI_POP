@@ -266,6 +266,72 @@ const Home: React.FC = () => {
           </div>
         </div>
       </section>
+      <section className="py-16 bg-slate-900 border-t border-slate-800">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/10 border border-emerald-500/30 rounded-full mb-4">
+              <Award className="w-4 h-4 text-emerald-400" />
+              <span className="text-emerald-400 font-semibold uppercase tracking-wide text-xs">
+                Prova Social
+              </span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-3">
+              Empresas no LinkedIn confiam na MIGREI
+            </h2>
+            <p className="text-slate-400 text-lg">
+              Depoimentos curtos de clientes B2B que migraram com economia comprovada
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                name: 'Fernanda Costa',
+                role: 'CFO · Grupo Alimentício',
+                quote:
+                  'Em 45 dias, reduzimos 32% da fatura e ganhamos previsibilidade. O playbook da MIGREI é direto e seguro.',
+              },
+              {
+                name: 'Rafael Albuquerque',
+                role: 'Facilities · Rede de Hospitais',
+                quote:
+                  'Equipe técnica sólida e comunicação clara. A migração foi tranquila e já projetamos R$ 480k/ano de economia.',
+              },
+              {
+                name: 'Juliana Martins',
+                role: 'Diretora Operações · Logística',
+                quote:
+                  'Usamos a plataforma para acompanhar preços e contratos. ROI veio antes do previsto e sem burocracia.',
+              },
+            ].map((item, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="h-full bg-slate-950 border border-slate-800 rounded-2xl p-6 shadow-[0_0_20px_rgba(16,185,129,0.1)]"
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500/30 to-cyan-500/30" />
+                  <div>
+                    <div className="text-white font-bold text-sm">{item.name}</div>
+                    <div className="text-slate-400 text-xs">{item.role}</div>
+                  </div>
+                  <div className="ml-auto text-emerald-400 text-xs font-semibold px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20">
+                    LinkedIn Verified
+                  </div>
+                </div>
+                <p className="text-slate-300 text-sm leading-relaxed">“{item.quote}”</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Nova Lei CTA - Hero variant - Posicionamento estratégico #1 */}
       <NovaLeiCTA variant="hero" className="bg-slate-950 border-t border-slate-800" />

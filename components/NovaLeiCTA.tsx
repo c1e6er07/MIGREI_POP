@@ -370,7 +370,7 @@ const NovaLeiCTA: React.FC<NovaLeiCTAProps> = ({ variant = 'full', className = '
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => setIsLightboxOpen(true)}
-                  className="bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-400 hover:to-orange-400 text-slate-950 font-bold px-6 py-3 rounded-lg flex items-center justify-center gap-2 transition-all"
+                  className="w-full sm:w-auto bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-400 hover:to-orange-400 text-slate-950 font-bold px-6 py-3 rounded-lg flex items-center justify-center gap-2 transition-all"
                 >
                   <ZoomIn className="w-4 h-4" />
                   Ver Detalhes
@@ -387,6 +387,11 @@ const NovaLeiCTA: React.FC<NovaLeiCTAProps> = ({ variant = 'full', className = '
                   </motion.button>
                 </Link>
               </div>
+
+              <p className="text-slate-400 text-xs mt-3">
+                Infográfico completo + simulação rápida. Sem dados de pagamento, diagnóstico
+                gratuito.
+              </p>
             </div>
           </div>
         </motion.div>
