@@ -1,12 +1,18 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MIGREI | Mercado Livre de Energia</title>
-    <link rel="icon" href="https://kbcziosidwyvlornbaxo.supabase.co/storage/v1/object/sign/Migrei/Logo%20MIGREI%20COM.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9hZWM5MDJjNy1mNDI1LTQ4NTItODY5ZC1kZTJkY2I2ZDQzMDQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNaWdyZWkvTG9nbyBNSUdSRUkgQ09NLnBuZyIsImlhdCI6MTc2NDg2Nzc0NSwiZXhwIjo0ODg2OTMxNzQ1fQ.eM9XAxNS-nC2iupM4Zsrdf1nzgPdoxsGyJZbnc6yhe4" />
+    <link
+      rel="icon"
+      href="https://kbcziosidwyvlornbaxo.supabase.co/storage/v1/object/sign/Migrei/Logo%20MIGREI%20COM.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9hZWM5MDJjNy1mNDI1LTQ4NTItODY5ZC1kZTJkY2I2ZDQzMDQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJNaWdyZWkvTG9nbyBNSUdSRUkgQ09NLnBuZyIsImlhdCI6MTc2NDg2Nzc0NSwiZXhwIjo0ODg2OTMxNzQ1fQ.eM9XAxNS-nC2iupM4Zsrdf1nzgPdoxsGyJZbnc6yhe4"
+    />
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <script>
       tailwind.config = {
         theme: {
@@ -15,33 +21,35 @@
             colors: {
               emerald: { 400: '#34D399', 500: '#10B981', 600: '#059669' },
               cyan: { 400: '#22D3EE', 500: '#0EA5E9', 600: '#0284C7' },
-              slate: { 850: '#1e293b', 900: '#0f172a', 950: '#020617' }
-            }
-          }
-        }
-      }
+              slate: { 850: '#1e293b', 900: '#0f172a', 950: '#020617' },
+            },
+          },
+        },
+      };
     </script>
     <style>
-      body { background-color: #020617; color: #f8fafc; }
-      ::-webkit-scrollbar { width: 8px; }
-      ::-webkit-scrollbar-track { background: #0f172a; }
-      ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
-      ::-webkit-scrollbar-thumb:hover { background: #10B981; }
+      body {
+        background-color: #020617;
+        color: #f8fafc;
+      }
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #0f172a;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #334155;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #10b981;
+      }
     </style>
   </head>
   <body>
     <noscript>Você precisa habilitar JavaScript para executar este aplicativo.</noscript>
     <div id="root"></div>
-    <script>
-      console.log('🔍 DEBUG: HTML carregado');
-      console.log('🔍 DEBUG: Elemento root existe?', !!document.getElementById('root'));
-    </script>
     <script type="module" src="/index.tsx"></script>
-    <script>
-      window.addEventListener('error', (e) => {
-        console.error('❌ ERRO GLOBAL:', e.error);
-        document.body.innerHTML = '<div style="position:fixed;top:0;left:0;right:0;bottom:0;background:#ef4444;color:white;display:flex;align-items:center;justify-content:center;font-family:Arial;padding:20px;text-align:center;"><div><h1 style="font-size:48px;margin-bottom:20px;">❌ ERRO</h1><p style="font-size:20px;">' + e.error + '</p></div></div>';
-      });
-    </script>
-</body>
+  </body>
 </html>

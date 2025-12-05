@@ -6,11 +6,11 @@ import { motion } from 'framer-motion';
 const FloatingAI: React.FC = () => {
   const location = useLocation();
   if (location.pathname === '/migrei-ia' || location.pathname.startsWith('/admin')) return null;
-  
+
   return (
     <Link to="/migrei-ia" className="fixed bottom-8 right-8 z-50 group">
-      <motion.div 
-        whileHover={{ scale: 1.1 }} 
+      <motion.div
+        whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         className="relative inline-flex items-center justify-center h-16 w-16 rounded-full bg-gradient-to-r from-emerald-500 to-cyan-500 shadow-2xl shadow-emerald-500/50 text-white hover:shadow-emerald-500/70 transition-shadow duration-300"
       >

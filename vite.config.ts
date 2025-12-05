@@ -13,9 +13,9 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, '.'),
-    }
+    },
   },
   preview: {
     port: 5173,
-  }
+  },
 });

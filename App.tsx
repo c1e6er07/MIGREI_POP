@@ -1,5 +1,12 @@
 import React from 'react';
-import { HashRouter as Router, Routes, Route, useLocation, Navigate, Outlet } from 'react-router-dom';
+import {
+  HashRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+  Navigate,
+  Outlet,
+} from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import FloatingAI from './components/FloatingAI';
@@ -78,7 +85,7 @@ class ErrorBoundary extends React.Component<EBProps, EBState> {
 
 const ScrollToTop: React.FC = () => {
   const location = useLocation();
-  
+
   React.useEffect(() => {
     try {
       window.scrollTo(0, 0);
@@ -87,14 +94,14 @@ const ScrollToTop: React.FC = () => {
       // Ignore scroll errors
     }
   }, [location.pathname]);
-  
+
   return null;
 };
 
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { user, loading } = useAuth();
   const location = useLocation();
-  
+
   if (loading) {
     return (
       <div className="min-h-screen bg-slate-950 flex items-center justify-center">
@@ -102,11 +109,11 @@ const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) =
       </div>
     );
   }
-  
+
   if (!user) {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
-  
+
   return <>{children}</>;
 };
 
@@ -143,14 +150,21 @@ const App: React.FC = () => {
               <Route path="/admin" element={<Admin />} />
             </Route>
             <Route path="/login" element={<Login />} />
-            <Route path="/app" element={<ProtectedRoute><DashboardLayout /></ProtectedRoute>}>
-               <Route index element={<Overview />} />
-               <Route path="faturas" element={<Invoices />} />
-               <Route path="financeiro" element={<Finance />} />
-               <Route path="consumo" element={<Consumption />} />
-               <Route path="relatorios" element={<Reports />} />
-               <Route path="compliance" element={<Compliance />} />
-               <Route path="config" element={<Settings />} />
+            <Route
+              path="/app"
+              element={
+                <ProtectedRoute>
+                  <DashboardLayout />
+                </ProtectedRoute>
+              }
+            >
+              <Route index element={<Overview />} />
+              <Route path="faturas" element={<Invoices />} />
+              <Route path="financeiro" element={<Finance />} />
+              <Route path="consumo" element={<Consumption />} />
+              <Route path="relatorios" element={<Reports />} />
+              <Route path="compliance" element={<Compliance />} />
+              <Route path="config" element={<Settings />} />
             </Route>
           </Routes>
         </Router>

@@ -3,12 +3,15 @@
 ## ⚡ Desenvolvimento Rápido
 
 ### Iniciar Servidor
+
 ```powershell
 npm run dev
 ```
-Acesse: **http://localhost:3000**
+
+Acesse: **http://127.0.0.1:5173**
 
 ### Validar Código
+
 ```powershell
 npm run lint
 npm run check
@@ -16,6 +19,7 @@ npm run build
 ```
 
 ### Deploy
+
 ```powershell
 git add .
 git commit -m "mensagem"
@@ -27,16 +31,19 @@ git push origin main
 ## 🛠️ Comandos Úteis
 
 ### Limpar Cache (se tela branca)
+
 ```powershell
 Remove-Item dist,".vite","node_modules\.vite" -Recurse -Force -ErrorAction SilentlyContinue
 ```
 
 ### Instalar Dependências
+
 ```powershell
 npm install
 ```
 
 ### Formatar Código
+
 ```powershell
 npm run format
 ```
@@ -70,9 +77,13 @@ npm run format
 
 ## 📝 Notas
 
-- Porta padrão: **3000**
+- Porta padrão: **5173** (Vite default)
 - Build output: `dist/`
 - Node version: **18+**
+
+### Git Workflow
+
+```powershell
 git commit -m "feat: descrição do que foi feito"
 git push origin main
 ```
@@ -81,13 +92,13 @@ git push origin main
 
 ## 🔧 Comandos Disponíveis
 
-| Comando | Descrição |
-|---------|-----------|
-| `npm run dev` | Inicia servidor de desenvolvimento (Vite) |
-| `npm run build` | Compila para produção |
-| `npm run lint` | Verifica erros com ESLint |
-| `npm run check` | Verifica tipos com TypeScript |
-| `npm run preview` | Visualiza build de produção |
+| Comando           | Descrição                                 |
+| ----------------- | ----------------------------------------- |
+| `npm run dev`     | Inicia servidor de desenvolvimento (Vite) |
+| `npm run build`   | Compila para produção                     |
+| `npm run lint`    | Verifica erros com ESLint                 |
+| `npm run check`   | Verifica tipos com TypeScript             |
+| `npm run preview` | Visualiza build de produção               |
 
 ---
 
@@ -115,6 +126,7 @@ src/
 ## 🛠️ Troubleshooting
 
 ### ❌ Tela Branca no Browser?
+
 ```powershell
 # Limpar cache
 rm -r dist -Force; rm -r .vite -Force
@@ -127,6 +139,7 @@ npm run dev
 ```
 
 ### ❌ Porta 3000 em uso?
+
 ```powershell
 # Ver o que está usando a porta
 netstat -ano | findstr ":3000"
@@ -136,6 +149,7 @@ taskkill /PID [PID] /F
 ```
 
 ### ❌ ESLint/TypeScript Errors?
+
 ```powershell
 # Ver erro completo
 npm run check -- --listFiles
@@ -149,6 +163,7 @@ npm run lint -- --fix
 ## ✨ Features Principais
 
 ### Home Page
+
 - ✅ Hero com economia destacada
 - ✅ Seção de Serviços Completos
 - ✅ Seção Investimento em Consultoria
@@ -156,6 +171,7 @@ npm run lint -- --fix
 - ✅ Social proof (500+ clientes)
 
 ### Para Empresas
+
 - ✅ Processo com 6 etapas interativas (modals)
 - ✅ Calculadora de economia
 - ✅ 3 planos de precificação
@@ -163,12 +179,14 @@ npm run lint -- --fix
 - ✅ Todos CTAs → Google Forms
 
 ### Sobre
+
 - ✅ Lei 15.269/2025 detalhada
 - ✅ 4 pilares regulatórios
 - ✅ Timeline visual (Grupo A/B)
 - ✅ Ecossistema MIGREI
 
 ### Notícias
+
 - ✅ 6 artigos sobre MLE
 - ✅ Lei 15.269/2025 em destaque
 - ✅ Social proof com datas recentes

@@ -5,17 +5,17 @@ export const OCRService = {
   async processInvoice(file: File): Promise<OCRResult> {
     try {
       if (!file) {
-        throw new Error("Nenhum arquivo foi fornecido.");
+        throw new Error('Nenhum arquivo foi fornecido.');
       }
 
       const validTypes = ['image/jpeg', 'image/png', 'application/pdf'];
       if (!validTypes.includes(file.type)) {
-        throw new Error("Formato de arquivo inválido. Use JPEG, PNG ou PDF.");
+        throw new Error('Formato de arquivo inválido. Use JPEG, PNG ou PDF.');
       }
 
       const maxSize = 10 * 1024 * 1024;
       if (file.size > maxSize) {
-        throw new Error("Arquivo muito grande. Máximo: 10MB.");
+        throw new Error('Arquivo muito grande. Máximo: 10MB.');
       }
 
       const worker = await Tesseract.createWorker('por');
@@ -24,13 +24,13 @@ export const OCRService = {
       await worker.terminate();
 
       if (!text || text.trim().length === 0) {
-        throw new Error("Não foi possível extrair texto do documento.");
+        throw new Error('Não foi possível extrair texto do documento.');
       }
 
       const moneyRegex = /R\$\s?(\d{1,3}(?:\.\d{3})*,\d{2})/g;
       const matches = [...text.matchAll(moneyRegex)];
       let maxValue = 0;
-      matches.forEach(match => {
+      matches.forEach((match) => {
         const val = parseFloat(match[1].replace('.', '').replace(',', '.'));
         if (val > maxValue) maxValue = val;
       });
@@ -48,13 +48,13 @@ export const OCRService = {
         text: text.substring(0, 500) + (text.length > 500 ? '...' : ''),
         extractedValue: maxValue > 0 ? maxValue : undefined,
         extractedDate: foundDate || undefined,
-        confidence: ret.data.confidence
+        confidence: ret.data.confidence,
       };
     } catch (error) {
       if (error instanceof Error) {
         throw new Error(`Falha ao processar documento: ${error.message}`);
       }
-      throw new Error("Falha ao processar imagem.");
+      throw new Error('Falha ao processar imagem.');
     }
-  }
+  },
 };

@@ -14,6 +14,7 @@ Sistema completo de gestão para o Mercado Livre de Energia com IA integrada, fr
 **Pré-requisitos:** Node.js 18+ (recomendado 20+)
 
 1. **Instalar dependências:**
+
    ```bash
    npm install
    ```
@@ -24,9 +25,11 @@ Sistema completo de gestão para o Mercado Livre de Energia com IA integrada, fr
    - Obtenha sua chave em: https://aistudio.google.com/app/apikey
 
 3. **Iniciar servidor:**
+
    ```bash
    npm run dev
    ```
+
    Note: O servidor abre uma janela PowerShell separada para manter o processo ativo
 
 4. **Abrir no navegador:**
@@ -45,7 +48,7 @@ Sistema completo de gestão para o Mercado Livre de Energia com IA integrada, fr
 ✅ Para Empresas (Propostas)  
 ✅ Compliance & Riscos  
 ✅ Relatórios & Análises  
-✅ Multi-tenant Franquias  
+✅ Multi-tenant Franquias
 
 ---
 

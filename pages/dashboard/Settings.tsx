@@ -1,23 +1,311 @@
 import React, { useState } from 'react';
-import { User, Bell, Shield, Database, Trash2, Check, AlertTriangle, Loader2, Link as LinkIcon, Zap, Server } from 'lucide-react';
+import {
+  User,
+  Bell,
+  Shield,
+  Database,
+  Trash2,
+  Check,
+  AlertTriangle,
+  Loader2,
+  Link as LinkIcon,
+  Zap,
+  Server,
+} from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import { SaaSService } from '../../services/supabase';
 const Settings: React.FC = () => {
   const { user, profile } = useAuth();
   const [loading, setLoading] = useState(false);
   const [activeTab, setActiveTab] = useState<'profile' | 'integrations' | 'developer'>('profile');
-  const [message, setMessage] = useState<{ type: 'success' | 'error', text: string } | null>(null);
-  const [integrations, setIntegrations] = useState([ { id: 'enel', name: 'Enel SP', status: 'connected', lastSync: 'Há 2 horas', icon: Zap }, { id: 'cpfl', name: 'CPFL Energia', status: 'disconnected', lastSync: '-', icon: Zap }, { id: 'light', name: 'Light', status: 'disconnected', lastSync: '-', icon: Zap }, { id: 'cemig', name: 'Cemig', status: 'error', lastSync: 'Falha há 1 dia', icon: Zap }, ]);
-  const handleSeedData = async () => { if (!user) return; if (!confirm("Isso criará unidades e faturas fictícias para teste. Continuar?")) return; setLoading(true); setMessage(null); const res = await SaaSService.seedTestDatabase(user.id); setMessage({ type: res.success ? 'success' : 'error', text: res.message }); setLoading(false); };
-  const handleClearData = async () => { if (!user) return; if (!confirm("ATENÇÃO: Isso apagará TODAS as faturas e unidades deste usuário. Continuar?")) return; setLoading(true); setMessage(null); const res = await SaaSService.clearTestDatabase(user.id); setMessage({ type: res.success ? 'success' : 'error', text: res.message }); setLoading(false); };
-  const toggleIntegration = (id: string) => { setLoading(true); setTimeout(() => { setIntegrations(prev => prev.map(i => { if (i.id === id) { return { ...i, status: i.status === 'connected' ? 'disconnected' : 'connected', lastSync: i.status === 'connected' ? '-' : 'Agora mesmo' }; } return i; })); setLoading(false); }, 1500); };
+  const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
+  const [integrations, setIntegrations] = useState([
+    { id: 'enel', name: 'Enel SP', status: 'connected', lastSync: 'Há 2 horas', icon: Zap },
+    { id: 'cpfl', name: 'CPFL Energia', status: 'disconnected', lastSync: '-', icon: Zap },
+    { id: 'light', name: 'Light', status: 'disconnected', lastSync: '-', icon: Zap },
+    { id: 'cemig', name: 'Cemig', status: 'error', lastSync: 'Falha há 1 dia', icon: Zap },
+  ]);
+  const handleSeedData = async () => {
+    if (!user) return;
+    if (!confirm('Isso criará unidades e faturas fictícias para teste. Continuar?')) return;
+    setLoading(true);
+    setMessage(null);
+    const res = await SaaSService.seedTestDatabase(user.id);
+    setMessage({ type: res.success ? 'success' : 'error', text: res.message });
+    setLoading(false);
+  };
+  const handleClearData = async () => {
+    if (!user) return;
+    if (!confirm('ATENÇÃO: Isso apagará TODAS as faturas e unidades deste usuário. Continuar?'))
+      return;
+    setLoading(true);
+    setMessage(null);
+    const res = await SaaSService.clearTestDatabase(user.id);
+    setMessage({ type: res.success ? 'success' : 'error', text: res.message });
+    setLoading(false);
+  };
+  const toggleIntegration = (id: string) => {
+    setLoading(true);
+    setTimeout(() => {
+      setIntegrations((prev) =>
+        prev.map((i) => {
+          if (i.id === id) {
+            return {
+              ...i,
+              status: i.status === 'connected' ? 'disconnected' : 'connected',
+              lastSync: i.status === 'connected' ? '-' : 'Agora mesmo',
+            };
+          }
+          return i;
+        }),
+      );
+      setLoading(false);
+    }, 1500);
+  };
   return (
     <div className="max-w-5xl mx-auto space-y-8">
-      <div> <h1 className="text-2xl font-bold text-white">Configurações</h1> <p className="text-slate-400 text-sm">Gerencie seu perfil, integrações e preferências.</p> </div>
-      <div className="flex border-b border-slate-800"> <button onClick={() => setActiveTab('profile')} className={`px-6 py-3 text-sm font-bold border-b-2 transition-colors flex items-center gap-2 ${activeTab === 'profile' ? 'border-emerald-500 text-emerald-500' : 'border-transparent text-slate-400 hover:text-white'}`}> <User className="w-4 h-4" /> Perfil & Segurança </button> <button onClick={() => setActiveTab('integrations')} className={`px-6 py-3 text-sm font-bold border-b-2 transition-colors flex items-center gap-2 ${activeTab === 'integrations' ? 'border-emerald-500 text-emerald-500' : 'border-transparent text-slate-400 hover:text-white'}`}> <LinkIcon className="w-4 h-4" /> Conexões (Hub) </button> <button onClick={() => setActiveTab('developer')} className={`px-6 py-3 text-sm font-bold border-b-2 transition-colors flex items-center gap-2 ${activeTab === 'developer' ? 'border-emerald-500 text-emerald-500' : 'border-transparent text-slate-400 hover:text-white'}`}> <Database className="w-4 h-4" /> Dados & Testes </button> </div>
-      {activeTab === 'profile' && ( <div className="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-500"> <div className="p-6 border-b border-slate-800 flex items-center gap-4"> <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-full flex items-center justify-center text-white text-2xl font-bold shadow-lg shadow-emerald-500/20"> {profile?.full_name?.charAt(0) || <User />} </div> <div> <h2 className="text-xl font-bold text-white">{profile?.full_name}</h2> <p className="text-slate-400">{user?.email}</p> <span className="inline-block mt-2 px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-slate-800 text-slate-300 border border-slate-700"> {profile?.role || 'Usuário'} </span> </div> </div> <div className="p-6 grid gap-6"> <div className="flex items-center justify-between p-4 bg-slate-950 rounded-lg border border-slate-800 hover:border-slate-700 transition-colors"> <div className="flex items-center gap-3"> <div className="p-2 bg-emerald-500/10 rounded-lg text-emerald-500"><Bell className="w-5 h-5" /></div> <div> <h3 className="font-medium text-white">Notificações por Email</h3> <p className="text-xs text-slate-400">Receber alertas de faturas e anomalias de consumo.</p> </div> </div> <div className="relative inline-block w-12 h-6 transition duration-200 ease-in-out rounded-full bg-emerald-600 cursor-pointer"> <span className="absolute left-6 top-1 bg-white w-4 h-4 rounded-full transition-transform transform translate-x-0"></span> </div> </div> <div className="flex items-center justify-between p-4 bg-slate-950 rounded-lg border border-slate-800 hover:border-slate-700 transition-colors"> <div className="flex items-center gap-3"> <div className="p-2 bg-orange-500/10 rounded-lg text-orange-500"><Shield className="w-5 h-5" /></div> <div> <h3 className="font-medium text-white">Autenticação de Dois Fatores (2FA)</h3> <p className="text-xs text-slate-400">Camada extra de segurança para o Open Finance.</p> </div> </div> <button className="text-xs font-bold text-emerald-500 hover:underline">Configurar</button> </div> </div> </div> )}
-      {activeTab === 'integrations' && ( <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500"> <div className="bg-gradient-to-r from-slate-900 to-slate-950 border border-emerald-500/20 rounded-xl p-6"> <div className="flex items-center gap-3 mb-2"> <Server className="w-6 h-6 text-emerald-500" /> <h2 className="text-lg font-bold text-white">Hub de Conexões</h2> </div> <p className="text-slate-400 text-sm"> Conecte suas contas das distribuidoras para importar faturas e dados de telemetria automaticamente. Nossos robôs (RPA) monitoram os portais das concessionárias 24/7. </p> </div> <div className="grid md:grid-cols-2 gap-4"> {integrations.map((item) => ( <div key={item.id} className={`p-6 rounded-xl border transition-all ${ item.status === 'connected' ? 'bg-slate-900 border-emerald-500/30 shadow-lg shadow-emerald-500/5' : 'bg-slate-900 border-slate-800 opacity-80 hover:opacity-100' }`}> <div className="flex justify-between items-start mb-4"> <div className="flex items-center gap-3"> <div className={`p-3 rounded-lg ${ item.status === 'connected' ? 'bg-emerald-500/10 text-emerald-500' : 'bg-slate-800 text-slate-400' }`}> <item.icon className="w-6 h-6" /> </div> <div> <h3 className="font-bold text-white">{item.name}</h3> <p className="text-xs text-slate-500 flex items-center gap-1"> {item.status === 'connected' ? ( <><Check className="w-3 h-3" /> Conectado</> ) : item.status === 'error' ? ( <><AlertTriangle className="w-3 h-3 text-red-500" /> Erro de Login</> ) : ( 'Não conectado' )} </p> </div> </div> <div className={`w-3 h-3 rounded-full ${ item.status === 'connected' ? 'bg-emerald-500 animate-pulse' : item.status === 'error' ? 'bg-red-500' : 'bg-slate-700' }`}></div> </div> <div className="flex justify-between items-center border-t border-slate-800 pt-4 mt-2"> <span className="text-xs text-slate-500">Última sincronização: <br/><strong className="text-slate-300">{item.lastSync}</strong></span> <button onClick={() => toggleIntegration(item.id)} disabled={loading} className={`px-4 py-2 rounded-lg text-xs font-bold transition-all ${ item.status === 'connected' ? 'bg-slate-800 text-red-400 hover:bg-red-900/20' : 'bg-emerald-600 text-white hover:bg-emerald-500' }`} > {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : item.status === 'connected' ? 'Desconectar' : 'Conectar'} </button> </div> </div> ))} </div> </div> )}
-      {activeTab === 'developer' && ( <div className="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-500"> <div className="p-4 bg-slate-800/50 border-b border-slate-800 flex items-center gap-2"> <Database className="w-4 h-4 text-slate-400" /> <h3 className="text-sm font-bold text-slate-300 uppercase tracking-wide">Área do Desenvolvedor (Demo Data)</h3> </div> <div className="p-6 space-y-4"> <p className="text-sm text-slate-400"> Use estas ferramentas para popular o banco de dados com informações fictícias para visualizar os gráficos e funcionalidades do sistema. </p> {message && ( <div className={`p-3 rounded-lg text-sm flex items-center gap-2 ${message.type === 'success' ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'bg-red-500/10 text-red-400 border border-red-500/20'}`}> {message.type === 'success' ? <Check className="w-4 h-4" /> : <AlertTriangle className="w-4 h-4" />} {message.text} </div> )} <div className="flex gap-4"> <button onClick={handleSeedData} disabled={loading} className="flex items-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-bold rounded-lg transition-all"> {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Database className="w-4 h-4" />} Gerar Dados de Teste </button> <button onClick={handleClearData} disabled={loading} className="flex items-center gap-2 px-4 py-2 bg-red-900/30 hover:bg-red-900/50 text-red-400 border border-red-900/50 text-sm font-bold rounded-lg transition-all"> {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Trash2 className="w-4 h-4" />} Limpar Tudo </button> </div> </div> </div> )}
+      <div>
+        {' '}
+        <h1 className="text-2xl font-bold text-white">Configurações</h1>{' '}
+        <p className="text-slate-400 text-sm">
+          Gerencie seu perfil, integrações e preferências.
+        </p>{' '}
+      </div>
+      <div className="flex border-b border-slate-800">
+        {' '}
+        <button
+          onClick={() => setActiveTab('profile')}
+          className={`px-6 py-3 text-sm font-bold border-b-2 transition-colors flex items-center gap-2 ${activeTab === 'profile' ? 'border-emerald-500 text-emerald-500' : 'border-transparent text-slate-400 hover:text-white'}`}
+        >
+          {' '}
+          <User className="w-4 h-4" /> Perfil & Segurança{' '}
+        </button>{' '}
+        <button
+          onClick={() => setActiveTab('integrations')}
+          className={`px-6 py-3 text-sm font-bold border-b-2 transition-colors flex items-center gap-2 ${activeTab === 'integrations' ? 'border-emerald-500 text-emerald-500' : 'border-transparent text-slate-400 hover:text-white'}`}
+        >
+          {' '}
+          <LinkIcon className="w-4 h-4" /> Conexões (Hub){' '}
+        </button>{' '}
+        <button
+          onClick={() => setActiveTab('developer')}
+          className={`px-6 py-3 text-sm font-bold border-b-2 transition-colors flex items-center gap-2 ${activeTab === 'developer' ? 'border-emerald-500 text-emerald-500' : 'border-transparent text-slate-400 hover:text-white'}`}
+        >
+          {' '}
+          <Database className="w-4 h-4" /> Dados & Testes{' '}
+        </button>{' '}
+      </div>
+      {activeTab === 'profile' && (
+        <div className="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-500">
+          {' '}
+          <div className="p-6 border-b border-slate-800 flex items-center gap-4">
+            {' '}
+            <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-full flex items-center justify-center text-white text-2xl font-bold shadow-lg shadow-emerald-500/20">
+              {' '}
+              {profile?.full_name?.charAt(0) || <User />}{' '}
+            </div>{' '}
+            <div>
+              {' '}
+              <h2 className="text-xl font-bold text-white">{profile?.full_name}</h2>{' '}
+              <p className="text-slate-400">{user?.email}</p>{' '}
+              <span className="inline-block mt-2 px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-slate-800 text-slate-300 border border-slate-700">
+                {' '}
+                {profile?.role || 'Usuário'}{' '}
+              </span>{' '}
+            </div>{' '}
+          </div>{' '}
+          <div className="p-6 grid gap-6">
+            {' '}
+            <div className="flex items-center justify-between p-4 bg-slate-950 rounded-lg border border-slate-800 hover:border-slate-700 transition-colors">
+              {' '}
+              <div className="flex items-center gap-3">
+                {' '}
+                <div className="p-2 bg-emerald-500/10 rounded-lg text-emerald-500">
+                  <Bell className="w-5 h-5" />
+                </div>{' '}
+                <div>
+                  {' '}
+                  <h3 className="font-medium text-white">Notificações por Email</h3>{' '}
+                  <p className="text-xs text-slate-400">
+                    Receber alertas de faturas e anomalias de consumo.
+                  </p>{' '}
+                </div>{' '}
+              </div>{' '}
+              <div className="relative inline-block w-12 h-6 transition duration-200 ease-in-out rounded-full bg-emerald-600 cursor-pointer">
+                {' '}
+                <span className="absolute left-6 top-1 bg-white w-4 h-4 rounded-full transition-transform transform translate-x-0"></span>{' '}
+              </div>{' '}
+            </div>{' '}
+            <div className="flex items-center justify-between p-4 bg-slate-950 rounded-lg border border-slate-800 hover:border-slate-700 transition-colors">
+              {' '}
+              <div className="flex items-center gap-3">
+                {' '}
+                <div className="p-2 bg-orange-500/10 rounded-lg text-orange-500">
+                  <Shield className="w-5 h-5" />
+                </div>{' '}
+                <div>
+                  {' '}
+                  <h3 className="font-medium text-white">
+                    Autenticação de Dois Fatores (2FA)
+                  </h3>{' '}
+                  <p className="text-xs text-slate-400">
+                    Camada extra de segurança para o Open Finance.
+                  </p>{' '}
+                </div>{' '}
+              </div>{' '}
+              <button className="text-xs font-bold text-emerald-500 hover:underline">
+                Configurar
+              </button>{' '}
+            </div>{' '}
+          </div>{' '}
+        </div>
+      )}
+      {activeTab === 'integrations' && (
+        <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
+          {' '}
+          <div className="bg-gradient-to-r from-slate-900 to-slate-950 border border-emerald-500/20 rounded-xl p-6">
+            {' '}
+            <div className="flex items-center gap-3 mb-2">
+              {' '}
+              <Server className="w-6 h-6 text-emerald-500" />{' '}
+              <h2 className="text-lg font-bold text-white">Hub de Conexões</h2>{' '}
+            </div>{' '}
+            <p className="text-slate-400 text-sm">
+              {' '}
+              Conecte suas contas das distribuidoras para importar faturas e dados de telemetria
+              automaticamente. Nossos robôs (RPA) monitoram os portais das concessionárias
+              24/7.{' '}
+            </p>{' '}
+          </div>{' '}
+          <div className="grid md:grid-cols-2 gap-4">
+            {' '}
+            {integrations.map((item) => (
+              <div
+                key={item.id}
+                className={`p-6 rounded-xl border transition-all ${item.status === 'connected' ? 'bg-slate-900 border-emerald-500/30 shadow-lg shadow-emerald-500/5' : 'bg-slate-900 border-slate-800 opacity-80 hover:opacity-100'}`}
+              >
+                {' '}
+                <div className="flex justify-between items-start mb-4">
+                  {' '}
+                  <div className="flex items-center gap-3">
+                    {' '}
+                    <div
+                      className={`p-3 rounded-lg ${item.status === 'connected' ? 'bg-emerald-500/10 text-emerald-500' : 'bg-slate-800 text-slate-400'}`}
+                    >
+                      {' '}
+                      <item.icon className="w-6 h-6" />{' '}
+                    </div>{' '}
+                    <div>
+                      {' '}
+                      <h3 className="font-bold text-white">{item.name}</h3>{' '}
+                      <p className="text-xs text-slate-500 flex items-center gap-1">
+                        {' '}
+                        {item.status === 'connected' ? (
+                          <>
+                            <Check className="w-3 h-3" /> Conectado
+                          </>
+                        ) : item.status === 'error' ? (
+                          <>
+                            <AlertTriangle className="w-3 h-3 text-red-500" /> Erro de Login
+                          </>
+                        ) : (
+                          'Não conectado'
+                        )}{' '}
+                      </p>{' '}
+                    </div>{' '}
+                  </div>{' '}
+                  <div
+                    className={`w-3 h-3 rounded-full ${item.status === 'connected' ? 'bg-emerald-500 animate-pulse' : item.status === 'error' ? 'bg-red-500' : 'bg-slate-700'}`}
+                  ></div>{' '}
+                </div>{' '}
+                <div className="flex justify-between items-center border-t border-slate-800 pt-4 mt-2">
+                  {' '}
+                  <span className="text-xs text-slate-500">
+                    Última sincronização: <br />
+                    <strong className="text-slate-300">{item.lastSync}</strong>
+                  </span>{' '}
+                  <button
+                    onClick={() => toggleIntegration(item.id)}
+                    disabled={loading}
+                    className={`px-4 py-2 rounded-lg text-xs font-bold transition-all ${item.status === 'connected' ? 'bg-slate-800 text-red-400 hover:bg-red-900/20' : 'bg-emerald-600 text-white hover:bg-emerald-500'}`}
+                  >
+                    {' '}
+                    {loading ? (
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                    ) : item.status === 'connected' ? (
+                      'Desconectar'
+                    ) : (
+                      'Conectar'
+                    )}{' '}
+                  </button>{' '}
+                </div>{' '}
+              </div>
+            ))}{' '}
+          </div>{' '}
+        </div>
+      )}
+      {activeTab === 'developer' && (
+        <div className="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-500">
+          {' '}
+          <div className="p-4 bg-slate-800/50 border-b border-slate-800 flex items-center gap-2">
+            {' '}
+            <Database className="w-4 h-4 text-slate-400" />{' '}
+            <h3 className="text-sm font-bold text-slate-300 uppercase tracking-wide">
+              Área do Desenvolvedor (Demo Data)
+            </h3>{' '}
+          </div>{' '}
+          <div className="p-6 space-y-4">
+            {' '}
+            <p className="text-sm text-slate-400">
+              {' '}
+              Use estas ferramentas para popular o banco de dados com informações fictícias para
+              visualizar os gráficos e funcionalidades do sistema.{' '}
+            </p>{' '}
+            {message && (
+              <div
+                className={`p-3 rounded-lg text-sm flex items-center gap-2 ${message.type === 'success' ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'bg-red-500/10 text-red-400 border border-red-500/20'}`}
+              >
+                {' '}
+                {message.type === 'success' ? (
+                  <Check className="w-4 h-4" />
+                ) : (
+                  <AlertTriangle className="w-4 h-4" />
+                )}{' '}
+                {message.text}{' '}
+              </div>
+            )}{' '}
+            <div className="flex gap-4">
+              {' '}
+              <button
+                onClick={handleSeedData}
+                disabled={loading}
+                className="flex items-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-bold rounded-lg transition-all"
+              >
+                {' '}
+                {loading ? (
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                ) : (
+                  <Database className="w-4 h-4" />
+                )}{' '}
+                Gerar Dados de Teste{' '}
+              </button>{' '}
+              <button
+                onClick={handleClearData}
+                disabled={loading}
+                className="flex items-center gap-2 px-4 py-2 bg-red-900/30 hover:bg-red-900/50 text-red-400 border border-red-900/50 text-sm font-bold rounded-lg transition-all"
+              >
+                {' '}
+                {loading ? (
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                ) : (
+                  <Trash2 className="w-4 h-4" />
+                )}{' '}
+                Limpar Tudo{' '}
+              </button>{' '}
+            </div>{' '}
+          </div>{' '}
+        </div>
+      )}
     </div>
   );
 };
