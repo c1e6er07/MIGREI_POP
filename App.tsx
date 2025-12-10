@@ -1,38 +1,6 @@
 import React from 'react';
-import {
-  HashRouter as Router,
-  Routes,
-  Route,
-  useLocation,
-  Navigate,
-  Outlet,
-} from 'react-router-dom';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import FloatingAI from './components/FloatingAI';
-import { AuthProvider, useAuth } from './contexts/AuthContext';
-import { Loader2 } from 'lucide-react';
-import Home from './pages/Home';
-import Sobre from './pages/Sobre';
-import Franquia from './pages/Franquia';
-import ParaEmpresas from './pages/ParaEmpresas';
-import Calculadora from './pages/Calculadora';
-import Contato from './pages/Contato';
-import Noticias from './pages/Noticias';
-import PoliticaPrivacidade from './pages/PoliticaPrivacidade';
-import Health from './pages/Health';
-import TermosUso from './pages/TermosUso';
-import Admin from './pages/Admin';
-import Login from './pages/auth/Login';
-import LandingTeste from './pages/LandingTeste';
-import DashboardLayout from './layouts/DashboardLayout';
-import Overview from './pages/dashboard/Overview';
-import Invoices from './pages/dashboard/Invoices';
-import Settings from './pages/dashboard/Settings';
-import Consumption from './pages/dashboard/Consumption';
-import Reports from './pages/dashboard/Reports';
-import Finance from './pages/dashboard/Finance';
-import Compliance from './pages/dashboard/Compliance';
+import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import ComingSoon from './pages/ComingSoon';
 
 type EBState = { hasError: boolean; error?: Error };
 type EBProps = { children: React.ReactNode };
@@ -99,78 +67,15 @@ const ScrollToTop: React.FC = () => {
   return null;
 };
 
-const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const { user, loading } = useAuth();
-  const location = useLocation();
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-slate-950 flex items-center justify-center">
-        <Loader2 className="w-8 h-8 text-emerald-500 animate-spin" />
-      </div>
-    );
-  }
-
-  if (!user) {
-    return <Navigate to="/login" state={{ from: location }} replace />;
-  }
-
-  return <>{children}</>;
-};
-
-const PublicLayout: React.FC = () => {
-  return (
-    <div className="min-h-screen bg-slate-950 flex flex-col font-sans text-slate-100">
-      <Header />
-      <main className="flex-grow pt-20">
-        <Outlet />
-      </main>
-      <FloatingAI />
-      <Footer />
-    </div>
-  );
-};
 const App: React.FC = () => {
   return (
     <ErrorBoundary>
-      <AuthProvider>
-        <Router>
-          <ScrollToTop />
-          <Routes>
-            <Route element={<PublicLayout />}>
-              <Route path="/" element={<Home />} />
-              <Route path="/health" element={<Health />} />
-              <Route path="/sobre" element={<Sobre />} />
-              <Route path="/franquia" element={<Franquia />} />
-              <Route path="/empresas" element={<ParaEmpresas />} />
-              <Route path="/calculadora" element={<Calculadora />} />
-              <Route path="/contato" element={<Contato />} />
-              <Route path="/noticias" element={<Noticias />} />
-              <Route path="/privacidade" element={<PoliticaPrivacidade />} />
-              <Route path="/termos" element={<TermosUso />} />
-              <Route path="/lp" element={<LandingTeste />} />
-              <Route path="/admin" element={<Admin />} />
-            </Route>
-            <Route path="/login" element={<Login />} />
-            <Route
-              path="/app"
-              element={
-                <ProtectedRoute>
-                  <DashboardLayout />
-                </ProtectedRoute>
-              }
-            >
-              <Route index element={<Overview />} />
-              <Route path="faturas" element={<Invoices />} />
-              <Route path="financeiro" element={<Finance />} />
-              <Route path="consumo" element={<Consumption />} />
-              <Route path="relatorios" element={<Reports />} />
-              <Route path="compliance" element={<Compliance />} />
-              <Route path="config" element={<Settings />} />
-            </Route>
-          </Routes>
-        </Router>
-      </AuthProvider>
+      <Router>
+        <ScrollToTop />
+        <Routes>
+          <Route path="*" element={<ComingSoon />} />
+        </Routes>
+      </Router>
     </ErrorBoundary>
   );
 };
