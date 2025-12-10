@@ -20,9 +20,15 @@ Write-Host "⏳ Iniciando servidor...`n" -ForegroundColor Yellow
 # Mudar para o diretório do projeto
 Set-Location "d:\MIGREI_POP"
 
-# Iniciar npm dev
-npm run dev
+try {
+	# Iniciar npm dev
+	npm run dev
 
-Write-Host "`n✅ Servidor encerrado." -ForegroundColor Green
-Write-Host "Pressione qualquer tecla para fechar..." -ForegroundColor Gray
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+	Write-Host "`n✅ Servidor encerrado." -ForegroundColor Green
+} catch {
+	Write-Host "`n❌ Falha ao iniciar o servidor: $_" -ForegroundColor Red
+	Write-Host "Verifique se as dependências estão instaladas (npm install) e tente novamente." -ForegroundColor Yellow
+} finally {
+	Write-Host "Pressione qualquer tecla para fechar..." -ForegroundColor Gray
+	$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+}

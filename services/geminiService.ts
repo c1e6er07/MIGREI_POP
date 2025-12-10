@@ -55,7 +55,7 @@ Seu tom é profissional, seguro, mas acessível e didático.
 - **ANEEL**: Agência Nacional de Energia Elétrica - regulação
 - **ONS**: Operador Nacional do Sistema - operação em tempo real
 - **MME**: Ministério de Minas e Energia - políticas energéticas
-- **Comercializadoras**: Intermediários que compram e vendem energia
+- **Comercialização**: Intermediação para compra e venda de energia
 - **Geradoras**: Produtores de energia elétrica
 - **Distribuidoras**: Responsáveis pela rede e entrega física
 

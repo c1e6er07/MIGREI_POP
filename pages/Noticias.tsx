@@ -19,9 +19,9 @@ const Noticias: React.FC = () => {
       setNews([
         {
           id: 1,
-          title: 'MIGREI se torna a primeira Comercializadora Varejista do Brasil',
+          title: 'MIGREI se torna a primeira operação de Comercialização Varejista do Brasil',
           summary:
-            'Com a regulamentação da Lei 15.269/2025, a MIGREI é oficialmente a primeira comercializadora varejista habilitada pela ANEEL para atender consumidores dos Grupos A e B no Mercado Livre de Energia.',
+            'Com a regulamentação da Lei 15.269/2025, a MIGREI é oficialmente a primeira operação de comercialização varejista habilitada pela ANEEL para atender consumidores dos Grupos A e B no Mercado Livre de Energia.',
           category: 'MIGREI',
           image_url:
             'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
@@ -54,7 +54,7 @@ const Noticias: React.FC = () => {
           id: 4,
           title: 'Produto Padrão: Transparência Total na Comercialização',
           summary:
-            'ANEEL regulamentará produto padrão com preço de referência para facilitar comparação entre ofertas de diferentes comercializadoras varejistas, promovendo competitividade e modicidade tarifária.',
+            'ANEEL regulamentará produto padrão com preço de referência para facilitar comparação entre ofertas de diferentes operações de comercialização varejista, promovendo competitividade e modicidade tarifária.',
           category: 'Educativo',
           image_url:
             'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
@@ -65,7 +65,7 @@ const Noticias: React.FC = () => {
           id: 5,
           title: 'Supridor de Última Instância garante segurança aos consumidores',
           summary:
-            'A Lei 15.269/2025 cria o mecanismo de Suprimento de Última Instância (SUI), garantindo fornecimento contínuo de energia mesmo em caso de encerramento de representação por comercializadora varejista.',
+            'A Lei 15.269/2025 cria o mecanismo de Suprimento de Última Instância (SUI), garantindo fornecimento contínuo de energia mesmo em caso de encerramento de representação por operação de comercialização varejista.',
           category: 'Regulatório',
           image_url:
             'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
@@ -89,8 +89,14 @@ const Noticias: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-slate-950 font-sans">
-      <section className="relative py-20 overflow-hidden bg-slate-900 border-b border-slate-800">
-        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
+      <section className="relative py-24 overflow-hidden bg-slate-900 border-b border-slate-800">
+        <div className="absolute inset-0">
+          <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-yellow-500/12 rounded-full blur-[100px] animate-pulse" />
+          <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-orange-500/12 rounded-full blur-[100px]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-amber-500/5 rounded-full blur-3xl" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+        </div>
+        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-15"></div>
         <div className="max-w-7xl mx-auto px-4 relative z-10">
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-full mb-6">
             <Zap className="w-4 h-4 text-emerald-500" />

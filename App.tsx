@@ -14,6 +14,7 @@ import { AuthProvider, useAuth } from './contexts/AuthContext';
 import { Loader2 } from 'lucide-react';
 import Home from './pages/Home';
 import Sobre from './pages/Sobre';
+import Franquia from './pages/Franquia';
 import ParaEmpresas from './pages/ParaEmpresas';
 import Calculadora from './pages/Calculadora';
 import Contato from './pages/Contato';
@@ -23,6 +24,7 @@ import Health from './pages/Health';
 import TermosUso from './pages/TermosUso';
 import Admin from './pages/Admin';
 import Login from './pages/auth/Login';
+import LandingTeste from './pages/LandingTeste';
 import DashboardLayout from './layouts/DashboardLayout';
 import Overview from './pages/dashboard/Overview';
 import Invoices from './pages/dashboard/Invoices';
@@ -139,12 +141,14 @@ const App: React.FC = () => {
               <Route path="/" element={<Home />} />
               <Route path="/health" element={<Health />} />
               <Route path="/sobre" element={<Sobre />} />
+              <Route path="/franquia" element={<Franquia />} />
               <Route path="/empresas" element={<ParaEmpresas />} />
               <Route path="/calculadora" element={<Calculadora />} />
               <Route path="/contato" element={<Contato />} />
               <Route path="/noticias" element={<Noticias />} />
               <Route path="/privacidade" element={<PoliticaPrivacidade />} />
               <Route path="/termos" element={<TermosUso />} />
+              <Route path="/lp" element={<LandingTeste />} />
               <Route path="/admin" element={<Admin />} />
             </Route>
             <Route path="/login" element={<Login />} />

@@ -38,7 +38,7 @@ const Header: React.FC = () => {
                 MIGREI
               </span>{' '}
               <span className="text-[9px] text-slate-500 font-bold uppercase tracking-[0.2em] leading-none group-hover:text-emerald-500 transition-colors">
-                Comercializadora Varejista
+                Comercialização Varejista
               </span>{' '}
             </div>
           </Link>
@@ -46,6 +46,7 @@ const Header: React.FC = () => {
             {' '}
             <NavLink to="/" label="Início" /> <NavLink to="/sobre" label="Quem Somos" />{' '}
             <NavLink to="/empresas" label="Para Empresas" />{' '}
+            <NavLink to="/franquia" label="Para Investidores" />{' '}
             <div className="h-4 w-px bg-slate-800 mx-2"></div>{' '}
             <NavLink to="/calculadora" label="Calculadora" />{' '}
             <NavLink to="/noticias" label="News" /> <NavLink to="/contato" label="Contato" />{' '}
@@ -99,6 +100,13 @@ const Header: React.FC = () => {
               className="block px-4 py-3 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-white font-medium"
             >
               Para Empresas
+            </Link>{' '}
+            <Link
+              to="/franquia"
+              onClick={() => setIsOpen(false)}
+              className="block px-4 py-3 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-white font-medium"
+            >
+              Para Investidores
             </Link>{' '}
             <Link
               to="/login"

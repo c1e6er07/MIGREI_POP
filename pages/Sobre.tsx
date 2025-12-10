@@ -2,17 +2,14 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Cpu,
-  Globe,
   Network,
   ShieldCheck,
   Database,
   Layers,
   ArrowRight,
-  Map,
   Building2,
   Share2,
   TrendingUp,
-  DollarSign,
   ChevronDown,
   CheckCircle2,
   Sparkles,
@@ -21,6 +18,7 @@ import {
   FileText,
   Clock,
   Award,
+  Rocket,
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { LOGO_URL } from '../constants';
@@ -28,7 +26,7 @@ import { LOGO_URL } from '../constants';
 const Sobre: React.FC = () => {
   const [expandedOrg, setExpandedOrg] = useState<string | null>(null);
 
-  // Pilares da Lei 15.269/2025 relacionados à Comercializadora Varejista
+  // Pilares da Lei 15.269/2025 relacionados à Comercialização Varejista
   const legalHighlights = [
     {
       icon: FileText,
@@ -51,7 +49,7 @@ const Sobre: React.FC = () => {
       title: 'Supridor de Última Instância',
       subtitle: 'Segurança e Continuidade',
       description:
-        'Mecanismo de proteção para consumidores, garantindo fornecimento mesmo em caso de falência de comercializadoras.',
+        'Mecanismo de proteção para consumidores, garantindo fornecimento mesmo em caso de falência de operações de comercialização.',
       color: 'indigo',
     },
     {
@@ -72,7 +70,7 @@ const Sobre: React.FC = () => {
       icon: Zap,
       color: 'from-emerald-500 to-cyan-500',
       description:
-        'Primeira comercializadora varejista do Brasil, habilitada para atender Grupos A e B.',
+        'Primeira operação de comercialização varejista do Brasil, habilitada para atender Grupos A e B.',
       features: [
         'Onboarding Digital 100%',
         'Produto Padrão Lei 15.269',
@@ -124,77 +122,6 @@ const Sobre: React.FC = () => {
     },
   ];
 
-  const pricingTiers = [
-    {
-      tier: 'City',
-      label: 'Franquia City',
-      subtitle: 'Base Operacional',
-      investment: 'R$ 45.000',
-      royalty: '8%',
-      launchPromo: '6% (3 meses)',
-      icon: Building2,
-      color: 'emerald',
-      features: [
-        'Direitos exclusivos na cidade',
-        'CRM + Portal do Cliente',
-        'Treinamento 40h',
-        'Suporte State/Region',
-        'Pagamentos PIX e Cartão',
-      ],
-      projection: {
-        clients: '15 empresas (M12)',
-        revenue: 'R$ 127.500/mês',
-        profit: 'R$ 38.250/mês',
-        payback: '6-8 meses',
-      },
-    },
-    {
-      tier: 'State',
-      label: 'Franquia State',
-      subtitle: 'Master Estadual',
-      investment: 'R$ 180k - R$ 250k',
-      royalty: '30% Cities',
-      launchPromo: 'Tier 1-3 pricing',
-      icon: Map,
-      color: 'orange',
-      features: [
-        'Gestão das Cities do Estado',
-        'Auditoria + Fiscalização',
-        'BI Consolidado',
-        'Treinamento 80h',
-        'Setup Fee R$ 3k/City',
-      ],
-      projection: {
-        clients: '20 Cities ativas',
-        revenue: 'R$ 70.000/mês',
-        profit: 'R$ 42.000/mês',
-        payback: '4-5 meses',
-      },
-    },
-    {
-      tier: 'Region',
-      label: 'Franquia Region',
-      subtitle: 'Master Regional',
-      investment: 'R$ 500k - R$ 1M',
-      royalty: '20% Rede',
-      launchPromo: 'Negociação direta HQ',
-      icon: Globe,
-      color: 'purple',
-      features: [
-        'Gestão de 3-5 States',
-        'Centro de Operações',
-        'BI Executivo',
-        'Treinamento 120h',
-        'Expansão Estratégica',
-      ],
-      projection: {
-        clients: '100 Cities (5 States)',
-        revenue: 'R$ 198.200/mês',
-        profit: 'R$ 113.200/mês',
-        payback: '9-11 meses',
-      },
-    },
-  ];
 
   const getColorClasses = (color: string) => {
     const colorMap: Record<
@@ -228,90 +155,125 @@ const Sobre: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-slate-950 font-sans text-slate-100 overflow-hidden">
-      <section className="relative py-32 lg:py-48 overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
-          <motion.div
-            animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }}
-            transition={{ duration: 8, repeat: Infinity }}
-            className="absolute top-1/4 left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-[100px]"
-          />
-          <motion.div
-            animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }}
-            transition={{ duration: 10, repeat: Infinity, delay: 1 }}
-            className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-orange-500/10 rounded-full blur-[120px]"
-          />
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+      <section className="relative py-24 overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-yellow-500/15 rounded-full blur-[100px] animate-pulse" />
+          <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-orange-500/15 rounded-full blur-[100px]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-amber-500/5 rounded-full blur-3xl" />
         </div>
-
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0 bg-gradient-to-br from-yellow-500 to-transparent opacity-20" />
+        </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div
-              animate={{ y: [0, -15, 0] }}
-              transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-              className="mb-8 inline-block"
+              initial={{ opacity: 0, x: -40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7 }}
+              className="relative z-10"
             >
-              <div className="relative">
-                <div className="absolute inset-0 bg-emerald-500/30 blur-3xl rounded-full opacity-50"></div>
-                <img
-                  src={LOGO_URL}
-                  alt="MIGREI"
-                  className="h-24 md:h-32 w-auto relative z-10 drop-shadow-2xl"
-                />
+              <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-orange-950/80 to-yellow-950/80 border-2 border-orange-400/60 rounded-full mb-8 backdrop-blur-sm shadow-[0_0_20px_rgba(234,88,12,0.4)]">
+                <Building2 className="w-5 h-5 text-orange-300" />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-300 to-yellow-300 text-sm md:text-base font-bold uppercase tracking-wide">
+                  Pioneira em Comercialização Varejista
+                </span>
+              </div>
+              <h1 className="text-5xl lg:text-7xl font-display font-black mb-6 text-white leading-tight">
+                <span className="bg-gradient-to-r from-emerald-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent">
+                  Quem Somos MIGREI
+                </span>
+              </h1>
+              <p className="text-slate-300 mb-8 text-xl lg:text-2xl leading-relaxed">
+                Sua empresa pode reduzir custos de energia em{' '}
+                <span className="text-emerald-400 font-bold">30-40%</span> no Mercado Livre de
+                Energia. A MIGREI conduz toda a jornada com equipe regulatória, tecnologia e
+                execução ponta a ponta.
+              </p>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+                <div className="bg-slate-900/60 backdrop-blur-sm rounded-2xl p-4 border border-emerald-500/30 text-center">
+                  <div className="text-3xl font-black text-emerald-400 mb-1">30-40%</div>
+                  <div className="text-[10px] text-slate-400 uppercase tracking-wide font-bold">
+                    Economia de Custos
+                  </div>
+                </div>
+                <div className="bg-slate-900/60 backdrop-blur-sm rounded-2xl p-4 border border-cyan-500/30 text-center">
+                  <div className="text-3xl font-black text-cyan-400 mb-1">30-60</div>
+                  <div className="text-[10px] text-slate-400 uppercase tracking-wide font-bold">
+                    Dias Implementação
+                  </div>
+                </div>
+                <div className="bg-slate-900/60 backdrop-blur-sm rounded-2xl p-4 border border-emerald-500/30 text-center">
+                  <div className="text-3xl font-black text-emerald-400 mb-1">500+</div>
+                  <div className="text-[10px] text-slate-400 uppercase tracking-wide font-bold">
+                    Empresas Atendidas
+                  </div>
+                </div>
+                <div className="bg-slate-900/60 backdrop-blur-sm rounded-2xl p-4 border border-blue-500/30 text-center">
+                  <div className="text-3xl font-black text-blue-400 mb-1">100%</div>
+                  <div className="text-[10px] text-slate-400 uppercase tracking-wide font-bold">
+                    Taxa de Sucesso
+                  </div>
+                </div>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link to="/empresas" className="w-full sm:w-auto">
+                  <button className="w-full bg-gradient-to-r from-emerald-700 to-cyan-700 hover:from-emerald-600 hover:to-cyan-600 text-white font-bold text-lg px-8 py-6 rounded-xl shadow-xl shadow-emerald-700/25 flex items-center justify-center transition-all hover:scale-105">
+                    <Rocket className="w-5 h-5 mr-2" /> Ver Nossa Solução
+                  </button>
+                </Link>
+                <a
+                  href="https://forms.gle/izq23HmRnSYEFkJ9A"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto"
+                >
+                  <button className="w-full bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 text-white font-semibold text-lg px-8 py-6 rounded-xl shadow-xl shadow-amber-600/25 flex items-center justify-center transition-all hover:scale-105">
+                    Agendar Reunião
+                  </button>
+                </a>
               </div>
             </motion.div>
-
-            <span className="inline-block py-1 px-3 rounded-full bg-emerald-900/30 border border-emerald-500/50 text-xs font-bold text-emerald-400 mb-6 uppercase tracking-widest shadow-lg shadow-emerald-500/20">
-              Lei 15.269/2025 • Pioneira no Mercado Livre
-            </span>
-
-            <h1 className="text-4xl md:text-7xl font-display font-black text-white mb-8 tracking-tight leading-tight">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">
-                A Primeira
-              </span>
-              <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-yellow-400 to-orange-500">
-                COMERCIALIZADORA VAREJISTA
-              </span>
-              <br />
-              <span className="text-white text-2xl md:text-4xl font-normal">
-                do Mercado Livre de Energia
-              </span>
-            </h1>
-
-            <p className="text-lg md:text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed mb-6">
-              Pioneira na{' '}
-              <span className="text-emerald-400 font-bold">
-                democratização do acesso ao Mercado Livre de Energia
-              </span>
-              , a MIGREI é a primeira comercializadora varejista habilitada para atender{' '}
-              <span className="text-orange-400 font-bold">consumidores do Grupo A</span>{' '}
-              (industrial/comercial) e, em breve,{' '}
-              <span className="text-cyan-400 font-bold">consumidores do Grupo B</span>{' '}
-              (residencial).
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-10">
-              <Link to="/empresas">
-                <button className="px-8 py-4 bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-500 hover:to-cyan-500 text-white font-bold rounded-xl shadow-lg shadow-emerald-500/30 transition-all transform hover:scale-105 flex items-center justify-center gap-2">
-                  <Zap className="w-5 h-5" />
-                  Migrar para o Mercado Livre
-                </button>
-              </Link>
-
-              <a
-                href="#lei-15269"
-                className="px-8 py-4 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-xl border border-slate-600 hover:border-emerald-500/50 transition-all flex items-center justify-center gap-2"
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="relative hidden lg:flex items-center justify-center z-0"
+            >
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
+                className="absolute inset-0 flex items-center justify-center"
               >
-                <FileText className="w-5 h-5 text-emerald-400" />
-                Entenda a Lei 15.269/2025
-              </a>
-            </div>
-          </motion.div>
+                <div className="w-[500px] h-[500px] border-2 border-dashed border-yellow-500/20 rounded-full" />
+                <div className="absolute w-[400px] h-[400px] border border-dotted border-orange-500/20 rounded-full" />
+              </motion.div>
+              <motion.div
+                animate={{ y: [0, -20, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+                className="relative z-10"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full blur-3xl opacity-40" />
+                <img
+                  src={LOGO_URL}
+                  alt="MIGREI MLE CONSULT"
+                  className="relative w-96 h-96 object-contain drop-shadow-2xl"
+                />
+              </motion.div>
+              <motion.div
+                animate={{ y: [0, -10, 0], x: [0, 5, 0] }}
+                transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
+                className="absolute top-20 right-0 z-20 bg-slate-900/90 backdrop-blur-sm p-4 rounded-xl border border-yellow-500/30 shadow-xl"
+              >
+                <div className="flex items-center gap-3">
+                  <TrendingUp className="w-8 h-8 text-yellow-400" />
+                  <div>
+                    <div className="text-white font-bold">Mercado em Alta</div>
+                    <div className="text-xs text-slate-400">Crescimento exponencial</div>
+                  </div>
+                </div>
+              </motion.div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -415,7 +377,7 @@ const Sobre: React.FC = () => {
             <div className="mt-6 p-4 bg-emerald-500/5 border border-emerald-500/20 rounded-xl">
               <p className="text-sm text-slate-300 leading-relaxed">
                 <strong className="text-emerald-400">Exemplo prático:</strong> Um consumidor
-                residencial (Grupo B) poderá escolher entre diferentes comercializadoras e comparar
+                residencial (Grupo B) poderá escolher entre diferentes operações de comercialização e comparar
                 ofertas através de um{' '}
                 <span className="text-white font-bold">produto padrão com preço de referência</span>
                 , garantindo transparência total e facilitando a tomada de decisão.
@@ -440,8 +402,8 @@ const Sobre: React.FC = () => {
               </span>
             </h2>
             <p className="text-slate-400 max-w-3xl mx-auto text-lg">
-              Não somos apenas uma comercializadora. Somos um{' '}
-              <span className="text-white font-bold">ecossistema tecnológico completo</span>
+              Não somos apenas uma operação de comercialização. Somos um{' '}
+              <span className="text-white font-bold">ecossistema tecnológico completo</span>{' '}
               que conecta inteligência artificial, compliance regulatório e educação para
               democratizar o acesso ao Mercado Livre de Energia.
             </p>
@@ -594,312 +556,251 @@ const Sobre: React.FC = () => {
         </div>
       </section>
 
-      <section id="pricing" className="py-24 bg-slate-950 relative overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
-        </div>
-
+      {/* SEÇÃO: OPORTUNIDADE PARA INVESTIDORES */}
+      <section className="py-24 bg-gradient-to-b from-slate-900 to-slate-950 border-y border-slate-800 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10"></div>
+        <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-yellow-500/10 rounded-full blur-[120px] animate-pulse" />
+        <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-orange-500/10 rounded-full blur-[120px]" />
+        
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/10 border border-emerald-500/20 rounded-full mb-6"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-orange-950/80 to-yellow-950/80 border-2 border-orange-400/60 rounded-full mb-6 backdrop-blur-sm shadow-[0_0_20px_rgba(234,88,12,0.4)]"
             >
-              <DollarSign className="w-4 h-4 text-emerald-400" />
-              <span className="text-emerald-400 font-bold tracking-widest uppercase text-xs">
-                Modelo de Investimento
+              <Rocket className="w-5 h-5 text-orange-300" />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-300 to-yellow-300 text-sm font-bold uppercase tracking-wide">
+                Oportunidade Única de Investimento
               </span>
             </motion.div>
-            <h2 className="text-3xl md:text-5xl font-display font-bold mb-6 text-white">
-              Escolha Seu Nível de Atuação
+            <h2 className="text-4xl md:text-6xl font-display font-black mb-6 text-white leading-tight">
+              <span className="bg-gradient-to-r from-yellow-400 via-orange-400 to-amber-400 bg-clip-text text-transparent">
+                POR QUE INVESTIR
+              </span>
+              <br />
+              <span className="text-white">em Franquias MIGREI?</span>
             </h2>
-            <p className="text-slate-400 max-w-2xl mx-auto text-lg">
-              Investimento científico baseado em ROI (Retorno sobre Investimento) comprovado.
-              Payback rápido, margens saudáveis e suporte completo.
+            <p className="text-slate-300 text-xl max-w-3xl mx-auto leading-relaxed">
+              O momento é AGORA. Novo marco regulatório, mercado de R$ 300 bilhões em transformação
+              e modelo de negócio validado com ROI comprovado.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
-            {pricingTiers.map((tier, idx) => (
-              <motion.div
-                key={tier.tier}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.15 }}
-                className={`relative group ${tier.tier === 'State' ? 'lg:scale-105 lg:z-10' : ''}`}
-              >
-                <div
-                  className={`bg-gradient-to-br from-slate-900 to-slate-950 border-2 ${
-                    tier.tier === 'State'
-                      ? 'border-orange-500/50 shadow-2xl shadow-orange-500/20'
-                      : 'border-slate-800'
-                  } rounded-2xl p-8 h-full transition-all`}
-                >
-                  {tier.tier === 'State' && (
-                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-orange-500 to-yellow-500 text-slate-950 text-xs font-bold rounded-full uppercase tracking-wide">
-                      Mais Popular
-                    </div>
-                  )}
-
-                  <div className="text-center mb-6">
-                    <div
-                      className={`w-20 h-20 mx-auto mb-4 rounded-2xl ${getColorClasses(tier.color).bg} border ${getColorClasses(tier.color).border} flex items-center justify-center`}
-                    >
-                      <tier.icon className={`w-10 h-10 ${getColorClasses(tier.color).icon}`} />
-                    </div>
-                    <h3 className="text-2xl font-bold text-white mb-1">{tier.label}</h3>
-                    <p className="text-sm text-slate-500 font-bold uppercase tracking-wide mb-4">
-                      {tier.subtitle}
-                    </p>
-
-                    <div className="mb-6">
-                      <div className="text-4xl font-black text-white mb-2">{tier.investment}</div>
-                      <div className="flex items-center justify-center gap-2 text-sm">
-                        <span className="text-slate-500">Royalty:</span>
-                        <span className={`font-bold ${getColorClasses(tier.color).text}`}>
-                          {tier.royalty}
-                        </span>
-                      </div>
-                      {tier.launchPromo && (
-                        <div className="mt-2 inline-block px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-full">
-                          <span className="text-xs font-bold text-emerald-400">
-                            {tier.launchPromo}
-                          </span>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-
-                  <div className="space-y-3 mb-6">
-                    {tier.features.map((feature, i) => (
-                      <div key={i} className="flex items-start gap-2 text-sm text-slate-300">
-                        <CheckCircle2
-                          className={`w-4 h-4 ${getColorClasses(tier.color).check} shrink-0 mt-0.5`}
-                        />
-                        <span>{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="pt-6 border-t border-slate-800">
-                    <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wide mb-3">
-                      Projeção (Ano 1)
-                    </h4>
-                    <div className="grid grid-cols-2 gap-3 text-xs">
-                      <div className="bg-slate-950 p-3 rounded-lg border border-slate-800">
-                        <div className="text-slate-500 mb-1">Clientes</div>
-                        <div className="font-bold text-white">{tier.projection.clients}</div>
-                      </div>
-                      <div className="bg-slate-950 p-3 rounded-lg border border-slate-800">
-                        <div className="text-slate-500 mb-1">Receita/mês</div>
-                        <div className="font-bold text-emerald-400">{tier.projection.revenue}</div>
-                      </div>
-                      <div className="bg-slate-950 p-3 rounded-lg border border-slate-800">
-                        <div className="text-slate-500 mb-1">Lucro/mês</div>
-                        <div className="font-bold text-emerald-400">{tier.projection.profit}</div>
-                      </div>
-                      <div className="bg-slate-950 p-3 rounded-lg border border-slate-800">
-                        <div className="text-slate-500 mb-1">Payback</div>
-                        <div className="font-bold text-orange-400">{tier.projection.payback}</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <Link to="/franquia">
-                    <button
-                      className={`w-full mt-6 py-3 px-6 rounded-xl font-bold transition-all ${
-                        tier.tier === 'State'
-                          ? 'bg-gradient-to-r from-orange-500 to-yellow-500 text-slate-950 hover:shadow-lg hover:shadow-orange-500/30'
-                          : `bg-${tier.color}-600 text-white hover:bg-${tier.color}-500`
-                      }`}
-                    >
-                      Solicitar Informações
-                    </button>
-                  </Link>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="bg-slate-950 border border-emerald-500/30 rounded-2xl p-8 hover:border-emerald-500/60 hover:shadow-[0_0_40px_rgba(16,185,129,0.15)] transition-all group"
+            >
+              <div className="w-16 h-16 bg-gradient-to-br from-emerald-500/20 to-cyan-500/20 rounded-2xl flex items-center justify-center mb-6 border border-emerald-500/30 group-hover:scale-110 transition-transform">
+                <TrendingUp className="w-8 h-8 text-emerald-400" />
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-3">Mercado em Expansão Acelerada</h3>
+              <p className="text-slate-300 leading-relaxed mb-4">
+                <span className="text-emerald-400 font-bold">Lei 15.269/2025</span> abre o Mercado Livre
+                para <span className="text-white font-bold">todos os consumidores</span> nos próximos
+                24-36 meses. Projeção de{' '}
+                <span className="text-yellow-400 font-black">40 milhões de clientes elegíveis</span>.
+              </p>
+              <div className="flex items-center gap-2 text-sm">
+                <div className="h-2 flex-1 bg-slate-800 rounded-full overflow-hidden">
+                  <div className="h-full bg-gradient-to-r from-emerald-500 to-cyan-500 w-[75%] animate-pulse"></div>
                 </div>
-              </motion.div>
-            ))}
+                <span className="text-emerald-400 font-bold">+300%</span>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="bg-slate-950 border border-orange-500/30 rounded-2xl p-8 hover:border-orange-500/60 hover:shadow-[0_0_40px_rgba(249,115,22,0.15)] transition-all group"
+            >
+              <div className="w-16 h-16 bg-gradient-to-br from-orange-500/20 to-yellow-500/20 rounded-2xl flex items-center justify-center mb-6 border border-orange-500/30 group-hover:scale-110 transition-transform">
+                <Clock className="w-8 h-8 text-orange-400" />
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-3">Timing Perfeito</h3>
+              <p className="text-slate-300 leading-relaxed mb-4">
+                Janela única de <span className="text-orange-400 font-bold">24 meses</span> para
+                posicionamento antes da saturação. Pioneiros capturam{' '}
+                <span className="text-white font-bold">70% do mercado</span> nos primeiros 2 anos.
+              </p>
+              <div className="bg-orange-500/10 border border-orange-500/20 rounded-xl p-4">
+                <p className="text-xs text-orange-300 font-bold uppercase tracking-wide">
+                  🔥 First-mover advantage em seu território
+                </p>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="bg-slate-950 border border-cyan-500/30 rounded-2xl p-8 hover:border-cyan-500/60 hover:shadow-[0_0_40px_rgba(6,182,212,0.15)] transition-all group"
+            >
+              <div className="w-16 h-16 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 rounded-2xl flex items-center justify-center mb-6 border border-cyan-500/30 group-hover:scale-110 transition-transform">
+                <Award className="w-8 h-8 text-cyan-400" />
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-3">Modelo Validado com ROI Comprovado</h3>
+              <p className="text-slate-300 leading-relaxed mb-4">
+                Operação piloto gerou <span className="text-cyan-400 font-bold">R$ 2,3M de MRR</span>{' '}
+                em 18 meses. Payback médio de{' '}
+                <span className="text-white font-bold">4-11 meses</span> dependendo do território.
+              </p>
+              <div className="grid grid-cols-2 gap-3">
+                <div className="bg-slate-900 rounded-lg p-3 text-center border border-slate-800">
+                  <div className="text-2xl font-black text-cyan-400">4-11</div>
+                  <div className="text-[10px] text-slate-400 uppercase font-bold">Meses Payback</div>
+                </div>
+                <div className="bg-slate-900 rounded-lg p-3 text-center border border-slate-800">
+                  <div className="text-2xl font-black text-emerald-400">40%+</div>
+                  <div className="text-[10px] text-slate-400 uppercase font-bold">Margem Líquida</div>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+              className="bg-slate-950 border border-purple-500/30 rounded-2xl p-8 hover:border-purple-500/60 hover:shadow-[0_0_40px_rgba(168,85,247,0.15)] transition-all group"
+            >
+              <div className="w-16 h-16 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-2xl flex items-center justify-center mb-6 border border-purple-500/30 group-hover:scale-110 transition-transform">
+                <ShieldCheck className="w-8 h-8 text-purple-400" />
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-3">Segurança Regulatória Total</h3>
+              <p className="text-slate-300 leading-relaxed mb-4">
+                MIGREI Core cuida de <span className="text-purple-400 font-bold">100% do compliance</span>{' '}
+                (ANEEL, CCEE, BACEN, LGPD). Franqueado foca apenas em{' '}
+                <span className="text-white font-bold">vendas e relacionamento</span>.
+              </p>
+              <div className="space-y-2">
+                {['Habilitação CCEE', 'Liquidação Financeira', 'Auditoria Contínua'].map((item, i) => (
+                  <div key={i} className="flex items-center gap-2 text-xs text-slate-300">
+                    <CheckCircle2 className="w-4 h-4 text-purple-400" />
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5 }}
+              className="bg-slate-950 border border-indigo-500/30 rounded-2xl p-8 hover:border-indigo-500/60 hover:shadow-[0_0_40px_rgba(99,102,241,0.15)] transition-all group"
+            >
+              <div className="w-16 h-16 bg-gradient-to-br from-indigo-500/20 to-violet-500/20 rounded-2xl flex items-center justify-center mb-6 border border-indigo-500/30 group-hover:scale-110 transition-transform">
+                <Cpu className="w-8 h-8 text-indigo-400" />
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-3">Tecnologia Proprietária de Ponta</h3>
+              <p className="text-slate-300 leading-relaxed mb-4">
+                Plataforma SaaS com <span className="text-indigo-400 font-bold">IA Gemini 2.5</span>{' '}
+                integrada, CRM avançado, analytics BI e automação 24/7. Franqueado recebe tudo{' '}
+                <span className="text-white font-bold">turnkey</span>.
+              </p>
+              <div className="bg-indigo-500/10 border border-indigo-500/20 rounded-xl p-4">
+                <p className="text-xs text-indigo-300 font-bold">
+                  🤖 AI Central reduz CAC em 60% e aumenta conversão em 3x
+                </p>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.6 }}
+              className="bg-slate-950 border border-yellow-500/30 rounded-2xl p-8 hover:border-yellow-500/60 hover:shadow-[0_0_40px_rgba(234,179,8,0.15)] transition-all group"
+            >
+              <div className="w-16 h-16 bg-gradient-to-br from-yellow-500/20 to-amber-500/20 rounded-2xl flex items-center justify-center mb-6 border border-yellow-500/30 group-hover:scale-110 transition-transform">
+                <Sparkles className="w-8 h-8 text-yellow-400" />
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-3">Suporte Full e Playbook Completo</h3>
+              <p className="text-slate-300 leading-relaxed mb-4">
+                Da habilitação à operação contínua: treinamentos, marketing co-op, CRM configurado,
+                scripts de vendas e{' '}
+                <span className="text-yellow-400 font-bold">gerente dedicado 24/7</span>.
+              </p>
+              <div className="grid grid-cols-3 gap-2">
+                {['Treinamento', 'Marketing', 'CRM'].map((tag, i) => (
+                  <div
+                    key={i}
+                    className="bg-yellow-500/10 border border-yellow-500/20 rounded-lg px-2 py-1 text-center"
+                  >
+                    <span className="text-[10px] text-yellow-300 font-bold uppercase">{tag}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
           </div>
 
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-gradient-to-r from-slate-900 to-slate-950 border border-emerald-500/20 rounded-2xl p-8"
+            className="bg-gradient-to-br from-slate-900 to-slate-950 border-2 border-orange-500/40 rounded-3xl p-12 text-center shadow-[0_0_60px_rgba(249,115,22,0.2)]"
           >
-            <div className="flex items-center gap-3 mb-6">
-              <Share2 className="w-8 h-8 text-emerald-500" />
+            <div className="max-w-3xl mx-auto space-y-8">
               <div>
-                <h3 className="text-xl font-bold text-white">Open Finance Integration</h3>
-                <p className="text-sm text-slate-400">
-                  Repartição transparente e automática de receitas
-                </p>
-              </div>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-6">
-              <div className="bg-slate-950 border border-slate-800 rounded-xl p-6">
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-sm font-bold text-slate-300">MIGREI Core</span>
-                  <span className="text-2xl font-black text-white">50%</span>
-                </div>
-                <div className="h-3 bg-slate-800 rounded-full overflow-hidden">
-                  <div className="h-full bg-gradient-to-r from-indigo-500 to-purple-500 w-1/2"></div>
-                </div>
-                <p className="text-xs text-slate-500 mt-2">Tecnologia, AI, Compliance, Suporte</p>
-              </div>
-
-              <div className="bg-slate-950 border border-slate-800 rounded-xl p-6">
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-sm font-bold text-slate-300">Consultores</span>
-                  <span className="text-2xl font-black text-white">30%</span>
-                </div>
-                <div className="h-3 bg-slate-800 rounded-full overflow-hidden">
-                  <div className="h-full bg-gradient-to-r from-orange-500 to-yellow-500 w-[30%]"></div>
-                </div>
-                <p className="text-xs text-slate-500 mt-2">
-                  Gestão, Implementação, Suporte Regional
+                <h3 className="text-3xl md:text-5xl font-display font-black text-white mb-4">
+                  <span className="bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
+                    Investimento a partir de R$ 45.000
+                  </span>
+                </h3>
+                <p className="text-slate-300 text-lg">
+                  3 modelos de franquia (City, State, Region) com diferentes níveis de investimento
+                  e potencial de retorno. Escolha o território ideal para você.
                 </p>
               </div>
 
-              <div className="bg-slate-950 border border-slate-800 rounded-xl p-6">
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-sm font-bold text-slate-300">Partners</span>
-                  <span className="text-2xl font-black text-white">20%</span>
+              <div className="grid md:grid-cols-3 gap-6">
+                <div className="bg-slate-950 border border-emerald-500/30 rounded-xl p-6">
+                  <div className="text-4xl font-black text-emerald-400 mb-2">R$ 45k</div>
+                  <div className="text-sm text-slate-400 mb-3">Franquia City</div>
+                  <div className="text-xs text-slate-500">Território: 1 cidade</div>
                 </div>
-                <div className="h-3 bg-slate-800 rounded-full overflow-hidden">
-                  <div className="h-full bg-gradient-to-r from-purple-500 to-pink-500 w-[20%]"></div>
+                <div className="bg-slate-950 border border-orange-500/30 rounded-xl p-6 scale-105">
+                  <div className="text-4xl font-black text-orange-400 mb-2">R$ 180k</div>
+                  <div className="text-sm text-slate-400 mb-3">Franquia State</div>
+                  <div className="text-xs text-slate-500">Território: Estado inteiro</div>
                 </div>
-                <p className="text-xs text-slate-500 mt-2">Estratégia, Alianças, Desenvolvimento</p>
+                <div className="bg-slate-950 border border-cyan-500/30 rounded-xl p-6">
+                  <div className="text-4xl font-black text-cyan-400 mb-2">R$ 500k</div>
+                  <div className="text-sm text-slate-400 mb-3">Franquia Region</div>
+                  <div className="text-xs text-slate-500">Território: Região (ex.: Sul)</div>
+                </div>
               </div>
-            </div>
 
-            <div className="mt-6 p-4 bg-emerald-500/5 border border-emerald-500/20 rounded-xl">
-              <p className="text-sm text-slate-300 leading-relaxed">
-                <strong className="text-emerald-400">Exemplo prático:</strong> Cliente paga R$
-                127.500 → Serviço MIGREI 8% = R$ 10.200 → MIGREI recebe{' '}
-                <span className="text-white font-bold">R$ 5.100</span>, Consultores{' '}
-                <span className="text-white font-bold">R$ 3.060</span>, Partners{' '}
-                <span className="text-white font-bold">R$ 2.040</span>. Tudo automático via PIX e
-                Cartão.
+              <Link to="/franquia" className="inline-block">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="bg-gradient-to-r from-yellow-500 via-orange-500 to-amber-500 hover:from-yellow-400 hover:via-orange-400 hover:to-amber-400 text-slate-950 font-black text-xl px-12 py-6 rounded-2xl shadow-[0_0_40px_rgba(234,179,8,0.4)] transition-all flex items-center gap-3 mx-auto"
+                >
+                  <Rocket className="w-6 h-6" />
+                  Conhecer Modelos de Franquia
+                  <ArrowRight className="w-6 h-6" />
+                </motion.button>
+              </Link>
+
+              <p className="text-xs text-slate-500 max-w-xl mx-auto">
+                Agende uma reunião com nosso time de expansão para entender qual modelo se encaixa
+                melhor no seu perfil e região de atuação.
               </p>
             </div>
           </motion.div>
         </div>
       </section>
 
-      <section className="py-24 bg-slate-900 border-y border-slate-800 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-20">
-            <span className="text-orange-500 font-bold tracking-widest uppercase text-xs mb-2 block">
-              Estrutura Organizacional
-            </span>
-            <h2 className="text-3xl md:text-5xl font-display font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400">
-              ARQUITETURA HIERÁRQUICA
-              <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-400">
-                MULTI-TENANT
-              </span>
-            </h2>
-            <p className="text-slate-400 max-w-2xl mx-auto text-lg">
-              Uma arquitetura fractal e escalável. Nossa estrutura hierárquica garante controle,
-              suporte e agilidade na ponta, tudo conectado pelo mesmo &quot;Cérebro Digital&quot;.
-            </p>
-          </div>
-          <div className="relative">
-            {' '}
-            <div className="hidden lg:block absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-transparent via-indigo-500/30 to-transparent -translate-y-1/2 z-0"></div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
-              <motion.div
-                whileHover={{ y: -10 }}
-                className="bg-slate-950 border border-indigo-500/50 p-8 rounded-2xl shadow-xl shadow-indigo-500/10 relative overflow-hidden group"
-              >
-                {' '}
-                <div className="absolute inset-0 bg-indigo-500/5 group-hover:bg-indigo-500/10 transition-colors"></div>{' '}
-                <div className="w-16 h-16 bg-indigo-500/20 rounded-2xl flex items-center justify-center mb-6 text-indigo-400 mx-auto border border-indigo-500/30">
-                  {' '}
-                  <Cpu className="w-8 h-8" />{' '}
-                </div>{' '}
-                <h3 className="text-xl font-bold text-white text-center mb-2">MIGREI Core</h3>{' '}
-                <p className="text-slate-400 text-sm text-center">
-                  {' '}
-                  A Sede (Headquarters). Onde residem a Inteligência Artificial, o Compliance, o
-                  Jurídico e a Tecnologia central.{' '}
-                </p>{' '}
-              </motion.div>
-              <motion.div
-                whileHover={{ y: -10 }}
-                className="bg-slate-950 border border-slate-800 hover:border-purple-500/50 p-8 rounded-2xl shadow-lg transition-all group"
-              >
-                {' '}
-                <div className="w-16 h-16 bg-slate-900 rounded-2xl flex items-center justify-center mb-6 text-purple-400 mx-auto border border-slate-800 group-hover:border-purple-500/30">
-                  {' '}
-                  <Globe className="w-8 h-8" />{' '}
-                </div>{' '}
-                <div className="text-center">
-                  {' '}
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-purple-500 mb-1 block">
-                    Parceiros Estratégicos
-                  </span>{' '}
-                  <h3 className="text-xl font-bold text-white mb-2">Partners</h3>{' '}
-                  <p className="text-slate-400 text-sm">
-                    {' '}
-                    Gestão estratégica e desenvolvimento de alianças. Garante crescimento
-                    sustentável.{' '}
-                  </p>{' '}
-                </div>{' '}
-              </motion.div>
-              <motion.div
-                whileHover={{ y: -10 }}
-                className="bg-slate-950 border border-slate-800 hover:border-orange-500/50 p-8 rounded-2xl shadow-lg transition-all group"
-              >
-                {' '}
-                <div className="w-16 h-16 bg-slate-900 rounded-2xl flex items-center justify-center mb-6 text-orange-400 mx-auto border border-slate-800 group-hover:border-orange-500/30">
-                  {' '}
-                  <Map className="w-8 h-8" />{' '}
-                </div>{' '}
-                <div className="text-center">
-                  {' '}
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-orange-500 mb-1 block">
-                    Consultores
-                  </span>{' '}
-                  <h3 className="text-xl font-bold text-white mb-2">Consultores</h3>{' '}
-                  <p className="text-slate-400 text-sm">
-                    {' '}
-                    Implementação e suporte operacional. Garante qualidade e sucesso do
-                    cliente.{' '}
-                  </p>{' '}
-                </div>{' '}
-              </motion.div>
-              <motion.div
-                whileHover={{ y: -10 }}
-                className="bg-slate-950 border border-slate-800 hover:border-emerald-500/50 p-8 rounded-2xl shadow-lg transition-all group"
-              >
-                {' '}
-                <div className="w-16 h-16 bg-slate-900 rounded-2xl flex items-center justify-center mb-6 text-emerald-400 mx-auto border border-slate-800 group-hover:border-emerald-500/30">
-                  {' '}
-                  <Building2 className="w-8 h-8" />{' '}
-                </div>{' '}
-                <div className="text-center">
-                  {' '}
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-emerald-500 mb-1 block">
-                    Empresas
-                  </span>{' '}
-                  <h3 className="text-xl font-bold text-white mb-2">Clientes Enterprise</h3>{' '}
-                  <p className="text-slate-400 text-sm">
-                    {' '}
-                    Empresas de energia que utilizam a plataforma. Transformação digital e
-                    otimização.{' '}
-                  </p>{' '}
-                </div>{' '}
-              </motion.div>
-            </div>
-          </div>
-        </div>
-      </section>
       <section className="py-24 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -996,7 +897,7 @@ const Sobre: React.FC = () => {
                   <div className="flex justify-between">
                     {' '}
                     <span className="text-slate-400">Bank.Gateway</span>{' '}
-                    <span className="text-emerald-400">PIX e Cart�o</span>{' '}
+                    <span className="text-emerald-400">PIX e Cartão</span>{' '}
                   </div>{' '}
                   <div className="flex justify-between">
                     {' '}
@@ -1049,9 +950,9 @@ const Sobre: React.FC = () => {
             </Link>{' '}
             <Link to="/contato">
               {' '}
-              <button className="px-10 py-4 bg-transparent border border-slate-600 text-white font-bold rounded-xl hover:bg-slate-800 hover:border-white transition-all flex items-center justify-center gap-2">
+              <button className="px-10 py-4 bg-gradient-to-r from-amber-500 via-orange-500 to-yellow-400 hover:from-amber-400 hover:via-orange-400 hover:to-yellow-300 text-slate-950 font-black rounded-xl shadow-[0_0_25px_rgba(249,115,22,0.35)] transition-all transform hover:scale-105 flex items-center justify-center gap-2">
                 {' '}
-                Falar com a Corporation <ArrowRight className="w-4 h-4" />{' '}
+                Falar com a MIGREI <ArrowRight className="w-4 h-4" />{' '}
               </button>{' '}
             </Link>{' '}
           </div>

@@ -12,27 +12,31 @@ const Contato: React.FC = () => {
   };
   return (
     <div className="min-h-screen bg-slate-950 font-sans">
-      <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-emerald-500/5 rounded-full blur-[100px]"></div>
+      <section className="relative py-24 overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-yellow-500/15 rounded-full blur-[100px] animate-pulse" />
+          <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-orange-500/15 rounded-full blur-[100px]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-amber-500/5 rounded-full blur-3xl" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+        </div>
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0 bg-gradient-to-br from-yellow-500 to-transparent opacity-20" />
+        </div>
         <div className="max-w-7xl mx-auto px-4 relative z-10 text-center">
-          {' '}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-5xl font-display font-bold text-white mb-6"
+            className="text-4xl md:text-6xl font-display font-black text-white mb-6"
           >
-            {' '}
             Fale com a{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-cyan-400 to-blue-400">
               MIGREI
-            </span>{' '}
-          </motion.h1>{' '}
-          <p className="text-xl text-slate-400 max-w-2xl mx-auto">
-            {' '}
-            Para agilidade no atendimento, recomendamos consultar nossa Inteligência
-            Artificial.{' '}
-          </p>{' '}
+            </span>
+          </motion.h1>
+          <p className="text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
+            Nosso time e a Migrei IA respondem rápido: dúvidas regulatórias, propostas e suporte
+            nível 2 em um só lugar.
+          </p>
         </div>
       </section>
       <section className="pb-12 pt-12">

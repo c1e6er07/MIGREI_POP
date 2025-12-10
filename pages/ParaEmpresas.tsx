@@ -11,10 +11,7 @@ import {
   Settings,
   X,
   ArrowRight,
-  Zap,
   Shield,
-  Users,
-  Award,
   Rocket,
 } from 'lucide-react';
 import { LOGO_URL } from '../constants';
@@ -28,15 +25,6 @@ interface MigrationStep {
   duration: string;
   details?: string;
   benefits?: string[];
-}
-
-interface PricingPlan {
-  name: string;
-  price: string;
-  description: string;
-  features: string[];
-  highlight?: boolean;
-  cta: string;
 }
 
 const ParaEmpresas: React.FC = () => {
@@ -58,7 +46,7 @@ const ParaEmpresas: React.FC = () => {
     setErrorMessage('');
     setSubmitStatus('idle');
     try {
-      const detailsMessage = `CONTRATO DE CONSULTORIA - CONSOLIDAÇÃO\n---------------------------------------\nEmpresa: ${formData.empresa}\nCNPJ: ${formData.cnpj}\nContato: ${formData.nome_completo}\nTelefone: ${formData.telefone}\n\nSolicitação de Consolidação do Contrato de Consultoria com MIGREI Comercializadora Varejista`;
+      const detailsMessage = `CONTRATO DE CONSULTORIA - CONSOLIDAÇÃO\n---------------------------------------\nEmpresa: ${formData.empresa}\nCNPJ: ${formData.cnpj}\nContato: ${formData.nome_completo}\nTelefone: ${formData.telefone}\n\nSolicitação de Consolidação do Contrato de Consultoria com MIGREI Comercialização Varejista`;
       const result = await LeadService.create({
         name: formData.nome_completo,
         email: formData.email,
@@ -110,139 +98,135 @@ const ParaEmpresas: React.FC = () => {
       benefits: [
         'Múltiplos cenários analisados',
         'Projeção de 36 meses',
-        'ROI (Retorno sobre Investimento) detalhado',
+        'Melhor relação custo-benefício',
       ],
-    },
-    {
-      icon: CheckCircle,
-      title: 'Habilitação CCEE',
-      description: 'Registro na Câmara',
-      duration: '15-30 dias',
-      details:
-        'Realizamos todo o processo de cadastro junto à CCEE (Câmara de Comercialização de Energia Elétrica) sem custo para você.',
-      benefits: ['Documentação completa', 'Contatos diretos com CCEE', 'Acompanhamento 100%'],
-    },
-    {
-      icon: FileSignature,
-      title: 'Negociação',
-      description: 'Busca dos melhores preços',
-      duration: '5-10 dias',
-      details:
-        'Nossa rede de fornecedores permite negociar os melhores preços de energia do mercado, garantindo máxima economia.',
-      benefits: ['Rede de 50+ fornecedores', 'Preços competitivos', 'Contrato transparente'],
-    },
-    {
-      icon: TrendingDown,
-      title: 'Migração Completa',
-      description: 'Transição segura',
-      duration: '1 dia',
-      details:
-        'A migração é rápida e segura. Sua empresa passa a usufruir da economia imediatamente sem qualquer interrupção.',
-      benefits: ['Zero downtime', 'Transição segura', 'Início imediato dos ganhos'],
     },
     {
       icon: Settings,
-      title: 'Gestão Contínua',
-      description: 'Acompanhamento mensal',
-      duration: 'Permanente',
+      title: 'Habilitação CCEE',
+      description: 'Documentação e segurança regulatória',
+      duration: '15-30 dias',
       details:
-        'Acompanhamos continuamente o mercado e geramos relatórios mensais otimizando sua estratégia de energia.',
-      benefits: ['Relatórios mensais', 'Otimizações constantes', 'Suporte 24/7'],
+        'Cuidamos de toda a habilitação junto à CCEE para você operar no Mercado Livre de Energia com total conformidade.',
+      benefits: ['Documentação completa', 'Conformidade assegurada', 'Acompanhamento 100%'],
+    },
+    {
+      icon: Rocket,
+      title: 'Migração e Go-live',
+      description: 'Transição segura e sem interrupções',
+      duration: '1 dia',
+      details:
+        'Executamos a virada operacional e monitoramos os primeiros ciclos para garantir economia imediata.',
+      benefits: ['Zero downtime', 'Suporte 24/7', 'Relatórios mensais automáticos'],
     },
   ];
 
-  const pricingPlans: PricingPlan[] = [
-    {
-      name: 'Básico',
-      price: 'R$ 2.990',
-      description: '/mês',
-      features: [
-        '✓ Até R$ 500k/ano em economia',
-        '✓ Diagnóstico e simulação completos',
-        '✓ Habilitação CCEE incluída',
-        '✓ Negociação de contratos',
-        '✓ Dashboard de acompanhamento',
-        '✓ Relatório mensal',
-        '✓ Suporte via email',
-        '✓ Taxa de adesão: R$ 1.495 (50% da 1ª mensalidade)',
-      ],
-      cta: 'Começar Agora',
-    },
-    {
-      name: 'Avançado',
-      price: 'R$ 5.990',
-      description: '/mês',
-      highlight: true,
-      features: [
-        '✓ Economia ILIMITADA',
-        '✓ Tudo do plano Básico',
-        '✓ Gerente dedicado 24/7',
-        '✓ Renegociação trimestral automática',
-        '✓ Análise de cenários ilimitada',
-        '✓ Integração com ERP',
-        '✓ Consultoria estratégica',
-        '✓ Taxa de adesão: R$ 2.995 (50% da 1ª mensalidade)',
-      ],
-      cta: 'Solicitar Demo',
-    },
-    {
-      name: 'Performance',
-      price: '10% dos savings',
-      description: 'modelo alternativo',
-      features: [
-        '✓ Taxa de adesão: GRÁTIS',
-        '✓ Você paga apenas pela economia gerada',
-        '✓ Diagnóstico gratuito',
-        '✓ Ideal para pequenas-médias empresas',
-        '✓ Sem compromisso mínimo',
-        '✓ Flexibilidade total',
-        '✓ ROI (Retorno sobre Investimento) garantido',
-      ],
-      cta: 'Conhecer Detalhes',
-    },
-  ];
   return (
     <div className="min-h-screen bg-slate-950">
-      {/* HERO */}
-      <section className="relative py-20 overflow-hidden">
+      <section className="relative py-24 overflow-hidden">
         <div className="absolute inset-0">
-          <div className="absolute top-0 left-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-yellow-500/15 rounded-full blur-[100px] animate-pulse" />
+          <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-orange-500/15 rounded-full blur-[100px]" />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }}>
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/10 border border-emerald-500/30 rounded-full mb-6 backdrop-blur-sm">
-                <Sparkles className="w-4 h-4 text-emerald-400" />
-                <span className="text-emerald-400 text-lg font-semibold">Para Empresas</span>
-              </div>
-              <h1 className="text-5xl lg:text-6xl font-display font-extrabold mb-6 text-white leading-tight">
-                Economize até{' '}
-                <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
-                  30%
-                </span>{' '}
-                na Conta de Energia
-              </h1>
-              <p className="text-slate-300 mb-8 text-xl leading-relaxed">
-                Sem investimento inicial. Sem riscos. Só economia garantida desde o primeiro mês.
-              </p>
-            </motion.div>
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7 }}
+              className="space-y-6"
+            >
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-slate-900/70 border border-emerald-500/30 rounded-full text-emerald-300 text-sm font-bold uppercase tracking-wide">
+                <Sparkles className="w-4 h-4" /> Para Empresas
+              </div>
+              <h1 className="text-4xl lg:text-6xl font-display font-extrabold text-white leading-tight">
+                Migre para o Mercado Livre com segurança e ROI imediato
+              </h1>
+              <p className="text-slate-300 text-lg max-w-2xl">
+                Consultoria ponta a ponta, habilitação CCEE e operação contínua com IA e compliance
+                integrados. Zero downtime, contratos digitais e suporte 24/7.
+              </p>
+              <div className="grid sm:grid-cols-2 gap-4 max-w-2xl">
+                {[
+                  'Diagnóstico em 48h',
+                  'Habilitação CCEE inclusa',
+                  'Renegociação automática',
+                  'Gerente dedicado 24/7',
+                ].map((item) => (
+                  <div
+                    key={item}
+                    className="flex items-center gap-3 bg-slate-900/70 border border-slate-800 rounded-xl px-4 py-3"
+                  >
+                    <CheckCircle className="w-5 h-5 text-emerald-400" />
+                    <span className="text-slate-200 text-sm">{item}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <a href="#form-section" className="w-full sm:w-auto">
+                  <button className="w-full bg-gradient-to-r from-emerald-700 to-cyan-700 hover:from-emerald-600 hover:to-cyan-600 text-white font-semibold text-lg px-8 py-4 rounded-xl shadow-lg shadow-emerald-700/20 transition-all hover:scale-105">
+                    Consolidar Contrato
+                  </button>
+                </a>
+                <a
+                  href="https://forms.gle/izq23HmRnSYEFkJ9A"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto"
+                >
+                  <button className="w-full bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 text-white font-semibold text-lg px-8 py-4 rounded-xl shadow-lg shadow-amber-600/20 transition-all">
+                    Falar com Especialista
+                  </button>
+                </a>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.7, delay: 0.1 }}
               className="relative hidden lg:flex items-center justify-center"
             >
-              <img
-                src={LOGO_URL}
-                alt="MIGREI"
-                className="relative w-96 h-96 object-contain drop-shadow-2xl"
-              />
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
+                className="absolute inset-0 flex items-center justify-center"
+              >
+                <div className="w-[480px] h-[480px] border-2 border-dashed border-emerald-500/20 rounded-full" />
+                <div className="absolute w-[360px] h-[360px] border border-dotted border-cyan-500/20 rounded-full" />
+              </motion.div>
+              <motion.div
+                animate={{ y: [0, -16, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+                className="relative z-10"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-full blur-3xl opacity-30" />
+                <img
+                  src={LOGO_URL}
+                  alt="MIGREI"
+                  className="relative w-96 h-96 object-contain drop-shadow-2xl"
+                />
+              </motion.div>
+              <motion.div
+                animate={{ y: [0, -10, 0], x: [0, 6, 0] }}
+                transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut', delay: 0.4 }}
+                className="absolute -top-6 right-4 z-20 bg-slate-900/90 backdrop-blur-sm p-4 rounded-xl border border-emerald-500/30 shadow-xl"
+              >
+                <div className="flex items-center gap-3">
+                  <Shield className="w-6 h-6 text-emerald-400" />
+                  <div>
+                    <div className="text-white font-bold">Operação 24/7</div>
+                    <div className="text-xs text-slate-400">Compliance + IA no Core</div>
+                  </div>
+                </div>
+              </motion.div>
             </motion.div>
           </div>
         </div>
       </section>
 
       {/* PROCESSO COM MODALS */}
-      <section className="py-24 bg-slate-950 border-t border-slate-800">
+      <section id="planos" className="py-24 bg-slate-950 border-t border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -260,28 +244,28 @@ const ParaEmpresas: React.FC = () => {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch">
             {timelineSteps.map((step, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 onClick={() => setSelectedStep(index)}
-                className="cursor-pointer bg-gradient-to-b from-slate-900 to-slate-950 p-8 rounded-2xl border border-slate-800 shadow-[0_0_20px_rgba(249,115,22,0.05)] hover:border-orange-500/30 hover:shadow-[0_0_30px_rgba(249,115,22,0.15)] transition-all group"
+                className="cursor-pointer bg-gradient-to-b from-slate-900 to-slate-950 p-5 rounded-xl border border-slate-800 shadow-[0_0_20px_rgba(249,115,22,0.05)] hover:border-orange-500/30 hover:shadow-[0_0_30px_rgba(249,115,22,0.15)] transition-all group h-full flex flex-col"
               >
-                <div className="relative z-10">
-                  <div className="w-14 h-14 bg-gradient-to-br from-yellow-500/10 to-orange-500/10 rounded-xl flex items-center justify-center mb-6 border border-yellow-500/20 group-hover:border-orange-500/50 transition-all">
-                    <step.icon className="w-7 h-7 text-yellow-400" />
+                <div className="relative z-10 flex flex-col h-full">
+                  <div className="w-12 h-12 bg-gradient-to-br from-yellow-500/10 to-orange-500/10 rounded-lg flex items-center justify-center mb-4 border border-yellow-500/20 group-hover:border-orange-500/50 transition-all">
+                    <step.icon className="w-6 h-6 text-yellow-400" />
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-3">{step.title}</h3>
-                  <p className="text-slate-400 text-sm mb-6 min-h-[40px] leading-relaxed">
+                  <h3 className="text-lg font-bold text-white mb-2">{step.title}</h3>
+                  <p className="text-slate-400 text-xs mb-4 leading-relaxed flex-1">
                     {step.description}
                   </p>
                   <div className="flex items-center justify-between">
-                    <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 bg-emerald-500/10 px-3 py-1.5 rounded-full border border-emerald-500/20">
-                      <Clock className="w-3 h-3" /> {step.duration}
+                    <div className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-emerald-400 bg-emerald-500/10 px-2 py-1 rounded-full border border-emerald-500/20">
+                      <Clock className="w-2.5 h-2.5" /> {step.duration}
                     </div>
-                    <ArrowRight className="w-4 h-4 text-orange-400 group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight className="w-3.5 h-3.5 text-orange-400 group-hover:translate-x-1 transition-transform" />
                   </div>
                 </div>
               </motion.div>
@@ -357,7 +341,7 @@ const ParaEmpresas: React.FC = () => {
                 <div className="pt-6 border-t border-slate-800">
                   <button
                     onClick={() => setSelectedStep(null)}
-                    className="w-full bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-500 hover:to-cyan-500 text-white font-bold py-3 rounded-xl transition-all"
+                    className="w-full bg-gradient-to-r from-emerald-700 to-cyan-700 hover:from-emerald-600 hover:to-cyan-600 text-white font-bold py-3 rounded-xl transition-all"
                   >
                     Próxima Etapa
                   </button>
@@ -385,7 +369,7 @@ const ParaEmpresas: React.FC = () => {
                   <FileSignature className="w-8 h-8" /> Consolide Seu Contrato Agora
                 </h2>
                 <p className="text-emerald-50 text-lg">
-                  Formalize sua parceria com a MIGREI Comercializadora Varejista
+                  Formalize sua parceria com a MIGREI Comercialização Varejista
                 </p>
               </div>
 
@@ -599,7 +583,7 @@ const ParaEmpresas: React.FC = () => {
                     <button
                       type="submit"
                       disabled={loading}
-                      className="w-full bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-500 hover:to-cyan-500 text-white font-bold text-lg py-4 rounded-xl shadow-lg mt-8 transition-all disabled:opacity-50 flex items-center justify-center gap-2"
+                      className="w-full bg-gradient-to-r from-emerald-700 to-cyan-700 hover:from-emerald-600 hover:to-cyan-600 text-white font-bold text-lg py-4 rounded-xl shadow-lg shadow-emerald-700/20 mt-8 transition-all disabled:opacity-50 flex items-center justify-center gap-2"
                     >
                       {loading ? (
                         <>
@@ -619,124 +603,6 @@ const ParaEmpresas: React.FC = () => {
                     </p>
                   </form>
                 )}
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* SEÇÃO DE PRECIFICAÇÃO */}
-      <section className="py-24 bg-slate-950 border-t border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-display font-extrabold text-white mb-4">
-              <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
-                Precificação Transparente
-              </span>
-            </h2>
-            <p className="text-slate-400 text-lg">
-              Escolha o plano que melhor se adequa ao seu perfil
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {pricingPlans.map((plan, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                className={`rounded-2xl border transition-all relative ${
-                  plan.highlight
-                    ? 'bg-gradient-to-br from-emerald-600/10 to-cyan-600/10 border-emerald-500/50 shadow-[0_0_40px_rgba(16,185,129,0.2)] scale-105'
-                    : plan.name === 'Performance'
-                      ? 'bg-gradient-to-br from-yellow-600/10 to-orange-600/10 border-yellow-500/50 shadow-[0_0_40px_rgba(234,179,8,0.2)]'
-                      : 'bg-slate-900 border-slate-800 hover:border-slate-700'
-                } p-8`}
-              >
-                {plan.highlight && (
-                  <div className="mb-4 inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/20 border border-emerald-500/50 rounded-full">
-                    <Zap className="w-4 h-4 text-emerald-400" />
-                    <span className="text-emerald-400 font-bold text-sm">
-                      MELHOR CUSTO×BENEFÍCIO
-                    </span>
-                  </div>
-                )}
-
-                {plan.name === 'Performance' && (
-                  <div className="absolute -top-4 -right-4 bg-gradient-to-r from-yellow-400 to-orange-400 px-4 py-1.5 rounded-full">
-                    <span className="text-slate-950 font-bold text-sm">🎉 TAXA GRÁTIS</span>
-                  </div>
-                )}
-
-                <h3 className="text-2xl font-bold text-white mb-2">{plan.name}</h3>
-                <div className="mb-6">
-                  <span className="text-4xl font-black bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
-                    {plan.price}
-                  </span>
-                  <span className="text-slate-400 ml-2">{plan.description}</span>
-                </div>
-
-                <ul className="space-y-4 mb-8">
-                  {plan.features.map((feature, fidx) => (
-                    <li key={fidx} className="flex items-start gap-3 text-slate-300">
-                      <div className="w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <CheckCircle className="w-3 h-3 text-emerald-400" />
-                      </div>
-                      <span className="text-sm">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <a
-                  href="https://forms.gle/izq23HmRnSYEFkJ9A"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block w-full"
-                >
-                  <button
-                    className={`w-full font-bold py-3 px-6 rounded-xl transition-all ${
-                      plan.highlight
-                        ? 'bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-500 hover:to-cyan-500 text-white'
-                        : 'bg-slate-800 hover:bg-slate-700 text-emerald-400 border border-slate-700'
-                    }`}
-                  >
-                    {plan.cta}
-                  </button>
-                </a>
-              </motion.div>
-            ))}
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            className="mt-16 bg-gradient-to-r from-slate-900 to-slate-950 rounded-2xl border border-slate-800 p-8"
-          >
-            <div className="grid md:grid-cols-3 gap-8 text-center">
-              <div>
-                <Award className="w-8 h-8 text-emerald-400 mx-auto mb-3" />
-                <h4 className="font-bold text-white mb-2">
-                  ROI (Retorno sobre Investimento) Garantido
-                </h4>
-                <p className="text-slate-400 text-sm">
-                  Economia real desde o 1º mês com garantia de resultados
-                </p>
-              </div>
-              <div>
-                <Shield className="w-8 h-8 text-cyan-400 mx-auto mb-3" />
-                <h4 className="font-bold text-white mb-2">Sem Riscos</h4>
-                <p className="text-slate-400 text-sm">
-                  Cancelamento sem multa. Sem compromisso mínimo
-                </p>
-              </div>
-              <div>
-                <Users className="w-8 h-8 text-yellow-400 mx-auto mb-3" />
-                <h4 className="font-bold text-white mb-2">500+ Clientes</h4>
-                <p className="text-slate-400 text-sm">Empresas confiando em MIGREI há 3+ anos</p>
               </div>
             </div>
           </motion.div>
@@ -806,7 +672,7 @@ const ParaEmpresas: React.FC = () => {
               rel="noopener noreferrer"
               className="inline-block"
             >
-              <button className="bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-500 hover:to-cyan-500 text-white font-bold text-lg px-12 py-4 rounded-xl shadow-lg transition-all hover:scale-105">
+              <button className="bg-gradient-to-r from-emerald-700 to-cyan-700 hover:from-emerald-600 hover:to-cyan-600 text-white font-bold text-lg px-12 py-4 rounded-xl shadow-lg shadow-emerald-700/20 transition-all hover:scale-105">
                 <span className="flex items-center gap-2">
                   <Rocket className="w-5 h-5" />
                   Comece Agora

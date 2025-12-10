@@ -13,12 +13,11 @@ const Footer: React.FC = () => {
             {' '}
             <div className="mb-6">
               {' '}
-              <img src={LOGO_URL} alt="MIGREI Logo" className="h-14 w-auto object-contain" />{' '}
+              <img src={LOGO_URL} alt="MIGREI Logo" className="h-24 w-auto object-contain" />{' '}
             </div>{' '}
             <p className="text-slate-400 text-sm mb-6 leading-relaxed">
               {' '}
-              Líder nacional em consultoria para o Mercado Livre de Energia. Transformamos custos em
-              lucro através da inovação e tecnologia.{' '}
+              Pioneira e Líder Nacional em Comercialização Varejista no Mercado Livre de Energia.
             </p>{' '}
             <div className="flex gap-4">
               {' '}
@@ -64,6 +63,14 @@ const Footer: React.FC = () => {
                   className="hover:text-emerald-400 transition-colors flex items-center gap-2"
                 >
                   <ArrowRight className="w-3 h-3 text-emerald-500" /> Para Empresas
+                </Link>
+              </li>{' '}
+              <li>
+                <Link
+                  to="/franquia"
+                  className="hover:text-emerald-400 transition-colors flex items-center gap-2"
+                >
+                  <ArrowRight className="w-3 h-3 text-emerald-500" /> Para Investidores
                 </Link>
               </li>{' '}
               <li>

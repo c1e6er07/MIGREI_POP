@@ -199,7 +199,7 @@ const Home: React.FC = () => {
                 {' '}
                 <Link to="/empresas" className="w-full sm:w-auto">
                   {' '}
-                  <button className="w-full bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-500 hover:to-cyan-500 text-white font-bold text-lg px-8 py-6 rounded-xl shadow-xl shadow-emerald-500/20 flex items-center justify-center transition-all hover:scale-105">
+                  <button className="w-full bg-gradient-to-r from-emerald-700 to-cyan-700 hover:from-emerald-600 hover:to-cyan-600 text-white font-bold text-lg px-8 py-6 rounded-xl shadow-xl shadow-emerald-700/25 flex items-center justify-center transition-all hover:scale-105">
                     {' '}
                     <Rocket className="w-5 h-5 mr-2" /> Ver Nossa Solução{' '}
                   </button>{' '}
@@ -211,7 +211,7 @@ const Home: React.FC = () => {
                   className="w-full sm:w-auto"
                 >
                   {' '}
-                  <button className="w-full bg-gradient-to-r from-slate-700 to-slate-800 hover:from-slate-600 hover:to-slate-700 text-white font-semibold text-lg px-8 py-6 rounded-xl shadow-xl shadow-slate-500/20 flex items-center justify-center transition-all hover:scale-105">
+                  <button className="w-full bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 text-white font-semibold text-lg px-8 py-6 rounded-xl shadow-xl shadow-amber-600/25 flex items-center justify-center transition-all hover:scale-105">
                     {' '}
                     Agendar Reunião{' '}
                   </button>{' '}
@@ -844,7 +844,7 @@ const Home: React.FC = () => {
               className="inline-flex items-center justify-center px-12 py-5 bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-500 hover:to-cyan-500 text-white rounded-xl font-bold text-xl shadow-[0_0_40px_rgba(16,185,129,0.4)] transition-all hover:scale-[1.08] gap-3 group"
             >
               <Rocket className="w-7 h-7 group-hover:rotate-45 transition-transform" />
-              Fechar Minha Consultoria Agora
+              Contratar Minha Consultoria Agora
               <ChevronRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
             </Link>
 
