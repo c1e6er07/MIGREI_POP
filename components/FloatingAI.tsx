@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Bot } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -7,6 +7,15 @@ import FloatingChat from './FloatingChat';
 const FloatingAI: React.FC = () => {
   const location = useLocation();
   const [isChatOpen, setIsChatOpen] = useState(false);
+
+  useEffect(() => {
+    const paramsRouter = new URLSearchParams(location.search || '');
+    const paramsWindow = new URLSearchParams(typeof window !== 'undefined' ? window.location.search : '');
+    const chatParam = (paramsRouter.get('chat') || paramsWindow.get('chat')) ?? '';
+    if (chatParam && ['github', 'open', 'true', '1'].includes(chatParam.toLowerCase())) {
+      setIsChatOpen(true);
+    }
+  }, [location.search]);
 
   if (location.pathname.startsWith('/admin') || location.pathname.startsWith('/app')) return null;
 

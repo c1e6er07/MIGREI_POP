@@ -23,5 +23,10 @@ class MockIntersectionObserver implements IntersectionObserver {
 	takeRecords(): IntersectionObserverEntry[] { return []; }
 }
 
-// @ts-expect-error: jsdom não fornece IntersectionObserver nativamente
-global.IntersectionObserver = MockIntersectionObserver;
+type IntersectionObserverConstructor = new (
+  callback: IntersectionObserverCallback,
+  options?: IntersectionObserverInit
+) => IntersectionObserver;
+
+(globalThis as unknown as { IntersectionObserver: IntersectionObserverConstructor }).IntersectionObserver =
+  MockIntersectionObserver as unknown as IntersectionObserverConstructor;
