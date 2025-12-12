@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: migrei-pop
+    env: node
+    region: oregon
+    buildCommand: npm ci && npm run build
+    startCommand: npm run start
+    autoDeploy: true
+    healthCheckPath: /
+    envVars:
+      - key: NODE_VERSION
+        value: 22
